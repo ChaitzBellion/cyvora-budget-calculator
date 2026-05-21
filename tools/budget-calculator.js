@@ -116,7 +116,18 @@ function calculateFireStatus(investments, savingsRate, income, debtRate, needs, 
   const monthlyExpenses = needs + debt + lifestyle;
   const annualExpenses = monthlyExpenses * 12;
   
-  // FIRE corpus = 25 × annual expenses (safe withdrawal rate of 4%)
+  // If no expenses or investments, return empty state
+  if (annualExpenses === 0 || investments === 0) {
+    return {
+      requiredCorpus: 0,
+      currentPath: 0,
+      yearsUntilFire: "--",
+      percentage: 0,
+      monthlyExpenses: 0
+    };
+  }
+  
+  // FIRE corpus = 25x annual expenses (safe withdrawal rate of 4%)
   const fireCorpus = annualExpenses * 25;
   
   // Calculate wealth path assuming 20 years of investing

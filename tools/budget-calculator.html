@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="WealthPilot Budget Planner - AI-powered budget calculator to help you manage finances, track expenses, and grow your wealth." />
+    <meta name="theme-color" content="#1e8a6a" />
+    <title>Budget Planner | WealthPilot Tools</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="budget-calculator.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-logo">W</a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link" data-tooltip="Home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <a href="../about.html" class="nav-link" data-tooltip="About">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a href="../blogs.html" class="nav-link" data-tooltip="Blogs">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </a>
+        <a href="../tips.html" class="nav-link" data-tooltip="Tips">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </a>
+        <a href="index.html" class="nav-link active" data-tooltip="Tools">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </a>
+      </div>
+    </nav>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <main class="app-shell tool-page" id="main-content">
+      <section class="planner">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">AI Finance Copilot</p>
+            <h1>WealthPilot</h1>
+          </div>
+        </header>
+
+        <div class="layout">
+          <section class="input-panel" aria-label="Budget inputs">
+            <h2>Monthly Snapshot</h2>
+            <div class="field-grid">
+              <label>
+                City
+                <select id="city" aria-describedby="city-help">
+                  <option value="Mumbai">None</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Bengaluru">Bengaluru</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Kolkata">Kolkata</option>
+                </select>
+              </label>
+              <label>
+                Monthly income
+                <input id="income" type="number" placeholder="e.g. 50000" min="0" aria-required="true" />
+              </label>
+              <label>
+                Other income
+                <input id="otherIncome" type="number" placeholder="e.g. 5000" min="0" />
+              </label>
+              <label>
+                Rent
+                <input id="rent" type="number" placeholder="e.g. 15000" min="0" />
+              </label>
+              <label>
+                EMIs / debt
+                <input id="emis" type="number" placeholder="e.g. 5000" min="0" />
+              </label>
+              <label>
+                Food & groceries
+                <input id="food" type="number" placeholder="e.g. 8000" min="0" />
+              </label>
+              <label>
+                Transport / fuel
+                <input id="transport" type="number" placeholder="e.g. 3000" min="0" />
+              </label>
+              <label>
+                Subscriptions
+                <input id="subscriptions" type="number" placeholder="e.g. 1000" min="0" />
+              </label>
+              <label>
+                Current savings
+                <input id="savings" type="number" placeholder="e.g. 100000" min="0" />
+              </label>
+              <label>
+                Monthly SIP / investments
+                <input id="investments" type="number" placeholder="e.g. 10000" min="0" />
+              </label>
+              <label>
+                Yearly increment %
+                <input id="increment" type="number" placeholder="e.g. 10" min="0" step="0.5" />
+              </label>
+            </div>
+            <button id="submitBtn" type="button" class="submit-btn" aria-label="Calculate budget insights">
+              Calculate
+            </button>
+          </section>
+
+          <section class="dashboard" aria-label="Budget insights" aria-live="polite">
+            <div class="score-row">
+              <div class="score-card">
+                <span>Budget score</span>
+                <strong id="score">--</strong>
+                <small id="scoreLabel">Calculating</small>
+              </div>
+              <div class="safe-spend">
+                <span>Safe spending left</span>
+                <strong id="safeSpend">--</strong>
+                <small>after essentials, savings and SIP</small>
+              </div>
+            </div>
+
+            <div class="city-card">
+              <span id="cityName">Mumbai</span>
+              <strong id="cityRange">--</strong>
+              <small id="cityStatus">Checking city fit</small>
+            </div>
+
+            <div class="bars" id="bars"></div>
+
+            <div class="insight-panel" role="region" aria-label="Financial advice">
+              <h2>Coach Notes</h2>
+              <ul id="insights" role="list"></ul>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="simulator" aria-label="Wealth simulator">
+        <div class="simulator-header">
+          <p class="eyebrow">Wealth Growth Simulator</p>
+          <h2>See how today's SIP can grow over time.</h2>
+        </div>
+        
+        <div class="sim-content">
+          <div class="projection-cards">
+            <div class="future-card">
+              <span>Projected value in 10 years</span>
+              <strong id="futureTen">--</strong>
+              <small id="futureTenReal" class="real-value-note">--</small>
+              <small class="info-text">Real value = purchasing power after inflation</small>
+            </div>
+            <div class="future-card">
+              <span>Projected value in 20 years</span>
+              <strong id="futureTwenty">--</strong>
+              <small id="futureTwentyReal" class="real-value-note">--</small>
+              <small class="info-text">Real value = purchasing power after inflation</small>
+            </div>
+          </div>
+          
+          <div class="sim-inputs">
+            <label>
+              Expected annual return %
+              <input id="returnRate" type="number" value="12" min="0" step="0.5" />
+            </label>
+            <label>
+              Inflation rate %
+              <input id="inflationRate" type="number" value="6" min="0" step="0.5" />
+            </label>
+          </div>
+        </div>
+
+        <div class="enhanced-metrics">
+          <div class="metric-card">
+            <h3>FIRE Status</h3>
+            <div id="fireInfo">--</div>
+          </div>
+          <div class="metric-card">
+            <h3>Emergency Fund</h3>
+            <div id="emergencyInfo">--</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="budget-calculator.js"></script>
+  </body>
+</html>
