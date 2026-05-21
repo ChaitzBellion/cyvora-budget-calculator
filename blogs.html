@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="WealthPilot Blog - In-depth articles on personal finance, investing, budgeting, and building wealth in India." />
+    <meta name="theme-color" content="#1e8a6a" />
+    <title>Blog | WealthPilot</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">W</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link" data-tooltip="Home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <a href="about.html" class="nav-link" data-tooltip="About">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a href="blogs.html" class="nav-link active" data-tooltip="Blogs">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </a>
+        <a href="tips.html" class="nav-link" data-tooltip="Tips">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </a>
+        <a href="tools/index.html" class="nav-link" data-tooltip="Tools">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </a>
+      </div>
+    </nav>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <main class="main-content" id="main-content">
+      <!-- Blog Header -->
+      <section class="hero" style="min-height: auto; padding: 80px 0 60px;">
+        <div class="hero-eyebrow">Blog</div>
+        <h1>Insights on <span>Personal Finance</span></h1>
+        <p class="hero-subtitle">
+          In-depth articles, guides, and analysis to help you understand money better 
+          and make informed financial decisions.
+        </p>
+      </section>
+
+      <!-- Blog Categories -->
+      <section style="margin-bottom: 48px;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button style="padding: 8px 20px; background: var(--primary); color: white; border: none; border-radius: 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer;">All</button>
+          <button style="padding: 8px 20px; background: var(--muted); color: var(--muted-foreground); border: none; border-radius: 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer;">Budgeting</button>
+          <button style="padding: 8px 20px; background: var(--muted); color: var(--muted-foreground); border: none; border-radius: 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer;">Investing</button>
+          <button style="padding: 8px 20px; background: var(--muted); color: var(--muted-foreground); border: none; border-radius: 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer;">FIRE</button>
+          <button style="padding: 8px 20px; background: var(--muted); color: var(--muted-foreground); border: none; border-radius: 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer;">Tax</button>
+          <button style="padding: 8px 20px; background: var(--muted); color: var(--muted-foreground); border: none; border-radius: 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer;">Savings</button>
+        </div>
+      </section>
+
+      <!-- Blog Grid -->
+      <section class="section" style="padding-top: 0;">
+        <div class="blog-grid">
+          <!-- Blog Post 1 -->
+          <article class="blog-card">
+            <div class="blog-image">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span>FIRE</span>
+                <span>8 min read</span>
+              </div>
+              <h3 class="blog-title">Understanding FIRE: Is Early Retirement Realistic in India?</h3>
+              <p class="blog-excerpt">
+                A comprehensive look at the Financial Independence, Retire Early movement. 
+                We break down the numbers, strategies, and what it actually takes for 
+                Indian professionals to achieve FIRE.
+              </p>
+            </div>
+          </article>
+
+          <!-- Blog Post 2 -->
+          <article class="blog-card">
+            <div class="blog-image">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span>Budgeting</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="blog-title">The 50-30-20 Rule: A Simple Framework That Actually Works</h3>
+              <p class="blog-excerpt">
+                Learn how to allocate your income effectively using this time-tested 
+                budgeting method. Includes practical examples adapted for Indian 
+                salaries and expense patterns.
+              </p>
+            </div>
+          </article>
+
+          <!-- Blog Post 3 -->
+          <article class="blog-card">
+            <div class="blog-image">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span>Savings</span>
+                <span>5 min read</span>
+              </div>
+              <h3 class="blog-title">Emergency Fund 101: How Much is Enough?</h3>
+              <p class="blog-excerpt">
+                Learn the right amount to keep liquid for emergencies. We cover how 
+                to calculate your ideal emergency fund based on your lifestyle, 
+                job security, and family situation.
+              </p>
+            </div>
+          </article>
+
+          <!-- Blog Post 4 -->
+          <article class="blog-card">
+            <div class="blog-image">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span>Investing</span>
+                <span>10 min read</span>
+              </div>
+              <h3 class="blog-title">SIP vs Lump Sum: Which Strategy Wins in 2024?</h3>
+              <p class="blog-excerpt">
+                A data-driven comparison of systematic investment plans versus 
+                lump sum investing. We analyze historical returns and help you 
+                decide which approach suits your situation.
+              </p>
+            </div>
+          </article>
+
+          <!-- Blog Post 5 -->
+          <article class="blog-card">
+            <div class="blog-image">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span>Tax</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="blog-title">Old vs New Tax Regime: A Complete Comparison</h3>
+              <p class="blog-excerpt">
+                Confused about which tax regime to choose? This guide breaks down 
+                both options with calculators and scenarios to help you pick the 
+                one that saves you more money.
+              </p>
+            </div>
+          </article>
+
+          <!-- Blog Post 6 -->
+          <article class="blog-card">
+            <div class="blog-image">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span>Investing</span>
+                <span>9 min read</span>
+              </div>
+              <h3 class="blog-title">Understanding Mutual Fund Expense Ratios</h3>
+              <p class="blog-excerpt">
+                Expense ratios can significantly impact your long-term returns. 
+                Learn how to evaluate funds, what is considered a good expense 
+                ratio, and why it matters more than you think.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="footer-logo">W</div>
+            <div>
+              <div class="footer-name">WealthPilot</div>
+              <div class="footer-text">Your personal finance copilot</div>
+            </div>
+          </div>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="tips.html">Tips</a>
+            <a href="tools/index.html">Tools</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
