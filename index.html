@@ -117,40 +117,46 @@
       </section>
 
       <section class="simulator" aria-label="Wealth simulator">
-        <div>
+        <div class="simulator-header">
           <p class="eyebrow">Wealth Growth Simulator</p>
           <h2>See how today's SIP can grow over time.</h2>
         </div>
-        <div class="sim-grid">
-          <div class="future-card">
-            <span>Projected value in 10 years</span>
-            <strong id="futureTen">--</strong>
-            <small id="futureTenReal" class="real-value-note">--</small>
-            <small class="info-text">💡 Real value = purchasing power after inflation</small>
+        
+        <div class="sim-content">
+          <div class="projection-cards">
+            <div class="future-card">
+              <span>Projected value in 10 years</span>
+              <strong id="futureTen">--</strong>
+              <small id="futureTenReal" class="real-value-note">--</small>
+              <small class="info-text">Real value = purchasing power after inflation</small>
+            </div>
+            <div class="future-card">
+              <span>Projected value in 20 years</span>
+              <strong id="futureTwenty">--</strong>
+              <small id="futureTwentyReal" class="real-value-note">--</small>
+              <small class="info-text">Real value = purchasing power after inflation</small>
+            </div>
           </div>
-          <div class="future-card">
-            <span>Projected value in 20 years</span>
-            <strong id="futureTwenty">--</strong>
-            <small id="futureTwentyReal" class="real-value-note">--</small>
-            <small class="info-text">💡 Real value = purchasing power after inflation</small>
+          
+          <div class="sim-inputs">
+            <label>
+              Expected annual return %
+              <input id="returnRate" type="number" value="12" min="0" step="0.5" />
+            </label>
+            <label>
+              Inflation rate %
+              <input id="inflationRate" type="number" value="6" min="0" step="0.5" />
+            </label>
           </div>
-          <label>
-            Expected annual return %
-            <input id="returnRate" type="number" value="12" min="0" step="0.5" />
-          </label>
-          <label>
-            Inflation rate %
-            <input id="inflationRate" type="number" value="6" min="0" step="0.5" />
-          </label>
         </div>
 
         <div class="enhanced-metrics">
           <div class="metric-card">
-            <h3>🎯 FIRE Status</h3>
+            <h3>FIRE Status</h3>
             <div id="fireInfo">--</div>
           </div>
           <div class="metric-card">
-            <h3>🚨 Emergency Fund</h3>
+            <h3>Emergency Fund</h3>
             <div id="emergencyInfo">--</div>
           </div>
         </div>

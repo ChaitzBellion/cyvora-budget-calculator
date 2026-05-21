@@ -309,12 +309,12 @@ function performCalculation() {
   const fireStatus = calculateFireStatus(monthlyInvestments, savingsRate, income, debtRate, needs, debt, lifestyle);
   const fireInsight = `<strong>🎯 FIRE Progress: ${fireStatus.percentage}%</strong><br>
     <div class="progress-bar"><div class="progress-fill" style="width:${fireStatus.percentage}%"></div></div>
-    <small style="color: #64716e; font-size: 0.85rem;">
-      <strong>Goal (to retire):</strong> ${money(fireStatus.requiredCorpus)}<br>
-      <strong>Your path (in 20 years):</strong> ${money(fireStatus.currentPath)}<br>
-      💡 This shows where your ₹${investments}/month SIP will grow to<br>
-      ${fireStatus.yearsUntilFire === "Now!" ? "🎉 You're on track!" : `⏳ ~${fireStatus.yearsUntilFire} years at this rate`}
-    </small>`;
+  <small style="color: #64716e; font-size: 0.85rem;">
+  <strong>Goal (to retire):</strong> ${money(fireStatus.requiredCorpus)}<br>
+  <strong>Your path (in 20 years):</strong> ${money(fireStatus.currentPath)}<br>
+  💡 This shows where your ${money(monthlyInvestments)}/month SIP will grow to<br>
+  ${fireStatus.yearsUntilFire === "Now!" ? "You're on track!" : `~${fireStatus.yearsUntilFire} years at this rate`}
+  </small>`;
   document.getElementById("fireInfo").innerHTML = fireInsight;
   
   // Emergency Fund Tracker
