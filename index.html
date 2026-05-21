@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WealthPilot Budget Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="planner">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">AI Finance Copilot</p>
+            <h1>WealthPilot</h1>
+          </div>
+        </header>
+
+        <div class="layout">
+          <section class="input-panel" aria-label="Budget inputs">
+            <h2>Monthly Snapshot</h2>
+            <div class="field-grid">
+              <label>
+                City
+                <select id="city">
+                  <option value="Mumbai">None</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Bengaluru">Bengaluru</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Kolkata">Kolkata</option>
+                </select>
+              </label>
+              <label>
+                Monthly income
+                <input id="income" type="number" placeholder="0" min="0" />
+              </label>
+              <label>
+                Other income
+                <input id="otherIncome" type="number" placeholder="0" min="0" />
+              </label>
+              <label>
+                Rent
+                <input id="rent" type="number" placeholder="0" min="0" />
+              </label>
+              <label>
+                EMIs / debt
+                <input id="emis" type="number" placeholder="0" min="0" />
+              </label>
+              <label>
+                Food & groceries
+                <input id="food" type="number" placeholder="0" min="0" />
+              </label>
+              <label>
+                Transport / fuel
+                <input id="transport" type="number" placeholder="0" min="0" />
+              </label>
+              <label>
+                Subscriptions
+                <input id="subscriptions" type="number" placeholder="0" min="0" />
+              </label>
+              <label>
+                Current savings
+                <input id="savings" type="number" placeholder="0" min="0" />
+              </label>
+              <label>
+                Monthly SIP / investments
+                <input id="investments" type="number" placeholder="0" min="0" />
+              </label>
+              <label>
+                Yearly increment %
+                <input id="increment" type="number" placeholder="0" min="0" step="0.5" />
+              </label>
+            </div>
+            <button id="submitBtn" type="button" class="submit-btn">Submit</button>
+          </section>
+
+          <section class="dashboard" aria-label="Budget insights">
+            <div class="score-row">
+              <div class="score-card">
+                <span>Budget score</span>
+                <strong id="score">--</strong>
+                <small id="scoreLabel">Calculating</small>
+              </div>
+              <div class="safe-spend">
+                <span>Safe spending left</span>
+                <strong id="safeSpend">--</strong>
+                <small>after essentials, savings and SIP</small>
+              </div>
+            </div>
+
+            <div class="city-card">
+              <span id="cityName">Mumbai</span>
+              <strong id="cityRange">--</strong>
+              <small id="cityStatus">Checking city fit</small>
+            </div>
+
+            <div class="bars" id="bars"></div>
+
+            <div class="insight-panel">
+              <h2>Coach Notes</h2>
+              <ul id="insights"></ul>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="simulator" aria-label="Wealth simulator">
+        <div>
+          <p class="eyebrow">Wealth Growth Simulator</p>
+          <h2>See how today's SIP can grow over time.</h2>
+        </div>
+        <div class="sim-grid">
+          <div class="future-card">
+            <span>Projected value in 10 years</span>
+            <strong id="futureTen">--</strong>
+            <small id="futureTenReal" class="real-value-note">--</small>
+            <small class="info-text">💡 Real value = purchasing power after inflation</small>
+          </div>
+          <div class="future-card">
+            <span>Projected value in 20 years</span>
+            <strong id="futureTwenty">--</strong>
+            <small id="futureTwentyReal" class="real-value-note">--</small>
+            <small class="info-text">💡 Real value = purchasing power after inflation</small>
+          </div>
+          <label>
+            Expected annual return %
+            <input id="returnRate" type="number" value="12" min="0" step="0.5" />
+          </label>
+          <label>
+            Inflation rate %
+            <input id="inflationRate" type="number" value="6" min="0" step="0.5" />
+          </label>
+        </div>
+
+        <div class="enhanced-metrics">
+          <div class="metric-card">
+            <h3>🎯 FIRE Status</h3>
+            <div id="fireInfo">--</div>
+          </div>
+          <div class="metric-card">
+            <h3>🚨 Emergency Fund</h3>
+            <div id="emergencyInfo">--</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
