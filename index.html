@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="WealthPilot - AI-powered budget planner to help you manage finances, track expenses, and grow your wealth through smart investments." />
+    <meta name="theme-color" content="#1e8a6a" />
     <title>WealthPilot Budget Planner</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <main class="app-shell">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <main class="app-shell" id="main-content">
       <section class="planner">
         <header class="topbar">
           <div>
@@ -22,7 +28,7 @@
             <div class="field-grid">
               <label>
                 City
-                <select id="city">
+                <select id="city" aria-describedby="city-help">
                   <option value="Mumbai">None</option>
                   <option value="Mumbai">Mumbai</option>
                   <option value="Delhi">Delhi</option>
@@ -36,49 +42,51 @@
               </label>
               <label>
                 Monthly income
-                <input id="income" type="number" placeholder="0" min="0" />
+                <input id="income" type="number" placeholder="e.g. 50000" min="0" aria-required="true" />
               </label>
               <label>
                 Other income
-                <input id="otherIncome" type="number" placeholder="0" min="0" />
+                <input id="otherIncome" type="number" placeholder="e.g. 5000" min="0" />
               </label>
               <label>
                 Rent
-                <input id="rent" type="number" placeholder="0" min="0" />
+                <input id="rent" type="number" placeholder="e.g. 15000" min="0" />
               </label>
               <label>
                 EMIs / debt
-                <input id="emis" type="number" placeholder="0" min="0" />
+                <input id="emis" type="number" placeholder="e.g. 5000" min="0" />
               </label>
               <label>
                 Food & groceries
-                <input id="food" type="number" placeholder="0" min="0" />
+                <input id="food" type="number" placeholder="e.g. 8000" min="0" />
               </label>
               <label>
                 Transport / fuel
-                <input id="transport" type="number" placeholder="0" min="0" />
+                <input id="transport" type="number" placeholder="e.g. 3000" min="0" />
               </label>
               <label>
                 Subscriptions
-                <input id="subscriptions" type="number" placeholder="0" min="0" />
+                <input id="subscriptions" type="number" placeholder="e.g. 1000" min="0" />
               </label>
               <label>
                 Current savings
-                <input id="savings" type="number" placeholder="0" min="0" />
+                <input id="savings" type="number" placeholder="e.g. 100000" min="0" />
               </label>
               <label>
                 Monthly SIP / investments
-                <input id="investments" type="number" placeholder="0" min="0" />
+                <input id="investments" type="number" placeholder="e.g. 10000" min="0" />
               </label>
               <label>
                 Yearly increment %
-                <input id="increment" type="number" placeholder="0" min="0" step="0.5" />
+                <input id="increment" type="number" placeholder="e.g. 10" min="0" step="0.5" />
               </label>
             </div>
-            <button id="submitBtn" type="button" class="submit-btn">Submit</button>
+            <button id="submitBtn" type="button" class="submit-btn" aria-label="Calculate budget insights">
+              Calculate
+            </button>
           </section>
 
-          <section class="dashboard" aria-label="Budget insights">
+          <section class="dashboard" aria-label="Budget insights" aria-live="polite">
             <div class="score-row">
               <div class="score-card">
                 <span>Budget score</span>
@@ -100,9 +108,9 @@
 
             <div class="bars" id="bars"></div>
 
-            <div class="insight-panel">
+            <div class="insight-panel" role="region" aria-label="Financial advice">
               <h2>Coach Notes</h2>
-              <ul id="insights"></ul>
+              <ul id="insights" role="list"></ul>
             </div>
           </section>
         </div>

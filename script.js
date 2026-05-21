@@ -37,12 +37,59 @@ const palette = {
   lifestyle: "#6f5fb8",
 };
 
+// Track previous values for animation
+let previousScore = null;
+let previousSafeSpend = null;
+
 function value(id) {
   return Number(document.getElementById(id).value) || 0;
 }
 
 function money(amount) {
   return `Rs. ${rupee.format(Math.max(0, amount))}`;
+}
+
+// Animate value changes
+function animateValue(element) {
+  element.classList.remove('animate');
+  void element.offsetWidth; // Trigger reflow
+  element.classList.add('animate');
+}
+
+// Show loading state on button
+function setButtonLoading(loading) {
+  const btn = document.getElementById('submitBtn');
+  if (loading) {
+    btn.classList.add('loading');
+    btn.disabled = true;
+  } else {
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }
+}
+
+// Scroll to dashboard on mobile
+function scrollToDashboard() {
+  if (window.innerWidth <= 860) {
+    const dashboard = document.querySelector('.dashboard');
+    if (dashboard) {
+      dashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
+
+// Validate required fields
+function validateInputs() {
+  const income = value('income');
+  const incomeEl = document.getElementById('income');
+  
+  if (income <= 0) {
+    incomeEl.classList.add('input-error');
+    setTimeout(() => incomeEl.classList.remove('input-error'), 600);
+    incomeEl.focus();
+    return false;
+  }
+  return true;
 }
 
 function monthlyInvestmentFutureValue(monthlyAmount, annualRate, years, incrementRate) {
@@ -101,6 +148,17 @@ function addBar(label, amount, total, color) {
 }
 
 function calculate() {
+  // Show loading briefly for feedback
+  setButtonLoading(true);
+  
+  setTimeout(() => {
+    performCalculation();
+    setButtonLoading(false);
+    scrollToDashboard();
+  }, 300);
+}
+
+function performCalculation() {
   const selectedCity = document.getElementById("city").value;
   const cityCost = cityCosts[selectedCity];
   const income = value("income") + value("otherIncome");
@@ -130,6 +188,20 @@ function calculate() {
   document.getElementById("scoreLabel").textContent =
     score >= 80 ? "Strong control" : score >= 60 ? "Good, with room" : "Needs attention";
   document.getElementById("safeSpend").textContent = money(safeSpend);
+  
+  // Animate score and safe spend if values changed
+  const scoreEl = document.getElementById("score");
+  const safeSpendEl = document.getElementById("safeSpend");
+  
+  if (previousScore !== null && previousScore !== score) {
+    animateValue(scoreEl);
+  }
+  if (previousSafeSpend !== null && previousSafeSpend !== safeSpend) {
+    animateValue(safeSpendEl);
+  }
+  
+  previousScore = score;
+  previousSafeSpend = safeSpend;
   
   if (income === 0) {
     document.getElementById("cityName").textContent = "--";
@@ -252,10 +324,10 @@ function calculate() {
   let emergencyStatus = "";
   
   if (emergencyPercent >= 100) {
-    emergencyStatus = `✅ <strong>Goal Complete!</strong> You have ${money(currentEmergency - emergencyGoal)} extra cushion.`;
+    emergencyStatus = `<strong>Goal Complete!</strong> You have ${money(currentEmergency - emergencyGoal)} extra cushion.`;
     emergencyPercent = 100;
   } else {
-    emergencyStatus = `📍 Progress: ${money(currentEmergency)} / ${money(emergencyGoal)}`;
+    emergencyStatus = `Progress: ${money(currentEmergency)} / ${money(emergencyGoal)}`;
   }
   
   const emergencyInsight = `<strong>🚨 Emergency Fund: ${emergencyPercent}%</strong><br>
@@ -268,15 +340,35 @@ function calculate() {
 fields.forEach((id) => {
   const element = document.getElementById(id);
   if (element) {
-    element.addEventListener("focus", () => {
-      element.style.borderColor = "var(--mint)";
+    // Focus styling handled by CSS now
+    
+    // Add has-value class for visual feedback
+    element.addEventListener("input", () => {
+      if (element.value && element.value !== "0") {
+        element.classList.add("has-value");
+      } else {
+        element.classList.remove("has-value");
+      }
     });
-    element.addEventListener("blur", () => {
-      element.style.borderColor = "var(--line)";
-    });
+    
+    // Initialize has-value state
+    if (element.value && element.value !== "0" && element.value !== "") {
+      element.classList.add("has-value");
+    }
   }
+});
+
+// Submit on Enter key in any input
+document.querySelectorAll('input[type="number"]').forEach(input => {
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      calculate();
+    }
+  });
 });
 
 document.getElementById("submitBtn").addEventListener("click", calculate);
 
-calculate();
+// Initial calculation (without loading animation)
+performCalculation();
