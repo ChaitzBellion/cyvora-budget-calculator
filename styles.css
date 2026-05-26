@@ -2,14 +2,14 @@
 
 :root {
   /* Color System */
-  --background: #0a0f0d;
+  --background: #080808;
   --foreground: #f4f7f5;
   --card: #131a17;
   --card-foreground: #f4f7f5;
   --muted: #1c2421;
   --muted-foreground: #8b9a94;
   --border: #243029;
-  --primary: #1e8a6a;
+  --primary: #14f4f4;
   --primary-foreground: #ffffff;
   --secondary: #d99a25;
   --secondary-foreground: #0a0f0d;
