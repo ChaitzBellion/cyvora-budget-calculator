@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A complete step-by-step guide to deploying your website on Vercel with a custom domain. Learn GitHub integration, DNS configuration, and SSL setup." />
+    <meta name="keywords" content="deploy website vercel, custom domain setup, github to vercel, dns configuration, vercel deployment guide" />
+    <meta name="author" content="Cyvora" />
+    <meta property="og:title" content="How to Deploy Your Website on Vercel with a Custom Domain" />
+    <meta property="og:description" content="A complete step-by-step guide to buying a domain, deploying a website, and configuring DNS using GitHub and Vercel." />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=630&fit=crop" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="article:published_time" content="2026-06-07T00:00:00Z" />
+    <meta property="article:author" content="Cyvora" />
+    <meta name="theme-color" content="#1e8a6a" />
+    <title>How to Deploy Your Website on Vercel | WealthPilot Blog</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="blog-post.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" aria-label="Main navigation">
+        <a href="../index.html" class="nav-logo">W</a>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link" data-tooltip="Home">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </a>
+            <a href="../about.html" class="nav-link" data-tooltip="About">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </a>
+            <a href="../blogs.html" class="nav-link active" data-tooltip="Blogs">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </a>
+            <a href="../tips.html" class="nav-link" data-tooltip="Tips">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </a>
+            <a href="../tools/index.html" class="nav-link" data-tooltip="Tools">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </a>
+        </div>
+    </nav>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main class="blog-post-container" id="main-content">
+        <!-- Blog Post Header -->
+        <article class="blog-post">
+            <header class="blog-header">
+                <div class="blog-category">Technology</div>
+                <h1 class="blog-title">How to Deploy Your Website on Vercel with a Custom Domain</h1>
+                <p class="blog-lead">A complete step-by-step guide to buying a domain, deploying a website, configuring DNS, and going live using GitHub, GoDaddy, and Vercel.</p>
+
+                <div class="blog-meta-info">
+                    <span class="meta-item">
+                        <span class="meta-label">Published:</span> June 7, 2026
+                    </span>
+                    <span class="meta-item">
+                        <span class="meta-label">Read time:</span> 12 minutes
+                    </span>
+                    <span class="meta-item">
+                        <span class="meta-label">By:</span> Cyvora
+                    </span>
+                </div>
+
+                <div class="blog-featured-image">
+                    <svg width="100%" height="100%" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="1200" height="630" fill="#1a1f1c"/>
+                        <rect x="100" y="100" width="1000" height="430" fill="#243029" stroke="#1e8a6a" stroke-width="2"/>
+                        <text x="600" y="315" font-family="Inter" font-size="64" font-weight="700" fill="#1e8a6a" text-anchor="middle">Vercel Deployment Guide</text>
+                        <text x="600" y="380" font-family="Inter" font-size="28" fill="#8b9a94" text-anchor="middle">GitHub → Domain → Live</text>
+                    </svg>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <aside class="table-of-contents">
+                <h2>Table of Contents</h2>
+                <nav class="toc-nav">
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#choosing-domain">Choosing a Brand Name</a></li>
+                        <li><a href="#buying-domain">Buying a Domain</a></li>
+                        <li><a href="#github-setup">Setting Up GitHub</a></li>
+                        <li><a href="#vercel-deploy">Deploying with Vercel</a></li>
+                        <li><a href="#custom-domain">Connecting Custom Domain</a></li>
+                        <li><a href="#dns-config">DNS Configuration</a></li>
+                        <li><a href="#ssl-setup">SSL & HTTPS</a></li>
+                        <li><a href="#troubleshooting">Troubleshooting</a></li>
+                        <li><a href="#next-steps">Next Steps</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="blog-content">
+                <section id="introduction">
+                    <h2>Introduction</h2>
+                    <p>If you're a developer, blogger, or someone building your personal brand, deploying your own website with a custom domain is a huge milestone.</p>
+                    <p>In this guide, I'll walk you through my complete journey of launching a website, covering:</p>
+                    <ul>
+                        <li>Domain purchase and registration</li>
+                        <li>GitHub integration and version control</li>
+                        <li>Vercel deployment and hosting</li>
+                        <li>DNS configuration and management</li>
+                        <li>SSL/HTTPS setup and security</li>
+                    </ul>
+                    <p><strong>By the end, you'll have a clear roadmap to launch your own website with a custom domain.</strong></p>
+                </section>
+
+                <section id="choosing-domain">
+                    <h2>Choosing a Brand Name</h2>
+                    <p>Before any technical work, your brand identity matters. Take time to brainstorm names that are:</p>
+                    <ul>
+                        <li>Memorable and easy to spell</li>
+                        <li>Relevant to your niche</li>
+                        <li>Professional and scalable</li>
+                        <li>Unique with low keyword competition</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h3>Pro Tip for SEO</h3>
+                        <p>Choose a unique domain name with low competition to help your website rank faster in search results. Avoid overly generic names that might be hard to differentiate.</p>
+                    </div>
+                </section>
+
+                <section id="buying-domain">
+                    <h2>Buying a Domain</h2>
+                    <p>Popular domain registrars include:</p>
+                    <ul>
+                        <li><strong>GoDaddy</strong> - Wide selection, good support</li>
+                        <li><strong>Namecheap</strong> - Affordable, user-friendly</li>
+                        <li><strong>Google Domains</strong> - Simple interface, integrated with Google</li>
+                        <li><strong>AWS Route 53</strong> - For advanced users</li>
+                    </ul>
+                    <p>After purchase, your domain will show an <strong>IDLE status</strong>, which means it's registered but not yet connected to any hosting.</p>
+                </section>
+
+                <section id="github-setup">
+                    <h2>Setting Up GitHub</h2>
+                    <h3>Create a Repository</h3>
+                    <p>Start by creating a GitHub repository with your website code:</p>
+                    <ul>
+                        <li>index.html - Main page</li>
+                        <li>styles.css - Styling</li>
+                        <li>script.js - Functionality</li>
+                        <li>README.md - Documentation</li>
+                    </ul>
+                    <p>GitHub serves as your version-controlled source of truth, allowing you to track changes, collaborate, and easily deploy your site.</p>
+
+                    <div class="code-block">
+                        <pre><code>git init
+git add .
+git commit -m "Initial commit: website setup"
+git push origin main</code></pre>
+                    </div>
+                </section>
+
+                <section id="vercel-deploy">
+                    <h2>Deploying with Vercel</h2>
+                    <p>Vercel makes deployment incredibly simple:</p>
+                    <ol>
+                        <li>Go to <strong>vercel.com</strong> and sign in with GitHub</li>
+                        <li>Click "Import Project"</li>
+                        <li>Select your GitHub repository</li>
+                        <li>Configure build settings (usually auto-detected)</li>
+                        <li>Click "Deploy"</li>
+                    </ol>
+                    <p>Within seconds, your site is live at <strong>project-name.vercel.app</strong>. That's the power of modern deployment platforms!</p>
+
+                    <div class="info-box">
+                        <p>Your site now has a default Vercel domain, making it accessible worldwide while you set up your custom domain.</p>
+                    </div>
+                </section>
+
+                <section id="custom-domain">
+                    <h2>Connecting Your Custom Domain</h2>
+                    <p>To use your custom domain with Vercel:</p>
+                    <ol>
+                        <li>Go to Vercel Project Settings</li>
+                        <li>Navigate to Domains section</li>
+                        <li>Click "Add Domain"</li>
+                        <li>Enter your custom domain (e.g., example.com)</li>
+                    </ol>
+                    <p>Initially, you'll see "Invalid Configuration" status. <strong>This is normal</strong> and expected before DNS is configured.</p>
+                </section>
+
+                <section id="dns-config">
+                    <h2>DNS Configuration (Critical Step)</h2>
+                    <p>To make your domain work, you need to update DNS records in your registrar (GoDaddy, Namecheap, etc.).</p>
+
+                    <h3>A Record (Root Domain)</h3>
+                    <table class="dns-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>@</td>
+                        </tr>
+                        <tr>
+                            <td>Value</td>
+                            <td>76.76.21.21</td>
+                        </tr>
+                    </table>
+
+                    <h3>CNAME Record (www subdomain)</h3>
+                    <table class="dns-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>CNAME</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>www</td>
+                        </tr>
+                        <tr>
+                            <td>Value</td>
+                            <td>cname.vercel-dns.com</td>
+                        </tr>
+                    </table>
+
+                    <div class="highlight-box">
+                        <h3>What These Records Do</h3>
+                        <p>These DNS records tell the internet to route your domain to Vercel's servers. Without them, your domain won't know where to find your website.</p>
+                    </div>
+                </section>
+
+                <section id="ssl-setup">
+                    <h2>SSL & HTTPS Setup</h2>
+                    <p>Good news: Vercel automatically provisions an SSL certificate for your domain using Let's Encrypt.</p>
+                    <p>Once DNS propagation completes, your site will be secured with:</p>
+                    <ul>
+                        <li>Green lock icon in browser</li>
+                        <li>HTTPS protocol</li>
+                        <li>Auto-renewal of certificates</li>
+                    </ul>
+                    <p>This happens automatically—no additional configuration needed!</p>
+                </section>
+
+                <section id="troubleshooting">
+                    <h2>Troubleshooting Common Issues</h2>
+
+                    <h3>Domain Still Shows "Invalid Configuration"</h3>
+                    <p>This means DNS changes haven't propagated yet. DNS propagation can take 5 minutes to 24-48 hours. Check your DNS records are correctly entered in your registrar's dashboard.</p>
+
+                    <h3>Domain Redirects to Wrong Site</h3>
+                    <p>Ensure you're using the correct A and CNAME records provided by Vercel. Typos in DNS values are the most common cause.</p>
+
+                    <h3>HTTPS Not Working</h3>
+                    <p>Wait for DNS propagation to complete, then refresh. Vercel needs to verify DNS ownership before issuing the SSL certificate.</p>
+
+                    <h3>www and non-www Both Working?</h3>
+                    <p>This is actually fine! Both work. You can redirect one to the other in Vercel settings if you prefer.</p>
+                </section>
+
+                <section id="next-steps">
+                    <h2>Next Steps</h2>
+                    <p>Congratulations on deploying your website! Here are recommended next steps:</p>
+                    <ul>
+                        <li><strong>Set up Analytics</strong> - Use Vercel Analytics or Google Analytics to track visitors</li>
+                        <li><strong>Configure Environment Variables</strong> - For API keys and sensitive data</li>
+                        <li><strong>Enable Auto-deployments</strong> - Deploy automatically on GitHub push</li>
+                        <li><strong>Set up Email</strong> - Add contact forms and email forwarding</li>
+                        <li><strong>Optimize Performance</strong> - Use Vercel's built-in performance tools</li>
+                        <li><strong>SEO Optimization</strong> - Add meta tags and structured data</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Share Section -->
+            <footer class="blog-footer">
+                <div class="author-info">
+                    <div class="author-avatar">C</div>
+                    <div class="author-details">
+                        <h3>Cyvora</h3>
+                        <p>Developer, writer, and founder. Passionate about helping others build and launch their projects.</p>
+                    </div>
+                </div>
+                <div class="share-buttons">
+                    <a href="https://twitter.com/intent/tweet?text=How%20to%20Deploy%20Your%20Website%20on%20Vercel" class="share-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 9-2 9-2"/></svg>
+                        Share on Twitter
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="share-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                        Share on LinkedIn
+                    </a>
+                </div>
+            </footer>
+
+            <!-- Related Posts -->
+            <section class="related-posts">
+                <h2>Related Articles</h2>
+                <div class="related-grid">
+                    <a href="../blogs.html" class="related-card">
+                        <div class="related-image">📚</div>
+                        <h3>Understanding FIRE: Is Early Retirement Realistic?</h3>
+                        <p>Explore the Financial Independence, Retire Early movement and what it takes to achieve FIRE.</p>
+                        <span class="read-more">Read Article →</span>
+                    </a>
+                    <a href="../blogs.html" class="related-card">
+                        <div class="related-image">💰</div>
+                        <h3>The 50-30-20 Budgeting Rule Explained</h3>
+                        <p>Learn how to allocate your income effectively using this time-tested budgeting framework.</p>
+                        <span class="read-more">Read Article →</span>
+                    </a>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">W</div>
+                <div>
+                    <div class="footer-name">WealthPilot</div>
+                    <div class="footer-text">Your personal finance copilot</div>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../about.html">About</a>
+                <a href="../blogs.html">Blogs</a>
+                <a href="../tips.html">Tips</a>
+                <a href="../tools/index.html">Tools</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
