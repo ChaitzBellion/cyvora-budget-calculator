@@ -1,38 +1,11 @@
-# WealthPilot Robots.txt
-# Allow search engines to crawl the entire site
+# Cyvora Robots.txt
 
 User-agent: *
 Allow: /
-Allow: /*.html
-Allow: /styles.css
-Allow: /script.js
-Allow: /tools/
-Allow: /tools/*.html
-Allow: /tools/styles.css
-Allow: /tools/script.js
 
-# Block specific crawlers if needed
-# User-agent: AhrefsBot
-# Disallow: /
-
-# Block access to sensitive paths
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
 Disallow: /.git/
 
-# Allow search engine crawlers to access assets
-Allow: *.css
-Allow: *.js
-Allow: *.jpg
-Allow: *.jpeg
-Allow: *.png
-Allow: *.gif
-Allow: *.svg
-Allow: *.webp
-
-# Specify sitemap
 Sitemap: https://cyvora.in/sitemap.xml
-
-# Crawl delay (in seconds) - adjust if needed
-Crawl-delay: 1
