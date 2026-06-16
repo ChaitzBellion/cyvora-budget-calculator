@@ -1,6 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <script type="application/ld+json">
+        {
+            "@context":"https://schema.org",
+            "@type":"HowTo",
+            "name":"How to Deploy a Website on Vercel with a Custom Domain",
+            "description":"Step-by-step guide to deploying a website on Vercel using GitHub and connecting a custom domain.",
+            "url":"https://www.cyvora.in/blogs/vercel-deployment-guide.html",
+            "totalTime":"PT15M",
+            "step":[
+            {"@type":"HowToStep","name":"Create a GitHub Repository"},
+            {"@type":"HowToStep","name":"Upload Website Files"},
+            {"@type":"HowToStep","name":"Import Repository into Vercel"},
+            {"@type":"HowToStep","name":"Deploy Website"},
+            {"@type":"HowToStep","name":"Add Custom Domain"}
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context":"https://schema.org",
+            "@type":"FAQPage",
+            "mainEntity":[
+            {
+                "@type":"Question",
+                "name":"Is Vercel free for personal projects?",
+                "acceptedAnswer":{
+                    "@type":"Answer",
+                    "text":"Yes. Vercel offers a free plan suitable for personal websites, blogs and portfolios."
+                }
+            },
+            {
+                "@type":"Question",
+                "name":"Can I connect a custom domain to Vercel?",
+                "acceptedAnswer":{
+                    "@type":"Answer",
+                    "text":"Yes. Vercel supports custom domains from providers such as GoDaddy and Namecheap."
+                }
+            }
+            ]
+        }
+    </script>
+
+    <link rel="canonical" href="https://www.cyvora.in/blogs/vercel-deployment-guide.html">
+
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CGFTH05WEG"></script>
 <script>
@@ -12,7 +57,7 @@
 </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Learn how to deploy a website using Vercel and GitHub with step-by-step instructions, custom domains, and automatic deployments." />
+    <meta name="description" content="Learn how to deploy a website on Vercel using GitHub and connect a custom domain from GoDaddy or Namecheap. Step-by-step guide for beginners" />
     <meta name="keywords" content="deploy website vercel, custom domain setup, github to vercel, dns configuration, vercel deployment guide, vercel deployment guide, how to deploy website on vercel, vercel github deployment, deploy static website vercel, vercel custom domain setup, github to vercel deployment, free website hosting vercel, vercel deployment tutorial, vercel beginner guide, vercel hosting for beginners" />
     <meta name="author" content="Cyvora" />
     <meta property="og:title" content="How to Deploy Your Website on Vercel with a Custom Domain" />
@@ -23,7 +68,7 @@
     <meta property="article:published_time" content="2026-06-07T00:00:00Z" />
     <meta property="article:author" content="Cyvora" />
     <meta name="theme-color" content="#1e8a6a" />
-    <title>How to Deploy a Website using Vercel and GitHub | Cyvora</title>
+    <title>How to Deploy a Website on Vercel with GitHub & Custom Domain (2026 Guide)</title>
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="blog-post.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,10 +118,14 @@
                     <span class="meta-item">
                         <span class="meta-label">By:</span> ChaitZ
                     </span>
+                    <h3>About the Author</h3>
+                    <p>
+                        Chaitanya is the founder of Cyvora and documents real-world experiences with website development, deployment, cloud tools, and technology.
+                    </p>
                 </div>
 
                 <div class="blog-featured-image">
-                    <img src="images/Blog Image.png" alt="Vercel Deployment" />
+                    <img src="images/Blog Image.webp" alt="Vercel Deployment" />
                 </div>
             </header>
 
@@ -95,6 +144,7 @@
                         <li><a href="#ssl-setup">SSL & HTTPS</a></li>
                         <li><a href="#troubleshooting">Troubleshooting</a></li>
                         <li><a href="#next-steps">Next Steps</a></li>
+                        <li><a href="#FAQ">FAQ</a></li>
                     </ul>
                 </nav>
             </aside>
@@ -103,27 +153,31 @@
             <div class="blog-content">
                 <section id="introduction">
                     <h2>Introduction</h2>
+                    <div class="guide-summary">
+                        <h2>What You'll Learn</h2>
+                            <ul>
+                                <li>How to create a GitHub repository</li>
+                                <li>How to deploy a website on Vercel</li>
+                                <li>How to connect a custom domain</li>
+                                <li>How DNS configuration works</li>
+                                <li>How to update your website after deployment</li>
+                            </ul>
+                    </div>
                     <p>If you're a developer, blogger, or someone building a personal brand, launching your own website is more than just a technical task—it’s a milestone.
 It’s that moment when your ideas move from local files on your laptop… to something the entire world can access.</p>
                     <p>In this guide, I’ll take you through my end-to-end journey of deploying a website using GitHub, Vercel, and a custom domain. This isn’t just about clicking buttons—it’s about understanding the complete flow:</p>
-                    <ul>
-                        <li>Buying your first domain and registering it</li>
-                        <li>integrating GitHub with your project the very code you are going to write by your hand or generated through AI tools</li>
-                        <li>Deploying with Vercel in seconds</li>
-                        <li>configuring the DNS settings properly</li>
-                        <li>Securing the website using SSL/HTTPS securities making it robust</li>
-                    </ul>
+
                     <p><strong>By the end, you'll have a clear, practical roadmap to launch your own website confidently and professionally.</strong></p>
                 </section>
 
                 <section id="choosing-domain">
                     <h2>Choosing a Custom Domain</h2>
-                    <p>Before touching any technical tools or the hard coing part lets cool our heads to come up with a name shall we because coming up with a name for the website is a big task compared to the technical aspects is what i believe,</p>
-                    <p>When i started choosing a domain name, i have researched so much like to come up with this abstarct name called as "CYVORA" i almost spent 2 Hr's for this you see because the catchy names i came up with either used, either taken that too you know recently i have observed that the most abstract domains i came up with have also been bought recently like 2025. 
+                    <p>Before touching any technical tools or the hard coding part lets cool our heads to come up with a name shall we because coming up with a name for the website is a big task compared to the technical aspects,</p>
+                    <p>When I started choosing a domain name, i have researched so much like to come up with this abstract name called as "CYVORA" i almost spent 2 Hr's for this you see because the catchy names i came up with either used, either taken that too you know recently i have observed that the most abstract domains i came up with have also been bought recently like 2025. 
                         <strong>so my quick suggestion is to if you have an idea implement it and buy that domain name</strong></p>
                         <p>This is your identity on the internet, so choose wisely. here are some tips for choosing a great domain name:</p>
                     <ul>
-                        <li>Easy to remember andspell</li>
+                        <li>Easy to remember and spell</li>
                         <li>Relevant to your niche</li>
                         <li>Professional and scalable (if you are thinking about a serious business or if you are at starting stage my suggestion is one name "TechieTips" it's a name i thought to use for my website actually)</li>
                         <li>Unique with low keyword competition</li>
@@ -137,14 +191,14 @@ It’s that moment when your ideas move from local files on your laptop… to so
 
                 <section id="buying-domain">
                     <h2>🛒 Buying a Domain</h2>
-                    <p>Once we know our domain name then the next step is buying your domain.</p>
+                    <p>Once the domain name is fixed then the next step is buying your domain.</p>
                     <ul>
                         <li><strong>GoDaddy</strong> - popular and widely supported (i also bought my domain here)</li>
                         <li><strong>Namecheap</strong> - Affordable and beginner-friendly</li>
                         <li><strong>Google Domains</strong> - Simple interface, integrated with Google</li>
                         <li><strong>AWS Route 53</strong> - For advanced users</li>
                     </ul>
-                    <p>After purchase, your domain will show an <strong>IDLE status</strong>, which means it's registered but not yet connected to any hosting this is not to be worried as it will go once our website comes online.</p>
+                    <p>After purchase, your domain will show an <strong>IDLE status</strong>, which means it's registered but not yet connected to any hosting no need to worry as it will go once our website comes online.</p>
                 </section>
 
                 <section id="github-setup">
@@ -159,7 +213,7 @@ It’s that moment when your ideas move from local files on your laptop… to so
                     </ul>
                     <p>GitHub serves as your version-controlled source of truth, allowing you to track changes, collaborate, and easily deploy your site.</p>
                     <p>To set up your GitHub repository:
-                        You need a Github account if you don't have a one sign up using this link :
+                        You need a GitHub account if you don't have one sign up using this link :
                         <a href="https://github.com/signup" class="custom-link">Sign up for GitHub</a>
                     </p>
                     <p>Now create a new repository for your project:
@@ -169,11 +223,13 @@ It’s that moment when your ideas move from local files on your laptop… to so
                         <li>Choose Public or Private</li>
                         <li>Initialize with a README (optional)</li>
                     </ul>
+                    <img src="images/Github Repo creation.webp" alt="GitHub Repository Creation" class="blog-featured-image-1" alt="GitHub Repository Creation" />
                     <div class="info-box">
                         <p><strong>Pro Tip:</strong> If you're new to GitHub, initializing with a README can help you get started faster. It creates the first commit for you!. Stuck in the process check this documentation for more help : <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository" class="custom-link">GitHub Repository Creation Guide</a></p>
+                        <p>Want to explore more on GitHub check <a href="https://docs.github.com/en" target="_blank"><strong>here</strong></a>.</p>
                     </div>
                     </p>
-                    <p>The file structure should be absolute in the case of creating a new repository it;s recommended to use an IDE (Integrated Development Environment) personally i recommend using Visual Studio Code due to its vast library of extensions and integration with Github Copilot CLI and other tools.</p>
+                    <p>The file structure should be absolute in the case of creating a new repository it's recommended to use an IDE (Integrated Development Environment) personally i recommend using Visual Studio Code due to its vast library of extensions and integration with GitHub Copilot CLI and other tools.</p>
                     <p>Here’s a simple file structure for a basic website:</p>
                     <div class="code-block">
                         <pre><code>my-website/
@@ -206,8 +262,16 @@ git push origin main</code></pre>
 
                 <section id="vercel-deploy">
                     <h2>Deploying with Vercel</h2>
+                    <h2>Why Use Vercel?</h2>
+                    <ul>
+                        <li>Free hosting for personal projects</li>
+                        <li>Automatic deployments from GitHub</li>
+                        <li>Global CDN</li>
+                        <li>Free SSL certificates</li>
+                        <li>Simple custom domain setup</li>
+                    </ul>
                     <p>Vercel makes deployment incredibly simple:</p>
-                    <img src="images/Deploying a Website to vercel roadmap.png" class="blog-featured-image" alt="Vercel Deployment Roadmap">
+                    <img src="images/Deploying a Website to vercel roadmap.webp" class="blog-featured-image" alt="Vercel Deployment Roadmap">
                     <p>Sign in to Vercel using your GitHub account. Once signed in, follow these steps to deploy your website:</p>
                     <ol>
                         <li>Go to <strong>vercel.com</strong> and sign in with GitHub</li>
@@ -217,10 +281,22 @@ git push origin main</code></pre>
                         <li>Click "Deploy"</li>
                     </ol>
                     <p>Within seconds, your site is live at <strong>project-name.vercel.app</strong>. That's the power of modern deployment platforms!</p>
+                    <figure>
+                        <img src="images/After cyvora deployment page.webp" class="blog-featured-image-1" alt="Vercel Deployment">
+                          <figcaption>
+                            After successful deployment.
+                        </figcaption>
+                    </figure>
 
                     <div class="info-box">
-                        <p>Your site now has a default Vercel domain, making it accessible worldwide while you set up your custom domain.</p>
+                        <p>Your site now has a default Vercel domain, making it accessible worldwide while you set up your custom domain. vercel documentation for review <a href="https://vercel.com/docs" target="_blank"><strong>here</strong></a>.</p>
                     </div>
+                    <figure>
+                        <img src="images/Vercel images.webp" class="blog-featured-image-1" alt="Domain and DNS Management" />
+                        <figcaption>
+                            Vercel Dashboard showing the deployed project.
+                        </figcaption>
+                    </figure>
                 </section>
 
                 <section id="custom-domain">
@@ -278,6 +354,10 @@ git push origin main</code></pre>
                             <td>cname.vercel-dns.com</td>
                         </tr>
                     </table>
+                    <figure>
+                        <img src="images/Domain and DNS management images.webp" class="blog-featured-image-1" alt="Domain and DNS Management" />
+                        <figcaption>Vercel Dashboard showing the deployed project.</figcaption>
+                    </figure>
 
                     <div class="highlight-box">
                         <h3>What These Records Do</h3>
@@ -325,7 +405,35 @@ git push origin main</code></pre>
                         <li><strong>SEO Optimization</strong> - Add meta tags and structured data</li>
                     </ul>
                 </section>
+
+                <section id="FAQ">
+                    <div class="highlight-box">
+                      <h2>Frequently Asked Questions</h2>
+
+                        <h3>1.) Is Vercel free for personal projects?</h3>
+                        <p>Yes. Vercel offers a free plan that is suitable for personal websites, portfolios, blogs, and small projects.</p>
+
+                        <h3>2.) Can I connect a custom domain to Vercel?</h3>
+                        <p>Yes. Vercel allows you to connect domains purchased from providers like GoDaddy, Namecheap, Hostinger, and Google Domains.</p>
+
+                        <h3>3.) Do I need coding experience to deploy a website on Vercel?</h3>
+                        <p>No. Vercel provides a simple interface that allows beginners to deploy websites directly from GitHub repositories.</p>
+
+                        <h3>4.) How long does it take to deploy a website on Vercel?</h3>
+                        <p>Most deployments complete within a few seconds to a few minutes depending on the project size.</p>
+
+                        <h3>5.) Does Vercel provide SSL certificates?</h3>
+                        <p>Yes. SSL certificates are automatically generated and managed by Vercel for connected domains.</p>
+
+                        <h3>6.) Can I update my website after deployment?</h3>
+                        <p>Yes. Any changes pushed to the connected GitHub repository can automatically trigger a new deployment.</p>
+
+                        <h3>7.) What is the difference between Vercel and traditional web hosting?</h3>
+                        <p>Vercel focuses on modern web application deployment with automatic scaling, Git integration, and continuous deployment workflows.</p>
+                    </div>
+                </section>
             </div>
+                
 
             <!-- Share Section -->
             <footer class="blog-footer">

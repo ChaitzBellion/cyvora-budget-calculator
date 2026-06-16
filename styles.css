@@ -569,6 +569,12 @@ a {
   transition: color var(--transition-fast);
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Removes the bottom whitespace gap in inline elements */
+}
+
 /* ===== Mobile Navigation ===== */
 @media (max-width: 768px) {
   .floating-nav {
