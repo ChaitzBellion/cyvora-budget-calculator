@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        :root {
+            --bg-color: #080808;
+            --text-color: #f4f7f5;
+            --accent-color: #14f4f4; /* Using your logo's cyan color */
+            --secondary-text: #a0a0a0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: clamp(5rem, 15vw, 10rem);
+            margin: 0;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+
+        p {
+            color: var(--secondary-text);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background-color: var(--accent-color);
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(20, 244, 244, 0.3);
+        }
+
+        .logo-small {
+            margin-bottom: 2rem;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/favicon.ico" alt="CYVORA Logo" class="logo-small">
+        <h1>404</h1>
+        <h2>Oops! This page vanished.</h2>
+        <p>The link you followed might be broken, or the page may have been moved. Let's get you back on track.</p>
+        <a href="/index.html" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

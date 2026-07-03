@@ -29,8 +29,27 @@
   box-sizing: border-box;
 }
 
+
+/* 1. Global fix for overflow and sizing */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden; /* Stops horizontal scrolling/zoom issues */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+img, video, canvas, svg {
+    max-width: 100%; /* Ensures images don't push the screen wide */
+    height: auto;
+}
+
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -40,7 +59,7 @@ body {
   font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 a {
@@ -149,15 +168,17 @@ a {
   margin-left: 96px;
   min-height: 100vh;
   padding: 40px 48px;
+  max-width: 1400px; /* Limit the super wide spread */
+  margin-right: auto;
 }
 
 /* ===== Hero Section ===== */
 .hero {
-  min-height: 90vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 900px;
+  padding: 100px 0;
 }
 
 .hero-eyebrow {
@@ -183,7 +204,7 @@ a {
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -196,11 +217,11 @@ a {
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--muted-foreground);
-  max-width: 600px;
+  max-width: 700px;
   margin-bottom: 40px;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .hero-cta {
@@ -246,7 +267,7 @@ a {
 
 /* ===== Section Styles ===== */
 .section {
-  padding: 100px 0;
+  padding: 120px 0;
 }
 
 .section-header {
@@ -263,7 +284,7 @@ a {
 }
 
 .section-title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
   font-weight: 700;
   margin-bottom: 16px;
 }
@@ -308,12 +329,13 @@ a {
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 12px;
 }
 
 .card-description {
+  font-size: 0.95rem;
   color: var(--muted-foreground);
   line-height: 1.6;
 }
@@ -355,7 +377,7 @@ a {
 }
 
 .tool-title {
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 8px;
   color: var(--foreground);
@@ -479,7 +501,7 @@ a {
 }
 
 .blog-title {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 14px;
   color: var(--foreground);
@@ -648,6 +670,7 @@ img {
     height: 32px;
     font-size: 0.95rem;
     margin-right: 2px;
+    background: transparent
   }
   
   .nav-link {
@@ -693,4 +716,40 @@ img {
     margin-left: 0;
     padding-bottom: 100px;
   }
+}
+
+/* 2. Mobile specific adjustments (Screens smaller than 768px) */
+@media screen and (max-width: 768px) {
+
+    .main-content {
+    margin-left: 0;
+    padding: 24px;
+  }
+  
+  .floating-nav {
+    /* Optional: Hide or reposition for mobile to prevent overlap */
+    display: none; 
+  }
+  
+  .hero {
+    min-height: auto;
+    padding-top: 40px;
+  }
+    section {
+        padding: 40px 20px !important; /* Reduces large gaps on mobile */
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .hero-h1 {
+        font-size: 2.5rem !important; /* Adjust if the text is still too big */
+        line-height: 1.2;
+    }
+
+    /* If you have columns that look like a 'form', force them to 1 column here */
+    .container, .grid-layout {
+        display: flex;
+        flex-direction: column;
+        padding: 0 15px;
+    }
 }

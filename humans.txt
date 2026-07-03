@@ -1,0 +1,18 @@
+/humans.txt
+
+Project:
+cyvora Studio
+
+Founder:
+Suman Chaitanya
+
+Website:
+https://www.cyvora.in
+
+Built with:
+HTML
+CSS
+JavaScript
+
+Hosted on:
+Vercel
