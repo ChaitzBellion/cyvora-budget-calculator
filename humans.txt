@@ -1,18 +1,20 @@
-/humans.txt
+/* TEAM */
 
-Project:
-cyvora Studio
+Developer: Suman Chaitanya
+Role: Developer & Data Engineer
+Location: India
+Website: https://www.cyvora.in
 
-Founder:
-Suman Chaitanya
+/* SITE */
 
-Website:
-https://www.cyvora.in
+Site: CYVORA
+Standards: HTML5, CSS3, JavaScript
+SEO: Structured Data, Open Graph, Sitemap, Robots.txt
+Performance: Optimized for Core Web Vitals
 
-Built with:
-HTML
-CSS
-JavaScript
+/* THANKS */
 
-Hosted on:
-Vercel
+Open Source Community
+Mozilla
+Google Developers
+GitHub
