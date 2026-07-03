@@ -785,3 +785,121 @@ img {
     width: 100% !important;
   }
 }
+
+/* Responsive Grid for Certifications & Learning */
+.certs-learning-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default: Stacks on mobile */
+    gap: 30px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .certs-learning-grid {
+        grid-template-columns: 1fr 1fr; /* Desktop: Side-by-side */
+        gap: 40px;
+    }
+}
+
+.skill-pill {
+    background: var(--accent, #f3f4f6);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Force spacing between all skill and content cards */
+.about-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 32px !important; /* Space between rows and columns */
+    width: 100% !important;
+    margin-top: 40px !important;
+}
+
+/* Ensure individual cards look uniform */
+.about-grid .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Badge-style Titles */
+.section-badge {
+    display: inline-block;
+    background-color: var(--accent, #FF6B4A);
+    color: var(--primary, #007bff);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+    border: 1px solid var(--accent, #e5e7eb);
+}
+
+/* Center Journey and Professional sections on Desktop */
+@media (min-width: 768px) {
+    
+    /* Center the Titles */
+    .section-badge {
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    /* Center the Journey Timeline */
+    .timeline {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left; /* Detail text stays readable */
+    }
+
+    /* Center the Professional Background card */
+    .prof-card {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left; /* Summary text stays readable */
+    }
+}
+
+/* ===== Info & Highlight Boxes ===== */
+.highlight-box,
+.info-box {
+  padding: 20px 24px;
+  margin: 28px 0;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+.highlight-box {
+  background: rgba(30, 138, 106, 0.08);
+  border-left-color: var(--primary);
+}
+
+.info-box {
+  background: rgba(52, 120, 184, 0.08);
+  border-left-color: #3478b8;
+}
+
+.highlight-box h3,
+.info-box h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--foreground);
+}
+
+.highlight-box p,
+.info-box p {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 0.95rem;
+}
+
