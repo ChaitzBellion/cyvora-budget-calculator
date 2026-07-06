@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn AI Roadmap</title>
+    <style>
+        :root {
+            --bg-color: rgb(8, 8, 8);
+            --card-bg: rgb(19, 26, 23);
+            --cyan: rgb(20, 244, 244);
+            --text-color: rgb(244, 247, 245);
+            --font-main: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--cyan);
+            border-bottom: 2px solid var(--cyan);
+            padding-bottom: 15px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        /* Section Layout */
+        .curriculum-section {
+            background: var(--card-bg);
+            border: 1px solid rgba(20, 244, 244, 0.1);
+            border-left: 4px solid var(--cyan);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .curriculum-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: var(--cyan);
+            font-size: 1.8rem;
+        }
+
+        .subtopics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .subtopics li {
+            background: rgba(20, 244, 244, 0.05);
+            border: 1px solid rgba(20, 244, 244, 0.2);
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .subtopics li:hover {
+            background: rgba(20, 244, 244, 0.15);
+        }
+
+        /* Hierarchical Tree Component */
+        .roadmap-extension {
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px dashed rgba(20, 244, 244, 0.3);
+        }
+
+        .tree-visual {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(19, 26, 23, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(20, 244, 244, 0.2);
+            overflow-x: auto;
+        }
+
+        .tree-root, .tree-sub {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .tree-root > li {
+            margin: 15px 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .tree-root > li::before {
+            content: "├── ";
+            color: var(--cyan);
+        }
+
+        .tree-root > li:last-child::before {
+            content: "└── ";
+        }
+
+        .tree-sub {
+            margin-left: 28px;
+            border-left: 1px solid rgba(20, 244, 244, 0.4);
+            padding-top: 5px;
+        }
+
+        .tree-sub li {
+            position: relative;
+            padding-left: 20px;
+            font-weight: normal;
+            font-size: 1rem;
+            color: #ccc;
+            margin: 8px 0;
+        }
+
+        .tree-sub li::before {
+            content: "├─ ";
+            position: absolute;
+            left: 0;
+            color: var(--cyan);
+        }
+
+        .tree-sub li:last-child::before {
+            content: "└─ ";
+        }
+
+        .tree-branch {
+            background: rgba(20, 244, 244, 0.1);
+            color: var(--cyan);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(20, 244, 244, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Learn AI</h1>
+
+    <section class="curriculum-section">
+        <h2>AI Basics</h2>
+        <ul class="subtopics">
+            <li>What is AI</li>
+            <li>History of AI</li>
+            <li>AI vs ML vs DL</li>
+        </ul>
+    </section>
+
+    <section class="curriculum-section">
+        <h2>Generative AI</h2>
+        <ul class="subtopics">
+            <li>LLM</li>
+            <li>Transformer</li>
+            <li>Token</li>
+            <li>Embedding</li>
+        </ul>
+    </section>
+
+    <section class="curriculum-section">
+        <h2>Prompt Engineering</h2>
+        <p>Master the art of communicating with Large Language Models to get high-quality outputs.</p>
+    </section>
+
+    <section class="curriculum-section">
+        <h2>RAG (Retrieval-Augmented Generation)</h2>
+        <p>Connect LLMs to external data sources for more accurate and grounded responses.</p>
+    </section>
+
+    <section class="curriculum-section">
+        <h2>MCP (Model Context Protocol)</h2>
+        <p>Implementing standardized protocols for model-to-data communication.</p>
+    </section>
+
+    <section class="curriculum-section">
+        <h2>AI Agents</h2>
+        <p>Building autonomous systems capable of reasoning and taking actions.</p>
+    </section>
+
+    <section class="curriculum-section">
+        <h2>Vector Databases</h2>
+        <p>Storage and retrieval of high-dimensional embeddings for AI applications.</p>
+    </section>
+
+    <section class="curriculum-section">
+        <h2>AI Frameworks</h2>
+        <p>Working with industry-standard tools like LangChain, LlamaIndex, and AutoGPT.</p>
+    </section>
+
+    <section class="curriculum-section">
+        <h2>AI Deployment</h2>
+        <p>Scaling and serving models in production environments using cloud and edge computing.</p>
+    </section>
+
+    <section class="curriculum-section">
+        <h2>AI Projects</h2>
+        <p>Applying knowledge to real-world scenarios through comprehensive end-to-end builds.</p>
+    </section>
+
+    <!-- Visual Roadmap Visualizer -->
+    <div class="roadmap-extension">
+        <h2 style="text-align: center; margin-bottom: 40px;">Roadmap Visual Hierarchy</h2>
+        <div class="tree-visual">
+            <ul class="tree-root">
+                <li><span class="tree-branch">AI Basics</span>
+                    <ul class="tree-sub">
+                        <li>What is AI</li>
+                        <li>History of AI</li>
+                        <li>AI vs ML vs DL</li>
+                    </ul>
+                </li>
+                <li><span class="tree-branch">Generative AI</span>
+                    <ul class="tree-sub">
+                        <li>LLM</li>
+                        <li>Transformer</li>
+                        <li>Token</li>
+                        <li>Embedding</li>
+                    </ul>
+                </li>
+                <li><span class="tree-branch">Prompt Engineering</span></li>
+                <li><span class="tree-branch">RAG</span></li>
+                <li><span class="tree-branch">MCP</span></li>
+                <li><span class="tree-branch">AI Agents</span></li>
+                <li><span class="tree-branch">Vector Database</span></li>
+                <li><span class="tree-branch">AI Frameworks</span></li>
+                <li><span class="tree-branch">AI Deployment</span></li>
+                <li><span class="tree-branch">AI Projects</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2024 AI Learning Journey
+</footer>
+
+</body>
+</html>
