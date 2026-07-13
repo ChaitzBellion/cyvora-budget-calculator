@@ -1,221 +1,584 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CGFTH05WEG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CGFTH05WEG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-CGFTH05WEG");
+    </script>
 
-  gtag('config', 'G-CGFTH05WEG');
-</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="WealthPilot Budget Planner - AI-powered budget calculator to help you manage finances, track expenses, and grow your wealth." />
-    <meta name="theme-color" content="#1e8a6a" />
-    <title>Budget Planner | WealthPilot Tools</title>
-        <link rel="icon" href="/favicon.ico" sizes="any">
-    <!-- Favicons -->
-     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-     
-    <!-- Apple Touch Icon -->
-     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-     
-    <!-- Web App Manifest -->
-     
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <!-- Browser Theme Color -->
-    <meta name="theme-color" content="#0D1B2A">
-    <link rel="icon" type="image/png" href="/assets/brand/favicon.png" />
-    <link rel="canonical" href="https://www.cyvora.in/">
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="Free Salary Calculator for India. Calculate monthly in-hand salary, CTC, PF, income tax, salary breakup, cost of living, offer comparison, salary growth and financial planning in one advanced calculator." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Suman Chaitanya" />
+    <meta name="keywords" content="salary calculator, in hand salary calculator, CTC calculator, tax calculator India, offer comparison, salary breakdown, financial planning, salary health score" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#0D1B2A" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Salary Calculator India | Cyvora Studio">
+    <meta property="og:description" content="Calculate in-hand salary, CTC, tax, PF and compare job offers instantly.">
+    <meta property="og:image" content="https://www.cyvora.in/assets/images/salary-calculator-preview.png">
+    <meta property="og:url" content="https://www.cyvora.in/tools/salary-calculator.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Salary Calculator India">
+    <meta name="twitter:description" content="Calculate in-hand salary, tax, PF, salary breakup and financial planning.">
+    <meta name="twitter:image" content="https://www.cyvora.in/assets/images/salary-calculator-preview.png">
+    <title>Salary Calculator India (2026) – In-Hand Salary, CTC, Tax, PF & Offer Comparison | Cyvora Studio</title>
+
+    <link rel="canonical" href="https://www.cyvora.in/tools/salary-calculator.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="canonical" href="https://www.cyvora.in/" />
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="budget-calculator.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Salary Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Salary Calculator estimates your monthly take-home salary after considering Cost to Company (CTC), income tax, Provident Fund (PF), Professional Tax, bonuses, variable pay, and other salary components."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is CTC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CTC (Cost to Company) is the total annual amount an employer spends on an employee. It includes basic salary, HRA, employer PF contribution, gratuity, bonuses, variable pay, insurance, and other benefits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between CTC and In-Hand Salary?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CTC is your total compensation package, while In-Hand Salary is the amount credited to your bank account after deductions such as income tax, employee PF, and professional tax."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is In-Hand Salary calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Salary Calculator estimates your monthly in-hand salary using your annual or monthly CTC, selected tax regime, Provident Fund contributions, Professional Tax, employer benefits, bonuses, and salary structure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I choose the Old or New Tax Regime?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator compares both tax regimes automatically. The Old Regime benefits taxpayers claiming deductions like Section 80C, HRA, NPS, and home loan interest, while the New Regime offers lower tax rates with fewer deductions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Salary Health Score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Salary Health Score evaluates your salary structure based on tax efficiency, savings potential, retirement planning, variable pay percentage, and estimated cost of living."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I compare multiple job offers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Salary Calculator lets you compare multiple job offers based on monthly take-home salary, tax liability, salary health score, and overall financial benefits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Cost of Living affect my salary?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Living expenses vary across Indian cities. The calculator estimates monthly expenses such as rent, food, transport, and utilities to help determine your potential monthly savings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is this Salary Calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator follows common Indian salary structures, Provident Fund rules, Professional Tax rates, and current income tax slabs. Actual salary structures may differ based on employer policies and allowances."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Salary Calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Salary Calculator is completely free to use. It helps employees, freshers, and job seekers understand their salary package, compare offers, estimate taxes, and plan their finances."
+      }
+    }
+  ]
+}
+</script>
   </head>
+
   <body>
     <!-- Floating Navigation -->
     <nav class="floating-nav" aria-label="Main navigation">
-      <a href="../index.html" class="nav-logo">W</a>
+      <a href="/index.html" class="nav-logo" aria-label="Home">
+        <img src="/favicon.ico" alt="Logo" width="24" height="24">
+      </a>
       <div class="nav-links">
-        <a href="../index.html" class="nav-link" data-tooltip="Home">
+        <a href="/index.html" class="nav-link" data-tooltip="Home">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </a>
-        <a href="../about.html" class="nav-link" data-tooltip="About">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </a>
-        <a href="../blogs.html" class="nav-link" data-tooltip="Blogs">
+        <a href="/blogs.html" class="nav-link" data-tooltip="Blogs">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         </a>
-        <a href="../tips.html" class="nav-link" data-tooltip="Tips">
+        <a href="/tips.html" class="nav-link" data-tooltip="Tips">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
         </a>
-        <a href="index.html" class="nav-link active" data-tooltip="Tools">
+        <a href="/tools/index.html" class="nav-link" data-tooltip="Tools">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </a>
       </div>
     </nav>
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <main class="app-shell tool-page" id="main-content">
-      <section class="planner">
+      <div class="tool-layout">
+      <section class="planner salary-suite" aria-label="Salary calculator">
         <header class="topbar">
           <div>
-            <p class="eyebrow">Finance Copilot</p>
-            <h1>WealthPilot</h1>
+            <p class="eyebrow">WealthPilot Salary Suite</p>
+            <h1>Salary Calculator – Calculate In-Hand Salary, CTC & Income Tax</h1>
+            <p class="topbar-copy">Calculate in-hand salary, tax, PF, offers, cost of living, and planning recommendations.</p>
           </div>
+          <button id="downloadReportBtn" type="button" class="ghost-btn">Download Report</button>
         </header>
 
         <div class="layout">
-          <section class="input-panel" aria-label="Budget inputs">
-            <h2>Monthly Snapshot</h2>
+          <section class="input-panel" aria-label="Salary inputs">
+            <h2>Salary Information</h2>
+
+            <fieldset class="segmented-field">
+              <legend>Input type</legend>
+              <div class="segmented">
+                <label><input type="radio" name="ctcBasis" value="annual" checked /><span>Annual CTC</span></label>
+                <label><input type="radio" name="ctcBasis" value="monthlyCtc" /><span>Monthly CTC</span></label>
+                <label><input type="radio" name="ctcBasis" value="monthlyGross" /><span>Monthly Gross</span></label>
+              </div>
+            </fieldset>
+
             <div class="field-grid">
               <label>
+                <span id="amountLabel">Annual CTC</span>
+                <input id="ctcAmount" type="number" placeholder="Enter your CTC here" min="0" />
+                <small id="amountHint">Enter yearly cost to company.</small>
+              </label>
+
+              <fieldset class="segmented-field compact-field">
+                <legend>Tax Regime</legend>
+                <div class="segmented two">
+                  <label><input type="radio" name="taxRegime" value="new" checked /><span>New</span></label>
+                  <label><input type="radio" name="taxRegime" value="old" /><span>Old</span></label>
+                </div>
+              </fieldset>
+
+              <label>
+                State
+                <select id="state">
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="West Bengal">West Bengal</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label>
                 City
-                <select id="city" aria-describedby="city-help">
-                  <option value="Mumbai">None</option>
+                <select id="city">
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Bengaluru">Bengaluru</option>
                   <option value="Mumbai">Mumbai</option>
                   <option value="Delhi">Delhi</option>
-                  <option value="Bengaluru">Bengaluru</option>
                   <option value="Pune">Pune</option>
-                  <option value="Hyderabad">Hyderabad</option>
                   <option value="Chennai">Chennai</option>
                   <option value="Ahmedabad">Ahmedabad</option>
                   <option value="Kolkata">Kolkata</option>
                 </select>
               </label>
+
               <label>
-                Monthly income
-                <input id="income" type="number" placeholder="e.g. 50000" min="0" aria-required="true" />
-              </label>
-              <label>
-                Other income
-                <input id="otherIncome" type="number" placeholder="e.g. 5000" min="0" />
-              </label>
-              <label>
-                Rent
-                <input id="rent" type="number" placeholder="e.g. 15000" min="0" />
-              </label>
-              <label>
-                EMIs / debt
-                <input id="emis" type="number" placeholder="e.g. 5000" min="0" />
-              </label>
-              <label>
-                Food & groceries
-                <input id="food" type="number" placeholder="e.g. 8000" min="0" />
-              </label>
-              <label>
-                Transport / fuel
-                <input id="transport" type="number" placeholder="e.g. 3000" min="0" />
-              </label>
-              <label>
-                Subscriptions
-                <input id="subscriptions" type="number" placeholder="e.g. 1000" min="0" />
-              </label>
-              <label>
-                Current savings
-                <input id="savings" type="number" placeholder="e.g. 100000" min="0" />
-              </label>
-              <label>
-                Monthly SIP / investments
-                <input id="investments" type="number" placeholder="e.g. 10000" min="0" />
-              </label>
-              <label>
-                Yearly increment %
-                <input id="increment" type="number" placeholder="e.g. 10" min="0" step="0.5" />
+                Old regime deductions
+                <input id="oldDeductions" type="number" placeholder="Enter if any deductions are present" min="0" />
+                <small>80C, 80D, HRA, NPS, and other eligible deductions.</small>
               </label>
             </div>
-            <button id="submitBtn" type="button" class="submit-btn" aria-label="Calculate budget insights">
-              Calculate
-            </button>
+
+            <h2 class="section-heading">Salary Components</h2>
+            <div class="toggle-grid">
+              <label class="toggle-card"><input id="employerPfIncluded" type="checkbox" checked /> Employer PF included?</label>
+              <label class="toggle-card"><input id="bonusIncluded" type="checkbox" checked /> Bonus included?</label>
+              <label class="toggle-card"><input id="variablePayIncluded" type="checkbox" checked /> Variable pay included?</label>
+              <label class="toggle-card"><input id="employerNpsIncluded" type="checkbox" /> Employer NPS included?</label>
+            </div>
+
+            <div class="field-grid compact-grid">
+              <label>Bonus % <input id="bonusPercent" type="number" value="5" min="0" max="100" step="0.5" /></label>
+              <label>Variable % <input id="variablePercent" type="number" value="10" min="0" max="100" step="0.5" /></label>
+              <label>Employer NPS % <input id="employerNpsPercent" type="number" value="10" min="0" max="100" step="0.5" /></label>
+            </div>
+
+            <h2 class="section-heading">Employee</h2>
+            <div class="field-grid">
+              <label>Age <input id="age" type="number" value="24" min="18" max="75" /></label>
+              <label>
+                Gender
+                <select id="gender">
+                  <option value="Prefer not to say">Prefer not to say</option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+              <label>
+                Employment Type
+                <select id="employmentType">
+                  <option value="Full-time">Full-time</option>
+                  <option value="Contract">Contract</option>
+                  <option value="Consultant">Consultant</option>
+                  <option value="Intern">Intern</option>
+                </select>
+              </label>
+              <label>
+                Role
+                <select id="role">
+                  <option value="Software Engineer">Software Engineer</option>
+                  <option value="Data Analyst">Data Analyst</option>
+                  <option value="Product Designer">Product Designer</option>
+                  <option value="Marketing Associate">Marketing Associate</option>
+                  <option value="Finance Analyst">Finance Analyst</option>
+                </select>
+              </label>
+              <label>Experience <input id="experience" type="number" value="2" min="0" max="40" step="0.5" /></label>
+            </div>
+
+            <button id="calculateBtn" type="button" class="submit-btn">Download Full Report</button>
           </section>
 
-          <section class="dashboard" aria-label="Budget insights" aria-live="polite">
-            <div class="score-row">
-              <div class="score-card">
-                <span>Budget score</span>
-                <strong id="score">--</strong>
-                <small id="scoreLabel">Calculating</small>
-              </div>
-              <div class="safe-spend">
-                <span>Safe spending left</span>
-                <strong id="safeSpend">--</strong>
-                <small>after essentials, savings and SIP</small>
-              </div>
+          <!-- ========================= -->
+          <!-- Salary Calculator FAQ -->
+          <!-- ========================= -->
+           <aside class="faq-sidebar">
+            <div class="faq-card">
+              <h2>Salary Calculator FAQs</h2>
+              <p class="faq-intro">
+                Learn how salary calculations work, understand important salary components, and make informed financial decisions using WealthPilot.
+              </p>
+              <details open>
+                <summary>What is a Salary Calculator?</summary>
+                <p>
+                A Salary Calculator estimates your monthly take-home salary after
+                considering CTC, income tax, Provident Fund (PF), Professional Tax,
+                bonus, variable pay and other salary components.
+              </p>
+            </details>
+
+            <details>
+              <summary>What is CTC?</summary>
+              <p>
+                CTC (Cost to Company) represents the total annual cost your employer
+                spends on you. It includes your basic salary, HRA, bonuses,
+                employer PF contribution, gratuity and other benefits.
+              </p>
+            </details>
+
+            <details>
+              <summary>What is the difference between CTC and In-Hand Salary?</summary>
+              <p>
+                CTC is your total compensation package, whereas In-Hand Salary is
+                the amount credited to your bank account after deductions such as
+                income tax, employee PF and professional tax.
+              </p>
+            </details>
+            <details>
+              
+              <summary>How is In-Hand Salary calculated?</summary>
+
+            <p>
+                WealthPilot estimates your monthly in-hand salary using your annual
+                or monthly CTC, tax regime, PF contribution, professional tax,
+                employer benefits and salary structure.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>Should I choose the Old or New Tax Regime?</summary>
+
+            <p>
+                The calculator compares both tax regimes automatically. The Old
+                Regime benefits taxpayers claiming deductions, while the New Regime
+                offers simplified taxation with lower tax rates.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>What is Salary Health Score?</summary>
+
+            <p>
+                Salary Health Score is WealthPilot's overall assessment of your
+                salary structure based on tax efficiency, savings potential,
+                retirement planning, variable pay and cost of living.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>Can I compare multiple job offers?</summary>
+
+            <p>
+                Yes. WealthPilot compares different salary offers and helps you
+                understand which offer provides better monthly take-home salary,
+                lower taxes and improved financial health.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>How does Cost of Living affect my salary?</summary>
+
+            <p>
+                Living expenses differ from city to city. WealthPilot estimates
+                monthly rent, food, transport and utilities to calculate your
+                expected monthly savings.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>How accurate is this Salary Calculator?</summary>
+
+            <p>
+                The calculator follows common Indian salary structures, PF rules
+                and current income tax slabs. Actual salaries may vary depending
+                on employer policies and allowances.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>Is WealthPilot Salary Calculator free?</summary>
+
+            <p>
+                Yes. WealthPilot Salary Calculator is completely free to use and
+                helps employees, freshers and job seekers understand their salary
+                package before accepting an offer.
+            </p>
+
+        </details>
+
+    </div>
+
+</aside>
+
+</div>
+
+          <section class="dashboard" aria-label="Salary insights" aria-live="polite">
+            <div class="hero-metrics">
+              <article class="premium-card result-card">
+                <span>Monthly Take Home</span>
+                <strong id="monthlyInHand">--</strong>
+
+                <div class="salary-slip">
+                  <div><span>Monthly Gross</span><strong id="resultGross">--</strong></div>
+                  <div><span>Income Tax</span><strong id="resultTax">--</strong></div>
+                  <div><span>Employee PF</span><strong id="resultEmployeePf">--</strong></div>
+                  <div><span>Professional Tax</span><strong id="resultProfessionalTax">--</strong></div>
+                  <div class="net-row"><span>Monthly In-hand</span><strong id="resultNet">--</strong></div>
+                </div>
+              </article>
+
+              <article class="premium-card health-card">
+                <span>Salary Health Score</span>
+                <strong><span id="salaryHealthScore">--</span>/100</strong>
+                <div id="salaryStars" class="stars">-----</div>
+                <ul id="healthFactors" class="check-list"></ul>
+              </article>
             </div>
 
-            <div class="city-card">
-              <span id="cityName">Mumbai</span>
-              <strong id="cityRange">--</strong>
-              <small id="cityStatus">Checking city fit</small>
-            </div>
+            <section class="insight-panel">
+              <h2>AI Salary Insights</h2>
+              <ul id="aiInsights" role="list"></ul>
+            </section>
 
-            <div class="bars" id="bars"></div>
+            <section class="recommendation-panel">
+              <h2>Recommendations</h2>
+              <ul id="recommendations" role="list"></ul>
+            </section>
 
-            <div class="insight-panel" role="region" aria-label="Financial advice">
-              <h2>Coach Notes</h2>
-              <ul id="insights" role="list"></ul>
+            <details class="breakdown-card">
+              <summary>Salary Breakdown</summary>
+              <div id="breakdownRows" class="breakdown-rows"></div>
+              <p class="notice">Notice period analysis is optional and meant for advanced users.</p>
+            </details>
+
+            <div class="mini-grid">
+              <article class="metric-card">
+                <h3>Tax Optimization</h3>
+                <div class="split-row"><span>Old Regime</span><strong id="oldTaxValue">--</strong></div>
+                <div class="split-row"><span>New Regime</span><strong id="newTaxValue">--</strong></div>
+                <div class="split-row highlight"><span>Savings</span><strong id="taxSavingsValue">--</strong></div>
+                <p id="taxWhy" class="mini-copy">--</p>
+              </article>
+
+              <article class="metric-card">
+                <h3>Cost of Living</h3>
+                <div class="split-row"><span>Rent</span><strong id="costRent">--</strong></div>
+                <div class="split-row"><span>Food</span><strong id="costFood">--</strong></div>
+                <div class="split-row"><span>Transport</span><strong id="costTransport">--</strong></div>
+                <div class="split-row"><span>Utilities</span><strong id="costUtilities">--</strong></div>
+                <div class="split-row highlight"><span>Estimated Savings</span><strong id="costSavings">--</strong></div>
+              </article>
             </div>
           </section>
         </div>
       </section>
 
-      <section class="simulator" aria-label="Wealth simulator">
+      <section class="simulator">
         <div class="simulator-header">
-          <p class="eyebrow">Wealth Growth Simulator</p>
-          <h2>See how today's SIP can grow over time.</h2>
+          <p class="eyebrow">Interactive Charts</p>
+          <h2>Visual salary story</h2>
         </div>
-        
-        <div class="sim-content">
-          <div class="projection-cards">
-            <div class="future-card">
-              <span>Projected value in 10 years</span>
-              <strong id="futureTen">--</strong>
-              <small id="futureTenReal" class="real-value-note">--</small>
-              <small class="info-text">Real value = purchasing power after inflation</small>
-            </div>
-            <div class="future-card">
-              <span>Projected value in 20 years</span>
-              <strong id="futureTwenty">--</strong>
-              <small id="futureTwentyReal" class="real-value-note">--</small>
-              <small class="info-text">Real value = purchasing power after inflation</small>
-            </div>
-          </div>
-          
-          <div class="sim-inputs">
-            <label>
-              Expected annual return %
-              <input id="returnRate" type="number" value="12" min="0" step="0.5" />
-            </label>
-            <label>
-              Inflation rate %
-              <input id="inflationRate" type="number" value="6" min="0" step="0.5" />
-            </label>
-          </div>
+        <div class="chart-grid">
+          <article class="chart-card"><h3>Salary Components</h3><canvas id="componentChart" width="320" height="220"></canvas></article>
+          <article class="chart-card"><h3>Tax vs PF vs Take Home</h3><canvas id="deductionChart" width="320" height="220"></canvas></article>
+          <article class="chart-card wide"><h3>Salary Growth</h3><canvas id="growthChart" width="720" height="260"></canvas></article>
         </div>
+      </section>
 
-        <div class="enhanced-metrics">
-          <div class="metric-card">
-            <h3>FIRE Status</h3>
-            <div id="fireInfo">--</div>
-          </div>
-          <div class="metric-card">
-            <h3>Emergency Fund</h3>
-            <div id="emergencyInfo">--</div>
-          </div>
+      <section class="simulator">
+        <div class="simulator-header">
+          <p class="eyebrow">Offer Comparison</p>
+          <h2>Compare current and future offers.</h2>
         </div>
+        <div class="field-grid three-col">
+          <label>Current Offer LPA <input id="currentOffer" type="number" value="8" min="0" step="0.1" /></label>
+          <label>Offer A LPA <input id="offerA" type="number" value="9.2" min="0" step="0.1" /></label>
+          <label>Offer B LPA <input id="offerB" type="number" value="10.5" min="0" step="0.1" /></label>
+        </div>
+        <button id="compareBtn" type="button" class="ghost-btn">Compare Offers</button>
+        <div id="offerResults" class="offer-results"></div>
+      </section>
+
+      <section class="simulator">
+        <div class="simulator-header">
+          <p class="eyebrow">Salary Growth Projection</p>
+          <h2>Project future salary and career earnings.</h2>
+        </div>
+        <div class="field-grid three-col">
+          <label>Current Salary LPA <input id="growthCurrent" type="number" value="8" min="0" step="0.1" /></label>
+          <label>Expected Hike % <input id="expectedHike" type="number" value="10" min="0" step="0.5" /></label>
+          <label>Years <input id="projectionYears" type="number" value="10" min="1" max="40" /></label>
+        </div>
+        <div class="future-card total-card">
+          <span>Total Career Earnings</span>
+          <strong id="totalCareerEarnings">--</strong>
+        </div>
+        <div id="growthRows" class="projection-table"></div>
+      </section>
+
+      <section class="simulator">
+        <div class="simulator-header">
+          <p class="eyebrow">Financial Planning</p>
+          <h2>Recommended next money moves.</h2>
+        </div>
+        <div class="planning-grid">
+          <article class="metric-card"><h3>Emergency Fund</h3><strong id="planEmergency">--</strong></article>
+          <article class="metric-card"><h3>Recommended SIP</h3><strong id="planSip">--</strong></article>
+          <article class="metric-card"><h3>Gold Investment</h3><strong id="planGold">--</strong></article>
+          <article class="metric-card"><h3>Term Insurance</h3><strong id="planTerm">--</strong></article>
+          <article class="metric-card"><h3>Health Insurance</h3><strong id="planHealth">--</strong></article>
+        </div>
+        <p id="planNote" class="mini-copy"></p>
+      </section>
+
+      <section class="simulator">
+        <div class="simulator-header">
+          <p class="eyebrow">Salary Structure Builder</p>
+          <h2>Create a custom salary structure. (Coming soon)</h2>
+        </div>
+        <div class="field-grid">
+          <label>Annual CTC <input id="builderCtc" type="number" value="1000000" min="0" /></label>
+          <label>Basic % <input id="basicPct" type="number" value="40" min="0" max="100" /></label>
+          <label>HRA % <input id="hraPct" type="number" value="20" min="0" max="100" /></label>
+          <label>Bonus % <input id="builderBonusPct" type="number" value="10" min="0" max="100" /></label>
+          <label>Variable % <input id="builderVariablePct" type="number" value="15" min="0" max="100" /></label>
+        </div>
+        <div id="structureRows" class="breakdown-rows"></div>
+        <div class="action-row">
+          <button id="printStructureBtn" type="button" class="ghost-btn">Download PDF</button>
+          <button id="downloadExcelBtn" type="button" class="ghost-btn">Download Excel</button>
+          <button id="shareStructureBtn" type="button" class="ghost-btn">Share</button>
+        </div>
+      </section>
+
+      <section class="simulator">
+        <div class="simulator-header">
+          <p class="eyebrow">Offer Letter Analyzer</p>
+          <h2>Analyze offer details before accepting - (Coming Soon).</h2>
+        </div>
+        <div class="field-grid">
+          <label>Upload Offer Letter <input id="offerFile" type="file" accept=".pdf,.txt,.doc,.docx" /></label>
+          <label class="full-span">Paste offer text <textarea id="pastedOffer" rows="7" placeholder="Paste CTC, basic, HRA, PF, bonus, variable pay, insurance, joining bonus, notice period and leave policy details here."></textarea></label>
+        </div>
+        <button id="analyzeOfferBtn" type="button" class="submit-btn">Analyze Offer</button>
+        <div id="analyzerResult" class="analyzer-result"></div>
+      </section>
+
+      <section class="simulator">
+        <div class="simulator-header">
+          <p class="eyebrow">AI Career Suggestions</p>
+          <h2>Know your market position and next skills. (Coming Soon)</h2>
+        </div>
+        <div id="careerSuggestions" class="offer-results"></div>
+      </section>
+
+      <section class="simulator">
+        <div class="simulator-header">
+          <p class="eyebrow">Salary Assistant</p>
+          <h2>Ask about your salary. (Coming Soon)</h2>
+        </div>
+        <div class="chat-box">
+          <input id="chatQuestion" type="text" placeholder="Example: Which tax regime is better?" />
+          <button id="chatAskBtn" type="button" class="submit-btn">Ask</button>
+        </div>
+        <div id="chatOutput" class="chat-output">Ask about SIP, tax regime, emergency fund, car affordability, house affordability, or hikes.</div>
       </section>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="budget-calculator.js"></script>
   </body>
 </html>

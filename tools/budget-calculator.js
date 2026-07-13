@@ -1,385 +1,552 @@
-const rupee = new Intl.NumberFormat("en-IN", {
-  maximumFractionDigits: 0,
-});
+const rupee = new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 });
 
-const fields = [
-  "city",
-  "income",
-  "otherIncome",
-  "rent",
-  "emis",
-  "food",
-  "transport",
-  "subscriptions",
-  "savings",
-  "investments",
-  "increment",
-  "returnRate",
-  "inflationRate",
-];
+const professionalTax = {
+  Maharashtra: 200,
+  Karnataka: 200,
+  Telangana: 200,
+  Delhi: 0,
+  "Tamil Nadu": 208,
+  Gujarat: 200,
+  "West Bengal": 200,
+  Other: 0,
+};
 
 const cityCosts = {
-  Mumbai: { min: 35000, max: 60000 },
-  Delhi: { min: 33000, max: 50000 },
-  Bengaluru: { min: 33000, max: 50000 },
-  Pune: { min: 33000, max: 45000 },
-  Hyderabad: { min: 32000, max: 50000 },
-  Chennai: { min: 31000, max: 50000 },
-  Ahmedabad: { min: 22000, max: 43000 },
-  Kolkata: { min: 20000, max: 40000 },
+  Mumbai: { rent: 30000, food: 10000, transport: 4500, utilities: 4500, fresherAvg: 650000 },
+  Delhi: { rent: 24000, food: 9000, transport: 4000, utilities: 4200, fresherAvg: 620000 },
+  Bengaluru: { rent: 22000, food: 8000, transport: 3000, utilities: 3500, fresherAvg: 700000 },
+  Pune: { rent: 18000, food: 7500, transport: 3000, utilities: 3200, fresherAvg: 580000 },
+  Hyderabad: { rent: 17000, food: 7500, transport: 2800, utilities: 3200, fresherAvg: 600000 },
+  Chennai: { rent: 17000, food: 7500, transport: 3000, utilities: 3300, fresherAvg: 560000 },
+  Ahmedabad: { rent: 14000, food: 6500, transport: 2500, utilities: 2800, fresherAvg: 480000 },
+  Kolkata: { rent: 13000, food: 6500, transport: 2400, utilities: 2700, fresherAvg: 460000 },
 };
 
-const palette = {
-  needs: "#1e8a6a",
-  debt: "#d85f48",
-  savings: "#3478b8",
-  investments: "#d99a25",
-  lifestyle: "#6f5fb8",
+const roleMarket = {
+  "Software Engineer": { avg: 1050000 },
+  "Data Analyst": { avg: 850000 },
+  "Product Designer": { avg: 900000 },
+  "Marketing Associate": { avg: 650000 },
+  "Finance Analyst": { avg: 750000 },
 };
 
-// Track previous values for animation
-let previousScore = null;
-let previousSafeSpend = null;
+const $ = (id) => {
+    const el = document.getElementById(id);
+    if (!el) console.warn(`Element with ID "${id}" not found.`);
+    return el;
+};
+const value = (id) => Number($(id)?.value) || 0;
+const checked = (id) => Boolean($(id)?.checked);
+const money = (amount) => `${amount < 0 ? "-" : ""}₹${rupee.format(Math.abs(Math.round(amount)))}`;
+const lpa = (amount) => `${(amount / 100000).toFixed(amount >= 1000000 ? 1 : 2)} LPA`;
+const selectedRadio = (name) => document.querySelector(`input[name="${name}"]:checked`)?.value;
 
-function value(id) {
-  return Number(document.getElementById(id).value) || 0;
-}
+function slabTax(taxable, slabs) {
+  let tax = 0;
+  let previous = 0;
 
-function money(amount) {
-  return `Rs. ${rupee.format(Math.max(0, amount))}`;
-}
-
-// Animate value changes
-function animateValue(element) {
-  element.classList.remove('animate');
-  void element.offsetWidth; // Trigger reflow
-  element.classList.add('animate');
-}
-
-// Show loading state on button
-function setButtonLoading(loading) {
-  const btn = document.getElementById('submitBtn');
-  if (loading) {
-    btn.classList.add('loading');
-    btn.disabled = true;
-  } else {
-    btn.classList.remove('loading');
-    btn.disabled = false;
-  }
-}
-
-// Scroll to dashboard on mobile
-function scrollToDashboard() {
-  if (window.innerWidth <= 860) {
-    const dashboard = document.querySelector('.dashboard');
-    if (dashboard) {
-      dashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  slabs.forEach(({ limit, rate }) => {
+    if (taxable > previous) {
+      tax += (Math.min(taxable, limit) - previous) * rate;
+      previous = limit;
     }
-  }
+  });
+
+  return tax;
 }
 
-// Validate required fields
-function validateInputs() {
-  const income = value('income');
-  const incomeEl = document.getElementById('income');
-  
-  if (income <= 0) {
-    incomeEl.classList.add('input-error');
-    setTimeout(() => incomeEl.classList.remove('input-error'), 600);
-    incomeEl.focus();
-    return false;
-  }
-  return true;
+function runCalculation() {
+    const model = computeSalaryModel(); // This is your math function
+    updateSalaryUI(model);            // This updates the numbers
+    updateCharts(model);              // This updates the graphs
 }
 
-function monthlyInvestmentFutureValue(monthlyAmount, annualRate, years, incrementRate) {
-  const monthlyRate = annualRate / 100 / 12;
-  let futureValue = 0;
-  let sip = monthlyAmount;
-
-  for (let month = 1; month <= years * 12; month += 1) {
-    futureValue = (futureValue + sip) * (1 + monthlyRate);
-    if (month % 12 === 0) {
-      sip *= 1 + incrementRate / 100;
-    }
+function taxForRegime(regime, taxableSalary, oldDeductions) {
+  if (regime === "new") {
+    const taxable = Math.max(0, taxableSalary - 75000);
+    const slabs = [
+      { limit: 400000, rate: 0 },
+      { limit: 800000, rate: 0.05 },
+      { limit: 1200000, rate: 0.1 },
+      { limit: 1600000, rate: 0.15 },
+      { limit: 2000000, rate: 0.2 },
+      { limit: 2400000, rate: 0.25 },
+      { limit: Infinity, rate: 0.3 },
+    ];
+    const beforeCess = taxable <= 1200000 ? 0 : slabTax(taxable, slabs);
+    return { taxable, annualTax: beforeCess * 1.04 };
   }
 
-  return futureValue;
+  const taxable = Math.max(0, taxableSalary - 50000 - oldDeductions);
+  const slabs = [
+    { limit: 250000, rate: 0 },
+    { limit: 500000, rate: 0.05 },
+    { limit: 1000000, rate: 0.2 },
+    { limit: Infinity, rate: 0.3 },
+  ];
+  const beforeCess = taxable <= 500000 ? 0 : slabTax(taxable, slabs);
+  return { taxable, annualTax: beforeCess * 1.04 };
 }
 
-function adjustForInflation(futureValue, inflationRate, years) {
-  return futureValue / Math.pow(1 + inflationRate / 100, years);
+function salaryPartsFromGross(annualGross, annualCtc, options) {
+  const annualBasic = annualGross * 0.4;
+  const annualHra = annualBasic * 0.5;
+  const annualMedical = Math.min(15000, annualGross * 0.02);
+  const annualSpecial = Math.max(0, annualGross - annualBasic - annualHra - annualMedical);
+  const employeePF = options.pfApplicable ? (annualBasic * 0.12) : 0;
+  const employerPF = options.employerPfIncluded ? employeePF : 0;
+  const bonus = options.bonusIncluded ? annualCtc * (options.bonusPercent / 100) : 0;
+  const variable = options.variablePayIncluded ? annualCtc * (options.variablePercent / 100) : 0;
+  const employerNps = options.employerNpsIncluded ? annualBasic * (options.employerNpsPercent / 100) : 0;
+  const gratuity = options.pfApplicable ? annualBasic * 0.0481 : 0;
+
+  return { annualBasic, annualHra, annualMedical, annualSpecial, employeePF, employerPF, bonus, variable, employerNps, gratuity };
 }
 
-function calculateFireStatus(investments, savingsRate, income, debtRate, needs, debt, lifestyle) {
-  // Calculate actual monthly expenses
-  const monthlyExpenses = needs + debt + lifestyle;
-  const annualExpenses = monthlyExpenses * 12;
-  
-  // If no expenses or investments, return empty state
-  if (annualExpenses === 0 || investments === 0) {
-    return {
-      requiredCorpus: 0,
-      currentPath: 0,
-      yearsUntilFire: "--",
-      percentage: 0,
-      monthlyExpenses: 0
-    };
-  }
-  
-  // FIRE corpus = 25x annual expenses (safe withdrawal rate of 4%)
-  const fireCorpus = annualExpenses * 25;
-  
-  // Calculate wealth path assuming 20 years of investing
-  const currentCorpus = monthlyInvestmentFutureValue(investments, 12, 20, 8);
-  const yearsToFire = currentCorpus >= fireCorpus ? 0 : Math.ceil(fireCorpus / (investments * 12 * 12));
-  
+function currentOptions() {
+  const employmentType = $("employmentType").value;
   return {
-    requiredCorpus: fireCorpus,
-    currentPath: currentCorpus,
-    yearsUntilFire: yearsToFire === 0 ? "Now!" : yearsToFire,
-    percentage: Math.min(100, Math.round((currentCorpus / fireCorpus) * 100)),
-    monthlyExpenses: monthlyExpenses
+    employmentType,
+    pfApplicable: employmentType === "Full-time",
+    employerPfIncluded: checked("employerPfIncluded"),
+    bonusIncluded: checked("bonusIncluded"),
+    variablePayIncluded: checked("variablePayIncluded"),
+    employerNpsIncluded: checked("employerNpsIncluded"),
+    bonusPercent: value("bonusPercent"),
+    variablePercent: value("variablePercent"),
+    employerNpsPercent: value("employerNpsPercent"),
   };
 }
 
-function addBar(label, amount, total, color) {
-  const percent = total ? Math.min(100, (amount / total) * 100) : 0;
-  return `
-    <div class="bar-row">
-      <div class="bar-top">
-        <span>${label}</span>
-        <span>${money(amount)} - ${percent.toFixed(0)}%</span>
-      </div>
-      <div class="track">
-        <div class="fill" style="width:${percent}%; background:${color}"></div>
-      </div>
-    </div>
-  `;
+function solveGrossFromCtc(annualCtc, options) {
+  let annualGross = annualCtc;
+
+  for (let index = 0; index < 12; index += 1) {
+    const parts = salaryPartsFromGross(annualGross, annualCtc, options);
+    const included = parts.employerPF + parts.gratuity + parts.bonus + parts.variable + parts.employerNps;
+    annualGross = Math.max(0, annualCtc - included);
+  }
+
+  return annualGross;
 }
 
-function calculate() {
-  // Show loading briefly for feedback
-  setButtonLoading(true);
-  
-  setTimeout(() => {
-    performCalculation();
-    setButtonLoading(false);
-    scrollToDashboard();
-  }, 300);
-}
+function computeSalaryModel(overrides = {}) {
+  const basis = selectedRadio("ctcBasis");
+  const options = currentOptions();
+  let annualCtc = overrides.annualCtc ?? value("ctcAmount");
+  let annualGross;
 
-function performCalculation() {
-  const selectedCity = document.getElementById("city").value;
-  const cityCost = cityCosts[selectedCity];
-  const income = value("income") + value("otherIncome");
-  const needs = value("rent") + value("food") + value("transport");
-  const debt = value("emis");
-  const monthlyInvestments = value("investments");
-  const lifestyle = value("subscriptions");
-  const currentSavings = value("savings"); // This is TOTAL savings, not monthly
-  
-  // Monthly committed expenses (NOT including current savings!)
-  const committed = needs + debt + monthlyInvestments + lifestyle;
-  const safeSpend = income - committed;
-  
-  // For savings rate: use current savings as indicator of their wealth building
-  const savingsRate = income ? ((currentSavings + monthlyInvestments) / income) * 100 : 0;
-  const debtRate = income ? (debt / income) * 100 : 0;
-  const needsRate = income ? (needs / income) * 100 : 0;
+  if (!overrides.annualCtc && basis === "monthlyCtc") annualCtc *= 12;
 
-  let score = 0;
-  score += Math.min(25, savingsRate * 1.2);
-  score -= Math.max(0, debtRate - 15) * 1.4;
-  score -= Math.max(0, needsRate - 55) * 0.9;
-  score -= safeSpend < 0 ? 18 : 0;
-  score = Math.max(0, Math.min(100, Math.round(score)));
-
-  document.getElementById("score").textContent = score;
-  document.getElementById("scoreLabel").textContent =
-    score >= 80 ? "Strong control" : score >= 60 ? "Good, with room" : "Needs attention";
-  document.getElementById("safeSpend").textContent = money(safeSpend);
-  
-  // Animate score and safe spend if values changed
-  const scoreEl = document.getElementById("score");
-  const safeSpendEl = document.getElementById("safeSpend");
-  
-  if (previousScore !== null && previousScore !== score) {
-    animateValue(scoreEl);
-  }
-  if (previousSafeSpend !== null && previousSafeSpend !== safeSpend) {
-    animateValue(safeSpendEl);
-  }
-  
-  previousScore = score;
-  previousSafeSpend = safeSpend;
-  
-  if (income === 0) {
-    document.getElementById("cityName").textContent = "--";
-    document.getElementById("cityRange").textContent = "--";
-    document.getElementById("cityStatus").textContent = "Enter income to see city fit";
-  } else {
-    document.getElementById("cityName").textContent = selectedCity;
-    document.getElementById("cityRange").textContent = `${money(cityCost.min)} - ${money(cityCost.max)}`;
-
-    let cityStatus = "Your income fits this city's starter comfort range.";
-    if (income < cityCost.min) {
-      cityStatus = `Income is below the typical ${selectedCity} comfort range by ${money(cityCost.min - income)}.`;
-    } else if (income > cityCost.max) {
-      cityStatus = `Income is above the typical ${selectedCity} comfort range by ${money(income - cityCost.max)}. Good scope for investing.`;
+  if (!overrides.annualCtc && basis === "monthlyGross") {
+    annualGross = value("ctcAmount") * 12;
+    let estimatedCtc = annualGross;
+    for (let index = 0; index < 8; index += 1) {
+      const parts = salaryPartsFromGross(annualGross, estimatedCtc, options);
+      estimatedCtc = annualGross + parts.employerPF + parts.gratuity + parts.bonus + parts.variable + parts.employerNps;
     }
-    document.getElementById("cityStatus").textContent = cityStatus;
-  }
-
-  document.getElementById("bars").innerHTML = [
-    addBar("Needs", needs, income, palette.needs),
-    addBar("Debt", debt, income, palette.debt),
-    addBar("Monthly Investments", monthlyInvestments, income, palette.investments),
-    addBar("Lifestyle", lifestyle, income, palette.lifestyle),
-  ].join("");
-
-  const insights = [];
-  const targetSavings = income * 0.2;
-  const emergencyFund = needs * 6;
-  
-  // Get these values early (needed for calculations below)
-  const annualReturn = value("returnRate");
-  const increment = value("increment");
-  const inflationRate = value("inflationRate") || 6;
-
-  if (safeSpend < 0) {
-    insights.push(`Your plan is short by ${money(Math.abs(safeSpend))}. Reduce flexible spending or pause non-essential subscriptions first.`);
+    annualCtc = estimatedCtc;
   } else {
-    insights.push(`Your safe monthly spending limit is ${money(safeSpend)} after covering core bills, savings and investments.`);
+    annualGross = solveGrossFromCtc(annualCtc, options);
   }
 
-  if (income < cityCost.min) {
-    insights.push(`${selectedCity} usually needs at least ${money(cityCost.min)} per month for a basic comfortable budget. Keep rent and lifestyle tight until income grows.`);
-  } else if (income <= cityCost.max) {
-    insights.push(`Your income sits inside the expected ${selectedCity} range of ${money(cityCost.min)} to ${money(cityCost.max)}. Budget discipline matters more than aggressive lifestyle upgrades here.`);
-  } else {
-    insights.push(`You are above the expected ${selectedCity} range. This is where automatic SIP increases and emergency fund building can create real advantage.`);
-  }
+  const parts = salaryPartsFromGross(annualGross, annualCtc, options);
+  const taxableSalary = annualGross + parts.bonus + parts.variable;
+  const oldTax = taxForRegime("old", taxableSalary, value("oldDeductions"));
+  const newTax = taxForRegime("new", taxableSalary, value("oldDeductions"));
+  const regime = overrides.taxRegime ?? selectedRadio("taxRegime");
+  const chosenTax = regime === "old" ? oldTax : newTax;
+  const monthlyGross = annualGross / 12;
+  const monthlyTax = chosenTax.annualTax / 12;
+  const monthlyEmployeePF = parts.employeePF / 12;
+  const monthlyPT = options.pfApplicable ? professionalTax[$("state").value] || 0 : 0;
+  const monthlyInHand = Math.max(0, monthlyGross - monthlyTax - monthlyEmployeePF - monthlyPT);
 
-  if (savings + monthlyInvestments < targetSavings) {
-    insights.push(`Try moving toward a 20% wealth-building rate. Your current gap is about ${money(targetSavings - currentSavings - monthlyInvestments)} per month.`);
-  } else {
-    insights.push(`You are already crossing the 20% saving and investing benchmark. Keep this automated before spending starts.`);
-  }
+  return {
+    annualCtc,
+    annualGross,
+    monthlyGross,
+    monthlyTax,
+    monthlyEmployeePF,
+    monthlyPT,
+    monthlyInHand,
+    taxableSalary,
+    oldTax,
+    newTax,
+    chosenTax,
+    regime,
+    city: $("city").value,
+    state: $("state").value,
+    role: $("role").value,
+    experience: value("experience"),
+    options,
+    ...parts,
+  };
+}
 
-  if (debtRate > 20) {
-    insights.push(`EMIs are taking ${debtRate.toFixed(0)}% of income. Prioritize high-interest debt before increasing lifestyle expenses.`);
-  }
+function healthScore(model) {
+  const bestTax = Math.min(model.oldTax.annualTax, model.newTax.annualTax);
+  const taxEfficient = model.chosenTax.annualTax <= bestTax + 1000;
+  const variablePct = model.annualCtc ? (model.variable / model.annualCtc) * 100 : 0;
+  const bonusPct = model.annualCtc ? (model.bonus / model.annualCtc) * 100 : 0;
+  const city = cityCosts[model.city];
+  const livingCost = city.rent + city.food + city.transport + city.utilities;
+  const savingsPotential = model.monthlyInHand - livingCost;
 
-  if (lifestyle > income * 0.05) {
-    insights.push(`Subscriptions are above 5% of income. A quick audit here can free cash without changing your lifestyle much.`);
-  }
 
-  insights.push(`Aim for an emergency fund of ${money(emergencyFund)}, equal to six months of rent, food and transport.`);
+  let score = 55;
 
-  // Investment Strategy Analysis
-  const investmentRate = monthlyInvestments > 0 ? (monthlyInvestments / (currentSavings + monthlyInvestments)) * 100 : 0;
-  if (monthlyInvestments > 0) {
-    insights.push(`Your SIP of ${money(monthlyInvestments)} is ${investmentRate.toFixed(0)}% of your wealth-building pool. At 12% returns, this grows to ${money(monthlyInvestmentFutureValue(monthlyInvestments, 12, 5, 8))} in 5 years.`);
-  }
+  if (taxEfficient) score += 15;
+  if (model.employeePF > 0) score += 10;
+  if (savingsPotential > model.monthlyInHand * 0.25) score += 12;
+  if (variablePct <= 20) score += 4;
+  if (bonusPct <= 15) score += 2;
+  if (model.employerNps > 0 || model.employeePF > 0) score += 2;
+  if (variablePct > 25) score -= 8;
+  if (savingsPotential < 0) score -= 15;
 
-  // Tax Optimization Hint
-  const deductibleLimit = 150000; // Section 80C limit
-  const annualInvestment = monthlyInvestments * 12;
-  if (annualInvestment > 0) {
-    const taxSavingsPotential = Math.min(annualInvestment, deductibleLimit) * 0.3; // Assume 30% tax bracket
-    insights.push(`💡 Tax tip: Your annual SIP of ${money(annualInvestment)} can save up to ${money(taxSavingsPotential)} in taxes via Section 80C (ELSS, PPF, etc.).`);
-  }
+  return Math.max(0, Math.min(100, Math.round(score)));
+}
 
-  // FIRE Explanation
-  const fireCorpus = (needs + debt + lifestyle) * 12 * 25;
-  const monthlyPassive = (fireCorpus * 0.04) / 12;
-  insights.push(`📚 FIRE explained: You need ${money(fireCorpus)} (25× your annual expenses) to retire safely. With 4% withdrawal rate, this generates ${money(monthlyPassive)}/month PASSIVE income - without working! Example: ₹37L invested earning 12% returns, withdrawing only 4% yearly = ₹12,336 monthly forever.`);
+function stars(score) {
+  const filled = Math.max(1, Math.round(score / 20));
+  return "★".repeat(filled) + "☆".repeat(5 - filled);
+}
 
-  // Inflation & Real Value Explanation
-  const futureValueExample = income * 5;
-  const realValueExample = futureValueExample / Math.pow(1 + inflationRate / 100, 10);
-  insights.push(`💰 Understanding "Real Value": Your projected wealth seems huge, but inflation erodes it. Example: ${money(futureValueExample)} after 10 years with ${inflationRate}% inflation = ${money(realValueExample)} in TODAY'S purchasing power. A coffee costing ₹100 today may cost ₹179 in 10 years!`);
+function row(label, amount, negative = false) {
+  return `<div class="split-row"><span>${label}</span><strong>${negative ? "-" : ""}${money(amount)}</strong></div>`;
+}
 
-   document.getElementById("insights").innerHTML = insights
+function updateSalaryUI(model) {
+  const score = healthScore(model);
+  const city = cityCosts[model.city];
+  const costTotal = city.rent + city.food + city.transport + city.utilities;
+  const estimatedSavings = model.monthlyInHand - costTotal;
+  const taxSavings = Math.abs(model.oldTax.annualTax - model.newTax.annualTax);
+  const betterRegime = model.oldTax.annualTax < model.newTax.annualTax ? "Old Regime" : "New Regime";
+
+  $("monthlyInHand").textContent = money(model.monthlyInHand);
+  $("resultGross").textContent = money(model.monthlyGross);
+  $("resultTax").textContent = `-${money(model.monthlyTax)}`;
+  $("resultEmployeePf").textContent = `-${money(model.monthlyEmployeePF)}`;
+  $("resultProfessionalTax").textContent = `-${money(model.monthlyPT)}`;
+  $("resultNet").textContent = money(model.monthlyInHand);
+
+  $("salaryHealthScore").textContent = score;
+  $("salaryStars").textContent = stars(score);
+  $("healthFactors").innerHTML = ["Tax Efficiency", "PF Contribution", "Savings Potential", "Variable Pay %", "Bonus %", "Retirement Planning"]
     .map((item) => `<li>${item}</li>`)
     .join("");
 
-  const futureValueTen = monthlyInvestmentFutureValue(monthlyInvestments, annualReturn, 10, increment);
-  const futureValueTwenty = monthlyInvestmentFutureValue(monthlyInvestments, annualReturn, 20, increment);
-  
-  const realValueTen = adjustForInflation(futureValueTen, inflationRate, 10);
-  const realValueTwenty = adjustForInflation(futureValueTwenty, inflationRate, 20);
-  
-  document.getElementById("futureTen").textContent = money(futureValueTen);
-  document.getElementById("futureTenReal").textContent = `${money(realValueTen)} (real value)`;
-  document.getElementById("futureTwenty").textContent = money(futureValueTwenty);
-  document.getElementById("futureTwentyReal").textContent = `${money(realValueTwenty)} (real value)`;
-  
-  // FIRE Calculation
-  const fireStatus = calculateFireStatus(monthlyInvestments, savingsRate, income, debtRate, needs, debt, lifestyle);
-  const fireInsight = `<strong>🎯 FIRE Progress: ${fireStatus.percentage}%</strong><br>
-    <div class="progress-bar"><div class="progress-fill" style="width:${fireStatus.percentage}%"></div></div>
-  <small style="color: #64716e; font-size: 0.85rem;">
-  <strong>Goal (to retire):</strong> ${money(fireStatus.requiredCorpus)}<br>
-  <strong>Your path (in 20 years):</strong> ${money(fireStatus.currentPath)}<br>
-  💡 This shows where your ${money(monthlyInvestments)}/month SIP will grow to<br>
-  ${fireStatus.yearsUntilFire === "Now!" ? "You're on track!" : `~${fireStatus.yearsUntilFire} years at this rate`}
-  </small>`;
-  document.getElementById("fireInfo").innerHTML = fireInsight;
-  
-  // Emergency Fund Tracker
-  const emergencyGoal = emergencyFund;
-  const currentEmergency = currentSavings; // Use current savings as emergency fund
-  let emergencyPercent = emergencyGoal > 0 ? Math.round((currentEmergency / emergencyGoal) * 100) : 0;
-  let emergencyStatus = "";
-  
-  if (emergencyPercent >= 100) {
-    emergencyStatus = `<strong>Goal Complete!</strong> You have ${money(currentEmergency - emergencyGoal)} extra cushion.`;
-    emergencyPercent = 100;
-  } else {
-    emergencyStatus = `Progress: ${money(currentEmergency)} / ${money(emergencyGoal)}`;
-  }
-  
-  const emergencyInsight = `<strong>🚨 Emergency Fund: ${emergencyPercent}%</strong><br>
-    <div class="progress-bar"><div class="progress-fill" style="width:${emergencyPercent}%"></div></div>
-    ${emergencyStatus}<br>
-    <small style="color: #64716e;">Goal: ${money(emergencyGoal)} (6 months needs)</small>`;
-  document.getElementById("emergencyInfo").innerHTML = emergencyInsight;
+  $("breakdownRows").innerHTML = [
+    row("Basic Pay", model.annualBasic / 12),
+    row("HRA", model.annualHra / 12),
+    row("Special Allowance", model.annualSpecial / 12),
+    row("Medical", model.annualMedical / 12),
+    row("Bonus", model.bonus / 12),
+    row("Variable Pay", model.variable / 12),
+    row("Employer PF", model.employerPF / 12),
+    row("Employer NPS", model.employerNps / 12),
+    row("Gratuity", model.gratuity / 12),
+  ].join("");
+
+  $("oldTaxValue").textContent = money(model.oldTax.annualTax);
+  $("newTaxValue").textContent = money(model.newTax.annualTax);
+  $("taxSavingsValue").textContent = money(taxSavings);
+  $("taxWhy").textContent = `${betterRegime} is better based on current inputs. Old regime depends on deductions like 80C, HRA, NPS, insurance, and loan interest.`;
+
+  $("costRent").textContent = money(city.rent);
+  $("costFood").textContent = money(city.food);
+  $("costTransport").textContent = money(city.transport);
+  $("costUtilities").textContent = money(city.utilities);
+  $("costSavings").textContent = money(estimatedSavings);
+
+  updateInsights(model, score, estimatedSavings, betterRegime, taxSavings);
+  updatePlanning(model, estimatedSavings, costTotal);
+  updateOfferComparison(model);
+  updateGrowth(model);
 }
 
-fields.forEach((id) => {
-  const element = document.getElementById(id);
-  if (element) {
-    // Focus styling handled by CSS now
-    
-    // Add has-value class for visual feedback
-    element.addEventListener("input", () => {
-      if (element.value && element.value !== "0") {
-        element.classList.add("has-value");
-      } else {
-        element.classList.remove("has-value");
-      }
-    });
-    
-    // Initialize has-value state
-    if (element.value && element.value !== "0" && element.value !== "") {
-      element.classList.add("has-value");
-    }
-  }
-});
+function updateInsights(model, score, estimatedSavings, betterRegime, taxSavings) {
+  const city = cityCosts[model.city];
+  const role = roleMarket[model.role];
+  const insights = [];
 
-// Submit on Enter key in any input
-document.querySelectorAll('input[type="number"]').forEach(input => {
-  input.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      calculate();
-    }
+  insights.push(model.annualCtc >= city.fresherAvg
+    ? `Your salary places you above the common fresher range for ${model.city}.`
+    : `Your salary is below the common fresher range for ${model.city}; focus on skills and negotiation.`);
+  insights.push(estimatedSavings > 0
+    ? `You can comfortably invest around ${money(Math.max(0, estimatedSavings * 0.4))}/month after estimated city expenses.`
+    : `Your estimated cost of living is higher than monthly in-hand. Reduce fixed costs before increasing investments.`);
+  insights.push(`${betterRegime} saves approximately ${money(taxSavings)}/year compared with the other regime.`);
+  insights.push(model.annualCtc >= role.avg
+    ? `For ${model.role}, your salary is above the estimated benchmark of ${lpa(role.avg)}.`
+    : `For ${model.role}, the estimated benchmark is ${lpa(role.avg)}, leaving room for a potential raise.`);
+
+  $("aiInsights").innerHTML = insights.map((item) => `<li>${item}</li>`).join("");
+
+  const recommendations = [];
+  if (score >= 85) recommendations.push("Good salary structure.");
+  if (model.chosenTax.annualTax <= Math.min(model.oldTax.annualTax, model.newTax.annualTax) + 1000) recommendations.push("Tax optimized.");
+  if (model.variable / model.annualCtc <= 0.2) recommendations.push("Variable pay is healthy.");
+  if (model.employeePF > 0) recommendations.push(`Increase PF by ${money(500)} if retirement planning is your priority.`);
+  if (estimatedSavings > 0) recommendations.push(`Automate SIP of ${money(Math.max(1000, estimatedSavings * 0.4))}/month.`);
+
+  $("recommendations").innerHTML = recommendations.map((item) => `<li>${item}</li>`).join("");
+}
+
+function updatePlanning(model, estimatedSavings, costTotal) {
+  $("planEmergency").textContent = money(costTotal * 6);
+  $("planSip").textContent = money(Math.max(0, estimatedSavings * 0.4));
+  $("planGold").textContent = money(Math.max(0, estimatedSavings * 0.08));
+  $("planTerm").textContent = money(Math.max(10000000, model.annualCtc * 15));
+  $("planHealth").textContent = "₹15 Lakh";
+  $("planNote").textContent = "These are planning estimates, not investment, tax, or insurance advice.";
+}
+
+function updateOfferComparison(model) {
+  if (document.activeElement !== $("currentOffer")) $("currentOffer").value = (model.annualCtc / 100000).toFixed(1);
+  if (document.activeElement !== $("growthCurrent")) $("growthCurrent").value = (model.annualCtc / 100000).toFixed(1);
+
+  const offers = [
+    { name: "Current Offer", ctc: value("currentOffer") * 100000 },
+    { name: "Offer A", ctc: value("offerA") * 100000 },
+    { name: "Offer B", ctc: value("offerB") * 100000 },
+  ].map((offer) => {
+    const computed = computeSalaryModel({ annualCtc: offer.ctc });
+    return { ...offer, monthlyInHand: computed.monthlyInHand, annualTax: computed.chosenTax.annualTax, score: healthScore(computed) };
   });
+
+  const bestOverall = offers.reduce((best, item) => (item.score > best.score ? item : best), offers[0]);
+
+  $("offerResults").innerHTML = offers.map((offer) => `
+    <article class="offer-card ${offer.name === bestOverall.name ? "best" : ""}">
+      <span>${offer.name}</span>
+      <strong>${lpa(offer.ctc)}</strong>
+      <p>Monthly in-hand: ${money(offer.monthlyInHand)}</p>
+      <p>Annual tax: ${money(offer.annualTax)}</p>
+      <small>${offer.name === bestOverall.name ? "Best Overall" : ""}</small>
+    </article>
+  `).join("");
+}
+
+function updateGrowth() {
+  const start = value("growthCurrent") * 100000;
+  const hike = value("expectedHike") / 100;
+  const years = Math.max(1, value("projectionYears"));
+  const rows = [];
+  let salary = start;
+  let total = 0;
+
+  for (let year = 1; year <= years; year += 1) {
+    if (year > 1) salary *= 1 + hike;
+    total += salary;
+    rows.push({ year, salary });
+  }
+
+  $("totalCareerEarnings").textContent = money(total);
+  $("growthRows").innerHTML = rows.map((item) => `
+    <div class="projection-row">
+      <span>Year ${item.year}</span>
+      <strong>${lpa(item.salary)}</strong>
+    </div>
+  `).join("");
+}
+
+function updateAmountLabel() {
+  const basis = selectedRadio("ctcBasis");
+
+  if (basis === "annual") {
+    $("amountLabel").textContent = "Annual CTC";
+    $("amountHint").textContent = "Enter yearly cost to company.";
+  } else if (basis === "monthlyCtc") {
+    $("amountLabel").textContent = "Monthly CTC";
+    $("amountHint").textContent = "Enter monthly cost to company.";
+  } else {
+    $("amountLabel").textContent = "Monthly Gross Salary";
+    $("amountHint").textContent = "Enter fixed monthly gross salary before deductions.";
+  }
+}
+
+function updateApp() {
+  updateAmountLabel();
+  updateSalaryUI(computeSalaryModel());
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("input, select, textarea").forEach((element) => {
+    element.addEventListener("input", updateApp);
+    element.addEventListener("change", updateApp);
+  });
+
+  $("calculateBtn").addEventListener("click", updateApp);
+  $("downloadReportBtn").addEventListener("click", () => window.print());
+  updateApp();
 });
 
-document.getElementById("submitBtn").addEventListener("click", calculate);
+// 1. Wait for the page to load
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const calculateBtn = document.getElementById('calculateBtn');
 
-// Initial calculation (without loading animation)
-performCalculation();
+    if (calculateBtn) {
+    calculateBtn.addEventListener('click', () => {
+        // Since math is already done in real-time, 
+        // this button now acts as the primary PDF download.
+        window.print(); 
+    });
+}
+
+    // 3. Attach to the button
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', runCalculation);
+    }
+
+    // 4. (Optional) Auto-calculate on input change
+    const allInputs = document.querySelectorAll('input, select');
+    allInputs.forEach(input => {
+        input.addEventListener('input', () => {
+                  const model = computeSalaryModel();
+        updateSalaryUI(model);
+        updateCharts(model); // This ensures graphs move as the user types
+        });
+    });
+});
+
+
+/* --- Add this at the end of budget-calculator.js --- */
+
+// This function initializes all button interactions
+function initApp() {
+    const calculateBtn = document.getElementById('calculateBtn');
+    const downloadBtn = document.getElementById('downloadReportBtn');
+
+    // Action 1: The Calculate Button
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', () => {
+            console.log("Calculating...");
+            const model = computeSalaryModel(); // Runs your math
+            updateSalaryUI(model);            // Updates the screen
+            // C. GENERATE THE GRAPHS (The 3rd Step)
+            updateCharts(model);
+            console.log("UI and Graphs updated!");
+            // Start the app logic
+            document.addEventListener('DOMContentLoaded', initApp);
+        });
+    }
+
+    // Action 2: The Download Button
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+            window.print(); // Opens the print/save-as-pdf dialog
+        });
+    }
+}
+
+// Ensure the code runs only after the HTML is fully loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
+
+
+// 1. Define an object to hold your chart instances globally
+let myCharts = {}; 
+
+function updateCharts(model) {
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 0 },
+        plugins: {
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: { padding: 15, usePointStyle: true }
+            }
+        }
+    };
+
+    const chartConfigs = [
+        {
+            id: 'componentChart',
+            type: 'doughnut',
+            data: {
+                labels: ['Basic Pay', 'HRA', 'Allowance', 'Bonus'],
+                datasets: [{
+                    data: [model.annualBasic, model.annualHra, model.annualSpecial, model.bonus],
+                    backgroundColor: ['#1e8a6a', '#10b981', '#34d399', '#f59e0b']
+                }]
+            },
+            options: commonOptions
+        },
+        {
+            id: 'deductionChart',
+            type: 'bar',
+            data: {
+                labels: ['Income Tax', 'Provident Fund', 'Prof. Tax'],
+                datasets: [{
+                    label: 'Monthly Deductions',
+                    data: [model.monthlyTax, model.monthlyEmployeePF, model.monthlyPT],
+                    backgroundColor: ['#ef4444', '#0ea5e9', '#6366f1']
+                }]
+            },
+            options: { ...commonOptions, scales: { y: { beginAtZero: true } } }
+        },
+        {
+            id: 'growthChart', // FIX: Added the missing 3rd chart
+            type: 'line',
+            data: {
+                labels: ['Current', 'Year 1', 'Year 2', 'Year 3', 'Year 4'],
+                datasets: [{
+                    label: 'Projected Growth',
+                    data: [model.annualCtc, model.annualCtc * 1.1, model.annualCtc * 1.21, model.annualCtc * 1.33, model.annualCtc * 1.46],
+                    borderColor: '#10b981',
+                    fill: false
+                }]
+            },
+            options: { ...commonOptions, scales: { y: { beginAtZero: true } } }
+        }
+    ];
+
+    chartConfigs.forEach(config => {
+        const canvas = document.getElementById(config.id);
+        if (!canvas) return;
+
+        // CRITICAL: Destroy the old chart instance if it exists
+        if (myCharts[config.id]) {
+            myCharts[config.id].destroy();
+        }
+
+        // Create the new chart instance
+        myCharts[config.id] = new Chart(canvas, {
+            type: config.type,
+            data: config.data,
+            options: config.options
+        });
+    });
+}
+
+// Add this to the bottom of budget-calculator.js
+document.addEventListener('DOMContentLoaded', () => {
+  const ctcInput = document.getElementById('ctcAmount');
+  const plannerContainer = document.querySelector('.planner');
+  const dashboard = document.querySelector('.dashboard');
+
+  const updateVisibility = () => {
+    const val = ctcInput.value;
+    // Show results only if CTC is entered and greater than 0
+    if (val && parseFloat(val) > 0) {
+      plannerContainer.classList.add('results-active');
+    } else {
+      plannerContainer.classList.remove('results-active');
+    }
+  };
+
+  // Listen for typing and changes
+  ctcInput.addEventListener('input', updateVisibility);
+  
+  // Run once on load in case the browser auto-filled the values
+  updateVisibility();
+});
