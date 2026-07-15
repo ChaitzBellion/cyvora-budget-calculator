@@ -1,4 +1,4 @@
-# CYVORA
+# CYVORA Studio
 
 > Learn. Build. Grow.
 
@@ -8,40 +8,120 @@ https://www.cyvora.in
 
 Mission
 
-Provide practical technology education,
-career guidance,
-AI tutorials,
-software tools,
-and productivity resources.
+CYVORA provides practical technology education, career guidance,
+AI tutorials, software tools, salary calculators,
+financial planning resources, cloud computing guides,
+software development tutorials, and productivity resources.
+
+Primary Content
+
+- Technology Blogs
+- AI & Machine Learning
+- Cloud Computing
+- Software Development
+- Data Engineering
+- Career Guidance
+- Salary & Tax
+- Personal Finance
+- Productivity
+- Interactive Tools
 
 Sections
 
-/blogs/
-/tools/
-/tips/
-/about.html
+Homepage
+https://www.cyvora.in/
+
+Blogs
+https://www.cyvora.in/blogs.html
+
+Salary guides
+https://www.cyvora.in/blogs/salary-guides.html/
+
+SEO Tips
+https://www.cyvora.in/blogs/SEOtips.html
+
+Cloud Computing
+https://www.cyvora.in/blogs/cloud.html
+
+Career
+https://www.cyvora.in/blogs/career-tips.html
+
+Tools
+https://www.cyvora.in/tools/
+
+Salary Calculator
+https://www.cyvora.in/tools/salary-calculator.html
+
+Tips
+https://www.cyvora.in/tips.html
+
+About
+https://www.cyvora.in/about.html
+
+Featured Resources
+
+Salary Calculator
+https://www.cyvora.in/tools/salary-calculator.html
+
+What is CTC? Complete Guide
+https://www.cyvora.in/blogs/salary/what-is-ctc.html
 
 Topics
 
 Artificial Intelligence
-Software Development
-Career Growth
+Machine Learning
 Cloud Computing
-Data Analysis
+Google Cloud Platform
+AWS
+Software Development
+Web Development
 Programming
+JavaScript
+Python
+Data Engineering
+SQL
+Career Growth
+Interview Preparation
+Salary Calculation
+Cost to Company (CTC)
+In-Hand Salary
+Income Tax
+Financial Planning
+Budgeting
 Productivity
-Personal Finance
 
 Audience
 
 Students
+
+Fresh Graduates
+
 Working Professionals
+
+Software Engineers
+
+Cloud Engineers
+
+Data Engineers
+
 Developers
+
+Job Seekers
+
 Researchers
+
+Content Policy
+
+- Original educational articles
+- Practical tutorials
+- Interactive web tools
+- Real-world career guidance
+- Frequently updated content
+- Human-written with AI-assisted research where appropriate
 
 License
 
-Original content © CYVORA.
+Original content © CYVORA Studio.
 
 Please provide attribution when quoting content.
 
@@ -49,6 +129,10 @@ Owner
 
 Suman Chaitanya
 
-Updated
+Contact
 
-2026-07-03
+https://www.cyvora.in/about.html
+
+Last Updated
+
+2026-07-15

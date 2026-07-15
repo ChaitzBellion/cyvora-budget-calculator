@@ -1,20 +1,133 @@
 /* TEAM */
 
 Developer: Suman Chaitanya
-Role: Developer & Data Engineer
-Location: India
+Role: Founder, Developer & Cloud Engineer
 Website: https://www.cyvora.in
+Location: Andhra Pradesh, India
+Email: hello@cyvora.in
 
-/* SITE */
+Content:
+Original technical articles, career guides, finance resources and software tools.
+
+Design:
+Modern UI focused on accessibility, readability and performance.
+
+
+/* PROJECT */
 
 Site: CYVORA
-Standards: HTML5, CSS3, JavaScript
-SEO: Structured Data, Open Graph, Sitemap, Robots.txt
-Performance: Optimized for Core Web Vitals
+Tagline: Learn. Build. Grow.
 
-/* THANKS */
+Mission:
+Helping students and professionals learn practical technology,
+improve careers, understand personal finance,
+and build useful real-world projects.
 
-Open Source Community
-Mozilla
-Google Developers
+Main Sections:
+https://www.cyvora.in/
+https://www.cyvora.in/blogs.html
+https://www.cyvora.in/tools/
+https://www.cyvora.in/tips.html
+https://www.cyvora.in/about.html
+
+Featured Tools:
+• Salary Calculator India
+• Budget Calculator
+• Financial Planning Tools
+
+Topics Covered:
+• Artificial Intelligence
+• Cloud Computing
+• Data Engineering
+• Software Development
+• Web Development
+• Career Guidance
+• Salary & Tax
+• Personal Finance
+• Productivity
+• DevOps
+• Linux
+• Git & GitHub
+• Interview Preparation
+
+Audience:
+• Students
+• Freshers
+• Software Engineers
+• IT Professionals
+• Developers
+• Career Switchers
+
+
+/* TECHNOLOGY */
+
+Frontend:
+HTML5
+CSS3
+JavaScript (ES6)
+
+Analytics:
+Google Analytics 4
+
+SEO:
+Semantic HTML
+JSON-LD Structured Data
+Open Graph
+Twitter Cards
+Canonical URLs
+XML Sitemap
+Robots.txt
+LLMS.txt
+
+Hosting:
+Vercel
+
+Version Control:
+Git
 GitHub
+
+Performance Goals:
+Core Web Vitals Optimized
+Responsive Design
+Mobile First
+Accessibility Focused
+
+
+/* CONTENT POLICY */
+
+All tutorials, calculators, blogs and guides are written
+specifically for CYVORA.
+
+Content may be quoted with attribution.
+
+Please link back to the original article when referencing
+our work.
+
+
+/* SPECIAL THANKS */
+
+Google Developers
+Mozilla
+MDN Web Docs
+Open Source Community
+Vercel
+GitHub
+Chart.js
+Stack Overflow
+
+
+/* CONTACT */
+
+Website:
+https://www.cyvora.in
+
+GitHub:
+https://github.com/ChaitzBellion
+
+LinkedIn:
+https://www.linkedin.com/in/suman-chaitanya-734235195/
+
+
+/* LAST UPDATED */
+
+2026-07-15
