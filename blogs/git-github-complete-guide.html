@@ -1,0 +1,1502 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <!-- ===== Article Schema ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Git & GitHub Explained — Complete Beginner to Advanced Guide (50+ Commands + Real-World Examples)",
+        "description": "The complete Git and GitHub handbook covering 50+ commands, real-world troubleshooting, merge conflicts, branching strategies, interview questions, and FAQs.",
+        "url": "https://www.cyvora.in/blogs/git-github-complete-guide.html",
+        "datePublished": "2026-07-19T00:00:00Z",
+        "dateModified": "2026-07-19T00:00:00Z",
+        "author": {
+            "@type": "Person",
+            "name": "Chaitanya",
+            "url": "https://www.cyvora.in"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Cyvora Studio",
+            "url": "https://www.cyvora.in"
+        },
+        "image": "https://www.cyvora.in/blogs/images/Git & Git Hub tutorial image.webp"
+    }
+    </script>
+
+    <!-- ===== FAQ Schema ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the difference between Git and GitHub?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Git is a distributed version control system installed locally on your machine. GitHub is a cloud-based hosting platform for Git repositories that adds collaboration features like pull requests, issues, and project boards."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between git merge and git rebase?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "git merge combines two branches by creating a merge commit, preserving full history. git rebase moves or replays commits on top of another branch, producing a cleaner linear history. Use merge for shared branches and rebase for local cleanup."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is a detached HEAD in Git?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A detached HEAD occurs when you check out a specific commit instead of a branch. You are no longer on any named branch. To return to normal, run: git switch main"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I recover a deleted commit in Git?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use git reflog to find the commit hash, then run git checkout <commit-hash> to recover it, or git reset --hard <commit-hash> to restore your branch to that state."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is git stash used for?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "git stash temporarily saves your uncommitted changes so you can switch branches or pull updates without losing your work. Use git stash pop to restore the saved changes."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- ===== Breadcrumb Schema ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cyvora.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Blogs", "item": "https://www.cyvora.in/blogs.html"},
+            {"@type": "ListItem", "position": 3, "name": "Git & GitHub Complete Guide", "item": "https://www.cyvora.in/blogs/git-github-complete-guide.html"}
+        ]
+    }
+    </script>
+
+    <link rel="canonical" href="https://www.cyvora.in/blogs/git-github-complete-guide.html">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CGFTH05WEG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CGFTH05WEG');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The complete Git and GitHub handbook for beginners to advanced developers. Covers 50+ Git commands, real-world error troubleshooting, branching, merging, interview questions and FAQs." />
+    <meta name="keywords" content="git tutorial, github guide, git commands, git vs github, git for beginners, git troubleshooting, git merge vs rebase, detached head git, git push rejected, git reflog, git stash, git interview questions, complete git guide 2026" />
+    <meta name="author" content="Cyvora" />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Git & GitHub Explained — Complete Beginner to Advanced Guide (50+ Commands + Real-World Examples)" />
+    <meta property="og:description" content="The complete Git and GitHub handbook: 50+ commands, real-world troubleshooting, interview questions, and practical examples — all in one place." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.cyvora.in/blogs/git-github-complete-guide.html" />
+    <meta property="og:image" content="https://www.cyvora.in/blogs/images/Git & Git Hub tutorial image.webp" />
+    <meta property="article:published_time" content="2026-07-19T00:00:00Z" />
+    <meta property="article:author" content="Cyvora" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Git & GitHub Explained — Complete Beginner to Advanced Guide" />
+    <meta name="twitter:description" content="50+ commands, real-world troubleshooting, and interview questions in one flagship guide." />
+    <meta name="twitter:image" content="https://www.cyvora.in/blogs/images/Git & Git Hub tutorial image.webp" />
+
+    <meta name="theme-color" content="#0D1B2A" />
+
+    <title>Git & GitHub Explained — Complete Beginner to Advanced Guide (50+ Commands + Real-World Examples) | Cyvora Studio</title>
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" href="/assets/brand/favicon.png" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="blog-post.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+
+    <!-- ===== Floating Navigation ===== -->
+    <nav class="floating-nav" aria-label="Main navigation">
+        <a href="/index.html" class="nav-logo" aria-label="Home">
+            <img src="/favicon.ico" alt="Logo" width="24" height="24">
+        </a>
+        <div class="nav-links">
+            <a href="/index.html" class="nav-link" data-tooltip="Home">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </a>
+            <a href="/blogs.html" class="nav-link active" data-tooltip="Blogs">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </a>
+            <a href="/tips.html" class="nav-link" data-tooltip="Tips">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </a>
+            <a href="/tools/index.html" class="nav-link" data-tooltip="Tools">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </a>
+        </div>
+    </nav>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main class="blog-post-container" id="main-content">
+        <article class="blog-post">
+
+            <!-- ===== Blog Header ===== -->
+            <header class="blog-header">
+                <div class="blog-category">Developer Handbook</div>
+                <h1 class="blog-title">Git &amp; GitHub Explained — Complete Beginner to Advanced Guide (50+ Commands + Real-World Examples)</h1>
+                <p class="blog-lead">From your first <code>git init</code> to recovering deleted commits with <code>git reflog</code> — this is the only Git reference you'll ever need. Built from real development experience at Cyvora Studio.</p>
+
+                <div class="blog-meta-info">
+                    <span class="meta-item">
+                        <span class="meta-label">Published:</span> July 19, 2026
+                    </span>
+                    <span class="meta-item">
+                        <span class="meta-label">Last Updated:</span> July 19, 2026
+                    </span>
+                    <span class="meta-item">
+                        <span class="meta-label">Read time:</span> 35 minutes
+                    </span>
+                    <span class="meta-item">
+                        <span class="meta-label">By:</span> ChaitZ
+                    </span>
+                    <h3>About the Author</h3>
+                    <p>Chaitanya is the founder of Cyvora Studio. He built this guide from real Git errors encountered while developing Cyvora Studio and the FIFA World Cup 2026 Smart Stadium application.</p>
+                </div>
+
+                <div class="blog-featured-image">
+                    <img src="images/Git & Github blog image.webp" alt="Git and GitHub Complete Guide — Cyvora Studio" />
+                </div>
+            </header>
+
+            <!-- ===== Table of Contents ===== -->
+            <aside class="table-of-contents">
+                <h2>Table of Contents</h2>
+                <nav class="toc-nav">
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#what-is-git">What is Git?</a></li>
+                        <li><a href="#history-of-git">History of Git</a></li>
+                        <li><a href="#what-is-github">What is GitHub?</a></li>
+                        <li><a href="#git-vs-github">Git vs GitHub</a></li>
+                        <li><a href="#installing-git">Installing Git</a></li>
+                        <li><a href="#configuring-git">Configuring Git</a></li>
+                        <li><a href="#creating-repository">Creating a Repository</a></li>
+                        <li><a href="#git-workflow">Git Workflow</a></li>
+                        <li><a href="#git-commands">50+ Git Commands</a>
+                            <ul style="padding-left:12px; margin-top:6px;">
+                                <li><a href="#cmd-config">1. Configuration</a></li>
+                                <li><a href="#cmd-repo">2. Repository</a></li>
+                                <li><a href="#cmd-status">3. Status</a></li>
+                                <li><a href="#cmd-staging">4. Staging</a></li>
+                                <li><a href="#cmd-commit">5. Commit</a></li>
+                                <li><a href="#cmd-branch">6. Branch</a></li>
+                                <li><a href="#cmd-merge">7. Merge</a></li>
+                                <li><a href="#cmd-remote">8. Remote</a></li>
+                                <li><a href="#cmd-advanced">9. Advanced</a></li>
+                                <li><a href="#cmd-emergency">10. Emergency</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#real-world">Real-World Scenarios</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                        <li><a href="#interview-questions">Interview Questions</a></li>
+                        <li><a href="#cheat-sheet">Git Cheat Sheet</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#conclusion">Conclusion</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- ===== Blog Content ===== -->
+            <div class="blog-content">
+
+                <!-- ===== INTRODUCTION ===== -->
+                <section id="introduction">
+                    <h2>Introduction</h2>
+                    <p>This is not just another Git tutorial.</p>
+                    <p>Every Git tutorial tells you <code>git add</code>, <code>git commit</code>, <code>git push</code>. Very few tell you what happens when things go wrong — when your push gets rejected, your HEAD detaches, or you accidentally delete a commit you needed.</p>
+                    <p>During the development of <strong>Cyvora Studio</strong> and the <strong>Cyvora Studio</strong>, I encountered dozens of real Git challenges. Rather than hiding those mistakes, I've documented them here — with the exact error messages, the reasons they happened, and the solutions that fixed them.</p>
+                    <p>This guide is that resource. One place. Everything Git.</p>
+
+                    <div class="what-youll-learn">
+                        <h2>📚 What You'll Learn</h2>
+                        <ul>
+                            <li>What Git and GitHub are, and how they differ</li>
+                            <li>How to install and configure Git from scratch</li>
+                            <li>The full Git workflow — from init to push</li>
+                            <li>50+ Git commands organized by category, each with syntax, example, and output</li>
+                            <li>20 real-world error scenarios with exact solutions</li>
+                            <li>Git best practices for professional development</li>
+                            <li>Git interview questions and answers</li>
+                            <li>A printable Git cheat sheet</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ===== WHAT IS GIT ===== -->
+                <section id="what-is-git">
+                    <h2>What is Git?</h2>
+                    <p><strong>Git</strong> is a free, open-source distributed version control system. It tracks changes in your files over time so you can recall specific versions later, collaborate with others, and maintain a complete history of your project.</p>
+                    <p>Think of Git as a time machine for your code. Every <em>commit</em> is a saved snapshot. If something breaks, you can travel back to any point in history.</p>
+                    <ul>
+                        <li>Works <strong>offline</strong> — your full history lives on your machine</li>
+                        <li>Supports <strong>branching</strong> — experiment without breaking production code</li>
+                        <li>Handles <strong>collaboration</strong> — multiple developers, one codebase</li>
+                        <li>Industry <strong>standard</strong> — used by every major tech company on the planet</li>
+                    </ul>
+                </section>
+
+                <!-- ===== HISTORY OF GIT ===== -->
+                <section id="history-of-git">
+                    <h2>History of Git</h2>
+                    <p>Git was created by <strong>Linus Torvalds</strong> in 2005 — the same person who created the Linux kernel. The Linux kernel project had been using a proprietary version control system called BitKeeper, but when the free license was revoked, Linus built Git in just a few weeks as a replacement.</p>
+                    <div class="highlight-box">
+                        <h3>⚡ Git Fun Fact</h3>
+                        <p>Git was designed to handle the Linux kernel — one of the largest open-source codebases in existence. It was built for speed, data integrity, and distributed workflows from day one. If it can handle Linux, it can handle your project.</p>
+                    </div>
+                    <p>Today, Git is used by over <strong>100 million developers</strong> worldwide and is the backbone of platforms like GitHub, GitLab, and Bitbucket.</p>
+                </section>
+
+                <!-- ===== WHAT IS GITHUB ===== -->
+                <section id="what-is-github">
+                    <h2>What is GitHub?</h2>
+                    <p><strong>GitHub</strong> is a cloud-based hosting platform for Git repositories. It adds collaboration features on top of Git — things Git alone cannot do.</p>
+                    <ul>
+                        <li><strong>Remote storage</strong> — your code is backed up in the cloud</li>
+                        <li><strong>Pull Requests</strong> — propose and review code changes</li>
+                        <li><strong>Issues</strong> — track bugs and feature requests</li>
+                        <li><strong>Actions</strong> — automate workflows (CI/CD)</li>
+                        <li><strong>Pages</strong> — host static websites for free</li>
+                        <li><strong>Codespaces</strong> — cloud development environments</li>
+                    </ul>
+                    <p>GitHub was founded in 2008 and acquired by Microsoft in 2018 for $7.5 billion. It hosts over 300 million repositories.</p>
+                </section>
+
+                <!-- ===== GIT VS GITHUB ===== -->
+                <section id="git-vs-github">
+                    <h2>Git vs GitHub</h2>
+                    <p>This is one of the most common points of confusion for beginners. Here is the clearest way to understand it:</p>
+                    <table class="dns-table">
+                        <tr>
+                            <th>Feature</th>
+                            <th>Git</th>
+                            <th>GitHub</th>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>Version Control Tool</td>
+                            <td>Cloud Hosting Platform</td>
+                        </tr>
+                        <tr>
+                            <td>Where it runs</td>
+                            <td>Your local machine</td>
+                            <td>The cloud (browser)</td>
+                        </tr>
+                        <tr>
+                            <td>Internet required?</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Created by</td>
+                            <td>Linus Torvalds (2005)</td>
+                            <td>Tom Preston-Werner (2008)</td>
+                        </tr>
+                        <tr>
+                            <td>Open source?</td>
+                            <td>Yes</td>
+                            <td>No (but has free tier)</td>
+                        </tr>
+                        <tr>
+                            <td>Collaboration</td>
+                            <td>Manual (patches/email)</td>
+                            <td>Pull Requests, Issues, Teams</td>
+                        </tr>
+                        <tr>
+                            <td>Owned by</td>
+                            <td>Community</td>
+                            <td>Microsoft</td>
+                        </tr>
+                    </table>
+                    <div class="info-box">
+                        <p><strong>Simple analogy:</strong> Git is like Microsoft Word — it's the tool that lets you write and track documents. GitHub is like Google Drive — it's where you store and share those documents in the cloud.</p>
+                    </div>
+                </section>
+
+                <!-- ===== INSTALLING GIT ===== -->
+                <section id="installing-git">
+                    <h2>Installing Git</h2>
+                    <p>Git must be installed on your local machine before you can use it. Here is how to install it on each operating system.</p>
+
+                    <h3>Windows</h3>
+                    <p>Download the official installer from <a href="https://git-scm.com/download/win" class="custom-link" target="_blank">git-scm.com</a>. Run the installer and follow the prompts. Git Bash (a Linux-style terminal for Windows) will be included.</p>
+
+                    <h3>macOS</h3>
+                    <div class="code-block">
+                        <pre><code>brew install git</code></pre>
+                    </div>
+                    <p>Or install Xcode Command Line Tools, which includes Git:</p>
+                    <div class="code-block">
+                        <pre><code>xcode-select --install</code></pre>
+                    </div>
+
+                    <h3>Linux (Ubuntu/Debian)</h3>
+                    <div class="code-block">
+                        <pre><code>sudo apt update
+sudo apt install git</code></pre>
+                    </div>
+
+                    <h3>Verify Installation</h3>
+                    <div class="code-block">
+                        <pre><code>git --version</code></pre>
+                    </div>
+                    <p>Expected output:</p>
+                    <div class="code-block">
+                        <pre><code>git version 2.44.0</code></pre>
+                    </div>
+                </section>
+
+                <!-- ===== CONFIGURING GIT ===== -->
+                <section id="configuring-git">
+                    <h2>Configuring Git</h2>
+                    <p>Before making your first commit, you must tell Git who you are. This identity is attached to every commit you make.</p>
+                    <div class="code-block">
+                        <pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+                    </div>
+                    <p>Verify your settings:</p>
+                    <div class="code-block">
+                        <pre><code>git config --list</code></pre>
+                    </div>
+                    <div class="highlight-box">
+                        <h3>🔍 Why --global?</h3>
+                        <p>The <code>--global</code> flag applies these settings to all repositories on your machine. If you need different credentials for a specific project (e.g., a work vs. personal repo), run the same commands inside that project folder without the <code>--global</code> flag.</p>
+                    </div>
+                </section>
+
+                <!-- ===== CREATING REPOSITORY ===== -->
+                <section id="creating-repository">
+                    <h2>Creating a Repository</h2>
+                    <p>There are two ways to start working with a Git repository.</p>
+
+                    <h3>Option 1: Initialize a new repository</h3>
+                    <div class="code-block">
+                        <pre><code>mkdir my-project
+cd my-project
+git init</code></pre>
+                    </div>
+                    <p>This creates a hidden <code>.git</code> folder — the engine of your repository.</p>
+
+                    <h3>Option 2: Clone an existing repository</h3>
+                    <div class="code-block">
+                        <pre><code>git clone https://github.com/username/repository.git</code></pre>
+                    </div>
+                    <p>This downloads the full repository, including all history, to your machine.</p>
+
+                    <div class="info-box">
+                        <p><strong>Pro Tip:</strong> When joining a team project, always use <code>git clone</code> instead of downloading a ZIP file. The ZIP gives you the code. The clone gives you the full history, branches, and the ability to contribute.</p>
+                    </div>
+                </section>
+
+                <!-- ===== GIT WORKFLOW ===== -->
+                <section id="git-workflow">
+                    <h2>The Git Workflow</h2>
+                    <p>Every change you make in Git passes through three stages before it becomes permanent:</p>
+                    <table class="dns-table">
+                        <tr>
+                            <th>Stage</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Working Directory</td>
+                            <td>Your files as you edit them. Git sees them but is not tracking changes yet.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Staging Area (Index)</td>
+                            <td>Files you've explicitly marked for the next commit using <code>git add</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Repository (.git)</td>
+                            <td>Committed snapshots saved permanently in your Git history.</td>
+                        </tr>
+                    </table>
+                    <p>The standard workflow looks like this:</p>
+                    <div class="code-block">
+                        <pre><code># 1. Make changes to your files
+
+# 2. Stage the changes
+git add .
+
+# 3. Commit the snapshot
+git commit -m "Describe what changed"
+
+# 4. Push to GitHub
+git push origin main</code></pre>
+                    </div>
+                </section>
+
+                <!-- ===== 50+ GIT COMMANDS ===== -->
+                <section id="git-commands">
+                    <h2>50+ Git Commands — Organized by Category</h2>
+                    <p>Every command below includes: what it does, the syntax, a real example, and the expected output. Learn them once. Use them forever.</p>
+
+                    <!-- Category 1: Configuration -->
+                    <section id="cmd-config">
+                        <h3>1. Configuration Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git config --global user.name</code></h3>
+                            <p>Sets your identity name for all Git commits on this machine.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git config --global user.name "Your Name"</code></pre></div>
+                            <h4>When to use</h4>
+                            <p>Once, right after installing Git. Required before your first commit.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git config --global user.email</code></h3>
+                            <p>Sets your email address for all Git commits. This links your commits to your GitHub account.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git config --global user.email "you@example.com"</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git config --list</code></h3>
+                            <p>Displays all Git configuration settings currently active on your machine.</p>
+                            <h4>Example Output</h4>
+                            <div class="code-block"><pre><code>user.name=Chaitanya
+user.email=you@example.com
+core.autocrlf=true</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git config --global core.autocrlf</code></h3>
+                            <p>Configures how Git handles line endings between Windows (CRLF) and Linux/macOS (LF).</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code># On Windows
+git config --global core.autocrlf true
+
+# On macOS/Linux
+git config --global core.autocrlf input</code></pre></div>
+                        </div>
+                    </section>
+
+                    <!-- Category 2: Repository -->
+                    <section id="cmd-repo">
+                        <h3>2. Repository Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git init</code></h3>
+                            <p>Initializes a new Git repository in the current folder by creating a <code>.git</code> directory.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git init</code></pre></div>
+                            <h4>Output</h4>
+                            <div class="code-block"><pre><code>Initialized empty Git repository in /your-project/.git/</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git clone</code></h3>
+                            <p>Downloads a full copy of a remote repository, including all history and branches.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git clone https://github.com/username/project.git</code></pre></div>
+                            <h4>Best Practice</h4>
+                            <p>Always clone using HTTPS for public repos and SSH for private repos on your main development machine.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git remote add origin</code></h3>
+                            <p>Connects your local repository to a remote GitHub repository.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git remote add origin https://github.com/username/project.git</code></pre></div>
+                            <h4>When to use</h4>
+                            <p>After <code>git init</code>, to link your local repo to GitHub for the first time.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git remote -v</code></h3>
+                            <p>Lists all remote connections and their URLs. Essential for verifying you're connected to the right repository.</p>
+                            <h4>Output</h4>
+                            <div class="code-block"><pre><code>origin  https://github.com/username/project.git (fetch)
+origin  https://github.com/username/project.git (push)</code></pre></div>
+                        </div>
+                    </section>
+
+                    <!-- Category 3: Status -->
+                    <section id="cmd-status">
+                        <h3>3. Status Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git status</code></h3>
+                            <p>Shows the current state of your working directory and staging area. Use it before every commit.</p>
+                            <h4>Output (clean)</h4>
+                            <div class="code-block"><pre><code>On branch main
+nothing to commit, working tree clean</code></pre></div>
+                            <h4>Output (with untracked files)</h4>
+                            <div class="code-block"><pre><code>On branch main
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+        index.html
+        styles.css
+
+nothing added to commit but untracked files present</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git diff</code></h3>
+                            <p>Shows the exact line-by-line differences between your working directory and the last commit. Run this before staging to review your changes.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git diff</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git log</code></h3>
+                            <p>Shows the full commit history of the current branch.</p>
+                            <h4>Output</h4>
+                            <div class="code-block"><pre><code>commit a1b2c3d4e5f6...
+Author: Chaitanya &lt;you@example.com&gt;
+Date:   Sat Jul 19 2026
+
+    Initial commit</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git log --oneline</code></h3>
+                            <p>Compact view of commit history — one line per commit. Use <code>--graph --decorate</code> for a visual branch map.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git log --oneline --graph --decorate</code></pre></div>
+                            <h4>Output</h4>
+                            <div class="code-block"><pre><code>* a1b2c3d (HEAD -> main, origin/main) Add homepage layout
+* f4e5d6c Fix navigation styles
+* 9b8a7c6 Initial commit</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git show</code></h3>
+                            <p>Shows the details of a specific commit — who made it, when, and what changed.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git show a1b2c3d</code></pre></div>
+                        </div>
+                    </section>
+
+                    <!-- Category 4: Staging -->
+                    <section id="cmd-staging">
+                        <h3>4. Staging Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git add .</code></h3>
+                            <p>Stages all changes (new files, modifications, deletions) in the current directory for the next commit.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git add .</code></pre></div>
+                            <h4>Common Mistake</h4>
+                            <p>Running <code>git commit</code> without <code>git add</code> first results in nothing being committed.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git add filename</code></h3>
+                            <p>Stages only a specific file. Useful for creating focused, atomic commits.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git add index.html
+git add styles.css</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git restore</code></h3>
+                            <p>Discards changes in the working directory — reverting a file to its last committed state. <strong>Cannot be undone.</strong></p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git restore index.html</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git reset</code></h3>
+                            <p>Unstages a file — removes it from the staging area but keeps the changes in your working directory.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git reset index.html</code></pre></div>
+                        </div>
+                    </section>
+
+                    <!-- Category 5: Commit -->
+                    <section id="cmd-commit">
+                        <h3>5. Commit Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git commit</code></h3>
+                            <p>Creates a snapshot of the staged changes. Opens your default text editor for the commit message.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git commit</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git commit -m</code></h3>
+                            <p>Creates a commit with a message inline — the most common form.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git commit -m "Add homepage layout and navigation"</code></pre></div>
+                            <h4>Best Practice</h4>
+                            <p>Write commit messages in the imperative tense: "Add feature" not "Added feature". Keep them under 72 characters.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git commit --amend</code></h3>
+                            <p>Modifies the most recent commit — either its message, or its content. Use this to fix typos in commit messages or add a forgotten file.</p>
+                            <h4>Fix message only</h4>
+                            <div class="code-block"><pre><code>git commit --amend -m "Correct commit message"</code></pre></div>
+                            <h4>Add a forgotten file</h4>
+                            <div class="code-block"><pre><code>git add forgotten-file.html
+git commit --amend</code></pre></div>
+                            <div class="warning-box">
+                                <p>⚠️ <strong>Warning:</strong> Never amend a commit that has already been pushed to a shared branch. It rewrites history and will cause conflicts for your teammates.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Category 6: Branch -->
+                    <section id="cmd-branch">
+                        <h3>6. Branch Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git branch</code></h3>
+                            <p>Lists all local branches. The current branch is marked with an asterisk.</p>
+                            <h4>Output</h4>
+                            <div class="code-block"><pre><code>* main
+  feature/homepage
+  bugfix/nav-links</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git checkout -b</code></h3>
+                            <p>Creates and immediately switches to a new branch.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git checkout -b feature/new-page</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git switch</code></h3>
+                            <p>The modern alternative to <code>git checkout</code> for switching branches. Cleaner and more explicit.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git switch main
+git switch -c new-branch</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git branch -d</code></h3>
+                            <p>Deletes a local branch. Use <code>-D</code> (uppercase) to force delete an unmerged branch.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git branch -d feature/old-page</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git branch -M</code></h3>
+                            <p>Renames the current branch. Commonly used to rename <code>master</code> to <code>main</code>.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git branch -M main</code></pre></div>
+                        </div>
+                    </section>
+
+                    <!-- Category 7: Merge -->
+                    <section id="cmd-merge">
+                        <h3>7. Merge Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git merge</code></h3>
+                            <p>Combines another branch into the current branch. Preserves full history with a merge commit.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git switch main
+git merge feature/new-page</code></pre></div>
+                            <h4>When to use</h4>
+                            <p>When integrating completed feature branches into main. Ideal for shared/collaborative branches.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git rebase</code></h3>
+                            <p>Replays your commits on top of another branch, creating a cleaner linear history.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git switch feature/my-work
+git rebase main</code></pre></div>
+                            <h4>Merge vs Rebase — Quick Rule</h4>
+                            <p>Use <code>merge</code> for shared branches (main, develop). Use <code>rebase</code> for local cleanup before opening a pull request.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git cherry-pick</code></h3>
+                            <p>Applies a specific commit from one branch onto your current branch — without merging the entire branch.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git cherry-pick a1b2c3d</code></pre></div>
+                            <h4>When to use</h4>
+                            <p>When you need one specific fix from another branch but are not ready to merge everything.</p>
+                        </div>
+                    </section>
+
+                    <!-- Category 8: Remote -->
+                    <section id="cmd-remote">
+                        <h3>8. Remote Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git push</code></h3>
+                            <p>Uploads your local commits to the remote repository on GitHub.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git push origin main</code></pre></div>
+                            <h4>First push of a new branch</h4>
+                            <div class="code-block"><pre><code>git push -u origin main</code></pre></div>
+                            <p>The <code>-u</code> flag sets the upstream, so future pushes only need <code>git push</code>.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git pull</code></h3>
+                            <p>Downloads changes from the remote and merges them into your current branch. Equivalent to <code>git fetch</code> + <code>git merge</code>.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git pull origin main</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git pull --rebase</code></h3>
+                            <p>Downloads remote changes and replays your local commits on top, avoiding a merge commit. Preferred for keeping a clean history.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git pull --rebase origin main</code></pre></div>
+                            <h4>When to use</h4>
+                            <p>When your push is rejected because the remote has newer commits you don't have locally.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git fetch</code></h3>
+                            <p>Downloads changes from the remote but does <strong>not</strong> merge them. Lets you inspect changes before integrating.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git fetch origin</code></pre></div>
+                            <h4>Fetch vs Pull</h4>
+                            <p><code>fetch</code> is safe — it never touches your working files. <code>pull</code> automatically merges, which can create conflicts.</p>
+                        </div>
+                    </section>
+
+                    <!-- Category 9: Advanced -->
+                    <section id="cmd-advanced">
+                        <h3>9. Advanced Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git stash</code></h3>
+                            <p>Temporarily saves your uncommitted changes so you can switch contexts without losing work.</p>
+                            <h4>Stash your work</h4>
+                            <div class="code-block"><pre><code>git stash</code></pre></div>
+                            <h4>Restore stashed work</h4>
+                            <div class="code-block"><pre><code>git stash pop</code></pre></div>
+                            <h4>View all stashes</h4>
+                            <div class="code-block"><pre><code>git stash list</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git tag</code></h3>
+                            <p>Marks a specific commit as a release version. Tags are used in production deployments.</p>
+                            <h4>Create a tag</h4>
+                            <div class="code-block"><pre><code>git tag v1.0.0
+git push origin v1.0.0</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git bisect</code></h3>
+                            <p>Uses binary search to find the exact commit that introduced a bug.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git bisect start
+git bisect bad         # current commit is broken
+git bisect good v1.0   # this version was working</code></pre></div>
+                            <p>Git will automatically check out commits between the good and bad points for you to test.</p>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git reset --soft HEAD~1</code></h3>
+                            <p>Undoes the last commit but keeps all changes staged. Use this to redo a commit with a better message or additional files.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git reset --soft HEAD~1</code></pre></div>
+                        </div>
+                    </section>
+
+                    <!-- Category 10: Emergency -->
+                    <section id="cmd-emergency">
+                        <h3>10. Emergency Commands</h3>
+
+                        <div class="command-card">
+                            <h3><code>git reflog</code></h3>
+                            <p>Your safety net. Shows a log of <em>every</em> action HEAD has pointed to — including commits that were deleted, reset, or lost. Use this to recover from almost any mistake.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git reflog</code></pre></div>
+                            <h4>Output</h4>
+                            <div class="code-block"><pre><code>a1b2c3d (HEAD -> main) HEAD@{0}: commit: Add footer
+f4e5d6c HEAD@{1}: commit: Add nav
+9b8a7c6 HEAD@{2}: reset: moving to HEAD~1</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git reset --hard</code></h3>
+                            <p>Moves HEAD to a specific commit and <strong>permanently discards</strong> all changes after that point. Use with extreme caution.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git reset --hard HEAD~1        # go back one commit
+git reset --hard a1b2c3d       # go back to specific commit</code></pre></div>
+                            <div class="warning-box">
+                                <p>⚠️ <strong>Danger:</strong> This permanently destroys uncommitted changes and all commits after the target. If you accidentally reset too far, use <code>git reflog</code> to recover the lost commits.</p>
+                            </div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git clean</code></h3>
+                            <p>Removes untracked files from the working directory. Useful for cleaning build artifacts or test files.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git clean -fd    # remove untracked files and directories</code></pre></div>
+                        </div>
+
+                        <div class="command-card">
+                            <h3><code>git fsck</code></h3>
+                            <p>Checks the integrity of your Git repository. Useful for diagnosing corruption issues.</p>
+                            <h4>Syntax</h4>
+                            <div class="code-block"><pre><code>git fsck --full</code></pre></div>
+                        </div>
+                    </section>
+                </section>
+
+                <!-- ===== REAL-WORLD SCENARIOS ===== -->
+                <section id="real-world">
+                    <h2>Real-World Scenarios — Your Git Journey</h2>
+                    <p>During the development of Cyvora Studio application, I encountered several real Git challenges that every developer faces. Rather than hiding those mistakes, I've documented them here with the exact errors and solutions. My goal is to help beginners troubleshoot Git problems faster by learning from real development experiences.</p>
+                    <div class="info-box">
+                        <p><strong>What makes this section different:</strong> Almost every Git tutorial says <code>git add</code>, <code>git commit</code>, <code>git push</code>. This section shows you what happens when that fails — and exactly how to fix it.</p>
+                    </div>
+
+                    <!-- Scenario 1 -->
+                    <div class="scenario-card" id="scenario-1">
+                        <div class="scenario-number">🚨 Scenario 1</div>
+                        <h3>Untracked Files Present</h3>
+                        <p><strong>Situation:</strong> You create a new project and run <code>git status</code>.</p>
+                        <h4>Error Output</h4>
+                        <div class="code-block"><pre><code>On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+        index.html
+        css/
+        js/
+
+nothing added to commit but untracked files present</code></pre></div>
+                        <h4>Why this happens</h4>
+                        <p>Git has found files in your project folder but isn't tracking them yet. You initialized Git but never told it which files to include.</p>
+                        <h4>Solution</h4>
+                        <div class="code-block"><pre><code>git add .
+git commit -m "Initial commit"</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Always stage files before committing. <code>git add</code> is the bridge between your files and your commit.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 2 -->
+                    <div class="scenario-card" id="scenario-2">
+                        <div class="scenario-number">🚨 Scenario 2</div>
+                        <h3>Push Rejected — Non-Fast-Forward</h3>
+                        <p><strong>Situation:</strong> You run <code>git push</code> and it fails.</p>
+                        <h4>Error Output</h4>
+                        <div class="code-block"><pre><code>! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/...'
+hint: Updates were rejected because the remote contains work
+hint: that you do not have locally.</code></pre></div>
+                        <h4>Why this happens</h4>
+                        <p>Someone else (or you, from another machine) pushed commits to GitHub that your local repository doesn't have yet. Git refuses to overwrite those commits.</p>
+                        <h4>Solution</h4>
+                        <div class="code-block"><pre><code>git pull --rebase origin main
+git push</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Always pull the latest changes before pushing. Make <code>git pull --rebase</code> your default pull strategy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 3 -->
+                    <div class="scenario-card" id="scenario-3">
+                        <div class="scenario-number">🚨 Scenario 3</div>
+                        <h3>Wrong GitHub Repository Connected</h3>
+                        <p><strong>Situation:</strong> You push code but GitHub doesn't show the latest changes. The files are appearing in the wrong repository.</p>
+                        <h4>Diagnose</h4>
+                        <div class="code-block"><pre><code>git remote -v</code></pre></div>
+                        <h4>Output (wrong repo)</h4>
+                        <div class="code-block"><pre><code>origin  https://github.com/username/wrong-repo.git (fetch)
+origin  https://github.com/username/wrong-repo.git (push)</code></pre></div>
+                        <h4>Solution</h4>
+                        <div class="code-block"><pre><code>git remote remove origin
+git remote add origin https://github.com/username/correct-repo.git</code></pre></div>
+                        <h4>Verify</h4>
+                        <div class="code-block"><pre><code>git remote -v</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Always verify your remote URL with <code>git remote -v</code> when setting up a new project.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 4 -->
+                    <div class="scenario-card" id="scenario-4">
+                        <div class="scenario-number">🚨 Scenario 4</div>
+                        <h3>LF Will Be Replaced by CRLF Warning</h3>
+                        <h4>Error Output</h4>
+                        <div class="code-block"><pre><code>warning: LF will be replaced by CRLF in index.html.
+The file will have its original line endings in your working directory</code></pre></div>
+                        <h4>Why this happens</h4>
+                        <p>Windows uses <code>CRLF</code> (\r\n) for line endings. Linux/macOS use <code>LF</code> (\n). Git is warning you it will auto-convert when you commit.</p>
+                        <h4>Solution</h4>
+                        <p>Usually, <strong>no action is required</strong>. The warning is informational, not an error. If you want to suppress it:</p>
+                        <div class="code-block"><pre><code>git config --global core.autocrlf true</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> This is a warning, not an error. Your code will work fine. On Windows, <code>core.autocrlf true</code> is the standard setting.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 5 -->
+                    <div class="scenario-card" id="scenario-5">
+                        <div class="scenario-number">🚨 Scenario 5</div>
+                        <h3>Nothing to Commit, Working Tree Clean</h3>
+                        <h4>Output</h4>
+                        <div class="code-block"><pre><code>On branch main
+nothing to commit, working tree clean</code></pre></div>
+                        <h4>Meaning</h4>
+                        <p>Everything in your project has already been committed. Git is up to date. No action is required.</p>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> This is a <em>good</em> message. It means your repository is in a clean state. You only need to commit when you've made new changes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 6 -->
+                    <div class="scenario-card" id="scenario-6">
+                        <div class="scenario-number">🚨 Scenario 6</div>
+                        <h3>Accidentally Forgot a File in Last Commit</h3>
+                        <p><strong>Situation:</strong> You committed, but realized you forgot to include one file. You don't want to create a whole new commit just for that one file.</p>
+                        <h4>Solution — Amend the previous commit</h4>
+                        <div class="code-block"><pre><code>git add forgotten-file.html
+git commit --amend</code></pre></div>
+                        <p>This opens your editor. Save and close — the file is now part of the previous commit as if it was always there.</p>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Use <code>git commit --amend</code> to fix the last commit. Never push an amended commit to a shared branch.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 7 -->
+                    <div class="scenario-card" id="scenario-7">
+                        <div class="scenario-number">🚨 Scenario 7</div>
+                        <h3>Wrong Commit Message</h3>
+                        <p><strong>Situation:</strong> You typed <code>"asd"</code> as your commit message by accident.</p>
+                        <h4>Solution</h4>
+                        <div class="code-block"><pre><code>git commit --amend -m "Initial commit: add homepage layout"</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> <code>git commit --amend -m</code> rewrites the last commit message instantly.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 8 -->
+                    <div class="scenario-card" id="scenario-8">
+                        <div class="scenario-number">🚨 Scenario 8</div>
+                        <h3>Accidentally Deleted a Branch</h3>
+                        <p><strong>Situation:</strong> You ran <code>git branch -d feature/important</code> and immediately regretted it. ( in case if you dont' know why it will be used it will be used to safely delete a local git branch named as feature/important.)</p>
+                        <h4>Solution — Use reflog to find the lost commit</h4>
+                        <div class="code-block"><pre><code>git reflog</code></pre></div>
+                        <h4>Output</h4>
+                        <div class="code-block"><pre><code>a1b2c3d HEAD@{0}: checkout: moving from feature/important to main
+f4e5d6c HEAD@{1}: commit: Last commit on feature branch</code></pre></div>
+                        <h4>Recover</h4>
+                        <div class="code-block"><pre><code>git checkout f4e5d6c
+git switch -c feature/important</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Git never truly deletes commits immediately. <code>git reflog</code> is your time machine.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 9 -->
+                    <div class="scenario-card" id="scenario-9">
+                        <div class="scenario-number">🚨 Scenario 9</div>
+                        <h3>Merge Conflict</h3>
+                        <h4>Error Output</h4>
+                        <div class="code-block"><pre><code>CONFLICT (content): Merge conflict in index.html
+Automatic merge failed; fix conflicts and then commit the result.</code></pre></div>
+                        <h4>Why this happens</h4>
+                        <p>Two developers (or two branches) modified the same lines in the same file. Git doesn't know which version to keep — it asks you to decide.</p>
+                        <h4>Open the conflicted file. You'll see:</h4>
+                        <div class="code-block"><pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+&lt;h1&gt;Welcome to Cyvora&lt;/h1&gt;
+=======
+&lt;h1&gt;Welcome to Cyvora Studio&lt;/h1&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/update-title</code></pre></div>
+                        <h4>Solution</h4>
+                        <p>Edit the file to keep the version you want, remove the conflict markers (<code>&lt;&lt;&lt;</code>, <code>===</code>, <code>&gt;&gt;&gt;</code>), then:</p>
+                        <div class="code-block"><pre><code>git add index.html
+git commit</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Merge conflicts are normal. They are not a failure — they are Git asking for your judgment.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 10 -->
+                    <div class="scenario-card" id="scenario-10">
+                        <div class="scenario-number">🚨 Scenario 10</div>
+                        <h3>Detached HEAD</h3>
+                        <h4>Error Output</h4>
+                        <div class="code-block"><pre><code>HEAD detached at abc1234</code></pre></div>
+                        <h4>Why this happens</h4>
+                        <p>You checked out a specific commit hash instead of a branch name. HEAD (which normally points to a branch) is now pointing directly at a commit — hence "detached".</p>
+                        <h4>Solution</h4>
+                        <div class="code-block"><pre><code>git switch main</code></pre></div>
+                        <p>If you made commits while in detached HEAD and want to keep them:</p>
+                        <div class="code-block"><pre><code>git switch -c my-recovery-branch</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Always work on a named branch. Never commit in detached HEAD state unless you immediately save that work to a new branch.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 11 -->
+                    <div class="scenario-card" id="scenario-11">
+                        <div class="scenario-number">🚨 Scenario 11</div>
+                        <h3>Accidentally Deleted Local Changes</h3>
+                        <p><strong>Situation:</strong> You ran <code>git restore</code> or <code>git reset --hard</code> and lost uncommitted work.</p>
+                        <h4>If you had stashed the work:</h4>
+                        <div class="code-block"><pre><code>git stash list
+git stash pop</code></pre></div>
+                        <h4>If you used reflog:</h4>
+                        <div class="code-block"><pre><code>git reflog
+git reset --hard HEAD@{1}</code></pre></div>
+                        <div class="warning-box">
+                            <p>⚠️ <strong>Warning:</strong> If the changes were never committed or stashed, they may be permanently gone. This is why committing frequently is important.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 12 -->
+                    <div class="scenario-card" id="scenario-12">
+                        <div class="scenario-number">🚨 Scenario 12</div>
+                        <h3>Remote Origin Already Exists</h3>
+                        <h4>Error Output</h4>
+                        <div class="code-block"><pre><code>error: remote origin already exists.</code></pre></div>
+                        <h4>Solution</h4>
+                        <div class="code-block"><pre><code>git remote remove origin
+git remote add origin https://github.com/username/new-repo.git</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> You can only have one remote named <code>origin</code>. Remove it before adding a new one.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 13 -->
+                    <div class="scenario-card" id="scenario-13">
+                        <div class="scenario-number">🚨 Scenario 13</div>
+                        <h3>On Wrong Branch — Renaming master to main</h3>
+                        <p><strong>Situation:</strong> Your repository uses <code>master</code> but GitHub expects <code>main</code>.</p>
+                        <h4>Solution</h4>
+                        <div class="code-block"><pre><code>git branch -M main</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Modern Git repositories use <code>main</code> as the default branch. The <code>-M</code> flag renames and resets the upstream tracking.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 14 -->
+                    <div class="scenario-card" id="scenario-14">
+                        <div class="scenario-number">🚨 Scenario 14</div>
+                        <h3>How to Clone an Existing Project (Joining a Team)</h3>
+                        <p><strong>Situation:</strong> A new team member is joining the project. Instead of sharing a ZIP file, use Git.</p>
+                        <div class="code-block"><pre><code>git clone https://github.com/username/project.git
+cd project
+npm install
+npm start</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Cloning gives every team member the full history, all branches, and the ability to push changes. A ZIP file gives them none of that.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 15 -->
+                    <div class="scenario-card" id="scenario-15">
+                        <div class="scenario-number">🚨 Scenario 15</div>
+                        <h3>Ignore Unnecessary Files — .gitignore</h3>
+                        <p><strong>Situation:</strong> You accidentally committed <code>node_modules</code> or <code>.env</code> to GitHub.</p>
+                        <h4>Create a .gitignore file</h4>
+                        <div class="code-block"><pre><code>node_modules/
+.env
+.vscode/
+dist/
+.DS_Store</code></pre></div>
+                        <h4>If already committed, remove from tracking:</h4>
+                        <div class="code-block"><pre><code>git rm -r --cached node_modules
+git commit -m "Remove node_modules from tracking"</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Create a <code>.gitignore</code> before your first commit. Never commit <code>.env</code> files — they contain secrets.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 16 -->
+                    <div class="scenario-card" id="scenario-16">
+                        <div class="scenario-number">🚨 Scenario 16</div>
+                        <h3>Check What Changed Before Committing</h3>
+                        <p><strong>Situation:</strong> You've made changes and want to review them before staging.</p>
+                        <div class="code-block"><pre><code>git diff</code></pre></div>
+                        <p>To see what's already staged:</p>
+                        <div class="code-block"><pre><code>git diff --staged</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Always review with <code>git diff</code> before committing. It takes five seconds and prevents many accidental commits.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 17 -->
+                    <div class="scenario-card" id="scenario-17">
+                        <div class="scenario-number">🚨 Scenario 17</div>
+                        <h3>View Commit History Visually</h3>
+                        <div class="code-block"><pre><code>git log --oneline --graph --decorate</code></pre></div>
+                        <h4>Output</h4>
+                        <div class="code-block"><pre><code>*   a1b2c3d (HEAD -> main) Merge feature/nav into main
+|\
+| * f4e5d6c Add navigation component
+|/
+* 9b8a7c6 Initial commit</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> This view is invaluable for understanding your branch history and merge points.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 18 -->
+                    <div class="scenario-card" id="scenario-18">
+                        <div class="scenario-number">🚨 Scenario 18</div>
+                        <h3>Undo Last Commit (Keep Your Changes)</h3>
+                        <p><strong>Situation:</strong> You committed too early and want to undo the commit but keep all your file changes.</p>
+                        <div class="code-block"><pre><code>git reset --soft HEAD~1</code></pre></div>
+                        <p>Your changes are now back in the staging area, ready to be re-committed correctly.</p>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> <code>--soft</code> keeps your changes. <code>--hard</code> destroys them. Always double-check which one you need.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 19 -->
+                    <div class="scenario-card" id="scenario-19">
+                        <div class="scenario-number">🚨 Scenario 19</div>
+                        <h3>Restore a Deleted File</h3>
+                        <p><strong>Situation:</strong> You accidentally deleted a file that was already committed.</p>
+                        <div class="code-block"><pre><code>git restore index.html</code></pre></div>
+                        <p>This restores the file from the last committed version.</p>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> If a file was committed at any point, Git can restore it. This is one of the most powerful benefits of version control.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 20 -->
+                    <div class="scenario-card" id="scenario-20">
+                        <div class="scenario-number">🚨 Scenario 20</div>
+                        <h3>Accidentally Deleted a Commit — Recover with Reflog</h3>
+                        <p><strong>Situation:</strong> You ran <code>git reset --hard HEAD~2</code> and lost two commits you needed.</p>
+                        <div class="code-block"><pre><code>git reflog</code></pre></div>
+                        <h4>Output</h4>
+                        <div class="code-block"><pre><code>a1b2c3d HEAD@{0}: reset: moving to HEAD~2
+f4e5d6c HEAD@{1}: commit: Add contact section     ← this one
+9b8a7c6 HEAD@{2}: commit: Add footer              ← and this one</code></pre></div>
+                        <h4>Recover</h4>
+                        <div class="code-block"><pre><code>git reset --hard f4e5d6c</code></pre></div>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> <code>git reflog</code> stores the history of where HEAD has been for 90 days by default. It is your ultimate recovery tool.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 21 -->
+                    <div class="scenario-card" id="scenario-21">
+                        <div class="scenario-number">🚨 Scenario 21</div>
+                        <h3>My Latest GitHub Commit Wasn't Deploying to Vercel</h3>
+                        <h4>Problem</h4>
+                        <p><strong>Situation:</strong> I pushed new code to GitHub, but Vercel kept deploying an older commit.</p>
+                        <h4>Why this happens</h4>
+                        <p>The repository synchronization between GitHub and Vercel wasn't triggering a new deployment, or the deployment was linked to an older commit.</p>
+                        <h4>Solution</h4>
+                        <div class="code-block"><pre><code>git log --oneline -5 <p>Verify the latest commits</p></code></pre></div>
+                        <div class="code-block"><pre><code>git branch -vv <p>Verify the current Branch</p></code></pre></div>
+                        <div class="code-block"><pre><code>git remote -v <p>Verify the remote URL</p></code></pre></div>
+                        <div class="code-block"><pre><code>git rev-parse --short HEAD<p>Check the current commit & Compare it with the latest commit on GitHub</p></code></pre></div>
+                        <div class="code-block"><pre><code>git push origin main <p>Force push the latest changes</p></code></pre></div>
+                        <p>After these steps trigger a fresh deployment manually after confirming GitHub contained the latest commit.</p>
+                        <div class="success-box">
+                            <p>✅ <strong>Lesson:</strong> Always verify GitHub received your latest commit before investigating Vercel.</p>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- ===== BEST PRACTICES ===== -->
+                <section id="best-practices">
+                    <h2>Git Best Practices</h2>
+                    <p>These are the habits that separate beginners from professional developers.</p>
+
+                    <h3>1. Commit Often, Commit Small</h3>
+                    <p>Each commit should represent one logical change. Small commits are easier to review, debug, and revert if needed.</p>
+
+                    <h3>2. Write Meaningful Commit Messages</h3>
+                    <div class="code-block"><pre><code># ❌ Bad
+git commit -m "fix"
+git commit -m "stuff"
+git commit -m "asd"
+
+# ✅ Good
+git commit -m "Fix navigation link color on mobile"
+git commit -m "Add footer with social media icons"
+git commit -m "Refactor hero section CSS for performance"</code></pre></div>
+
+                    <h3>3. Always Pull Before Push</h3>
+                    <div class="code-block"><pre><code>git pull --rebase origin main
+git push</code></pre></div>
+
+                    <h3>4. Use Branches for Every Feature</h3>
+                    <div class="code-block"><pre><code>git switch -c feature/contact-form
+# make changes
+git switch main
+git merge feature/contact-form
+git branch -d feature/contact-form</code></pre></div>
+
+                    <h3>5. Never Commit Secrets</h3>
+                    <p>API keys, passwords, and <code>.env</code> files must never appear in your Git history. Once pushed to GitHub, even if you delete them, they may have been cached or scraped.</p>
+
+                    <h3>6. Keep a Clean .gitignore</h3>
+                    <div class="code-block"><pre><code>node_modules/
+.env
+.env.local
+dist/
+.vscode/
+.DS_Store
+*.log</code></pre></div>
+
+                    <h3>7. Review with git status and git diff</h3>
+                    <p>Before every <code>git add</code> and <code>git commit</code>, check what you're about to commit. Prevent accidental inclusions.</p>
+                </section>
+
+                <!-- ===== INTERVIEW QUESTIONS ===== -->
+                <section id="interview-questions">
+                    <h2>Git Interview Questions</h2>
+                    <p>These are the most frequently asked Git questions in developer interviews at all levels.</p>
+
+                    <div class="command-card">
+                        <h3>Q1: What is the difference between <code>git fetch</code> and <code>git pull</code>?</h3>
+                        <p><code>git fetch</code> downloads changes from the remote but does not merge them into your local branch. <code>git pull</code> is <code>git fetch</code> + <code>git merge</code> in a single command. Use <code>fetch</code> when you want to inspect remote changes before integrating them.</p>
+                    </div>
+
+                    <div class="command-card">
+                        <h3>Q2: What is the difference between <code>git merge</code> and <code>git rebase</code>?</h3>
+                        <p><code>git merge</code> creates a merge commit that preserves the full branch history. <code>git rebase</code> replays your commits on top of another branch, producing a linear history with no merge commit. Use merge for shared branches (main), rebase for local feature cleanup before a PR.</p>
+                    </div>
+
+                    <div class="command-card">
+                        <h3>Q3: What is HEAD in Git?</h3>
+                        <p>HEAD is a pointer that tracks your current position in the repository. Normally it points to the tip of your current branch. In a detached HEAD state, it points directly to a specific commit rather than a branch name.</p>
+                    </div>
+
+                    <div class="command-card">
+                        <h3>Q4: What is a Detached HEAD?</h3>
+                        <p>A detached HEAD occurs when you check out a specific commit hash instead of a branch. You're no longer on any named branch. Any commits made in this state won't belong to any branch unless you create one. Fix with: <code>git switch main</code> or <code>git switch -c new-branch</code>.</p>
+                    </div>
+
+                    <div class="command-card">
+                        <h3>Q5: What is <code>git stash</code>?</h3>
+                        <p>git stash saves your uncommitted changes to a temporary stack and restores the working directory to the last commit state. Use <code>git stash pop</code> to restore the saved work. Useful when you need to switch branches urgently without committing unfinished work.</p>
+                    </div>
+
+                    <div class="command-card">
+                        <h3>Q6: What is <code>git cherry-pick</code>?</h3>
+                        <p>git cherry-pick applies the changes from a specific commit to your current branch, without merging the entire source branch. It's useful for backporting bug fixes to older release branches.</p>
+                    </div>
+
+                    <div class="command-card">
+                        <h3>Q7: What is the difference between <code>git reset</code> and <code>git revert</code>?</h3>
+                        <p><code>git reset</code> moves HEAD back to a previous commit, rewriting history. It should not be used on shared branches. <code>git revert</code> creates a new commit that undoes a previous commit, preserving history. Use revert for public/shared branches.</p>
+                    </div>
+
+                    <div class="command-card">
+                        <h3>Q8: What is <code>git reflog</code>?</h3>
+                        <p>git reflog records every movement of HEAD over the past 90 days, even for commits that have been reset or deleted. It is your primary recovery tool when you've lost commits, accidentally reset too far, or need to undo a rebase.</p>
+                    </div>
+
+                    <div class="command-card">
+                        <h3>Q9: Explain git squash.</h3>
+                        <p>Squashing combines multiple commits into a single commit. It's done during an interactive rebase: <code>git rebase -i HEAD~3</code> then marking commits as <code>squash</code> or <code>s</code>. Useful for cleaning up a messy feature branch before merging into main.</p>
+                    </div>
+
+                    <div class="command-card">
+                        <h3>Q10: What are branching strategies?</h3>
+                        <p>Common strategies include: <strong>Git Flow</strong> (main, develop, feature, release, hotfix branches), <strong>GitHub Flow</strong> (main + feature branches, simplified), and <strong>Trunk-based development</strong> (all developers commit directly to main with feature flags). GitHub Flow is the most widely used for web development teams.</p>
+                    </div>
+                </section>
+
+                <!-- ===== CHEAT SHEET ===== -->
+                <section id="cheat-sheet">
+                    <h2>Git Cheat Sheet</h2>
+                    <p>A quick reference for the most commonly used Git commands.</p>
+                    <table class="dns-table">
+                        <tr>
+                            <th>Command</th>
+                            <th>What it does</th>
+                        </tr>
+                        <tr><td><code>git init</code></td><td>Initialize a new repository</td></tr>
+                        <tr><td><code>git clone &lt;url&gt;</code></td><td>Clone a remote repository</td></tr>
+                        <tr><td><code>git status</code></td><td>Check current state</td></tr>
+                        <tr><td><code>git add .</code></td><td>Stage all changes</td></tr>
+                        <tr><td><code>git commit -m "msg"</code></td><td>Commit with message</td></tr>
+                        <tr><td><code>git push origin main</code></td><td>Push to remote</td></tr>
+                        <tr><td><code>git pull --rebase</code></td><td>Pull with rebase</td></tr>
+                        <tr><td><code>git fetch origin</code></td><td>Fetch without merging</td></tr>
+                        <tr><td><code>git switch -c &lt;branch&gt;</code></td><td>Create and switch branch</td></tr>
+                        <tr><td><code>git merge &lt;branch&gt;</code></td><td>Merge branch into current</td></tr>
+                        <tr><td><code>git rebase main</code></td><td>Rebase onto main</td></tr>
+                        <tr><td><code>git stash</code></td><td>Stash uncommitted changes</td></tr>
+                        <tr><td><code>git stash pop</code></td><td>Restore stashed changes</td></tr>
+                        <tr><td><code>git log --oneline</code></td><td>Compact history view</td></tr>
+                        <tr><td><code>git diff</code></td><td>See unstaged changes</td></tr>
+                        <tr><td><code>git diff --staged</code></td><td>See staged changes</td></tr>
+                        <tr><td><code>git reset --soft HEAD~1</code></td><td>Undo last commit, keep changes</td></tr>
+                        <tr><td><code>git reset --hard HEAD~1</code></td><td>Undo last commit, discard changes</td></tr>
+                        <tr><td><code>git reflog</code></td><td>View full HEAD history</td></tr>
+                        <tr><td><code>git cherry-pick &lt;hash&gt;</code></td><td>Apply specific commit</td></tr>
+                        <tr><td><code>git commit --amend</code></td><td>Fix last commit</td></tr>
+                        <tr><td><code>git tag v1.0.0</code></td><td>Create version tag</td></tr>
+                        <tr><td><code>git remote -v</code></td><td>List remote connections</td></tr>
+                        <tr><td><code>git branch -M main</code></td><td>Rename branch to main</td></tr>
+                        <tr><td><code>git restore &lt;file&gt;</code></td><td>Discard file changes</td></tr>
+                        <tr><td><code>git clean -fd</code></td><td>Remove untracked files</td></tr>
+                    </table>
+                </section>
+
+                <!-- ===== FAQ ===== -->
+                <section id="faq">
+                    <div class="highlight-box">
+                        <h2>Frequently Asked Questions</h2>
+
+                        <h3>1. What is the difference between Git and GitHub?</h3>
+                        <p>Git is a local version control tool. GitHub is a cloud platform that hosts Git repositories and adds collaboration features. You use Git to manage your code, and GitHub to share and back it up online.</p>
+
+                        <h3>2. Can I use Git without GitHub?</h3>
+                        <p>Yes. Git is a standalone tool that works entirely offline. GitHub is just one of many remote hosting platforms (others include GitLab and Bitbucket). You only need GitHub when you want to push your code to the cloud or collaborate with others.</p>
+
+                        <h3>3. What is the difference between git merge and git rebase?</h3>
+                        <p>git merge creates a merge commit, preserving the full branching history. git rebase rewrites commit history to create a clean, linear timeline. Use merge for shared branches, rebase for local feature cleanup before a pull request.</p>
+
+                        <h3>4. How do I undo a git commit?</h3>
+                        <p>To undo and keep your changes: <code>git reset --soft HEAD~1</code>. To undo and discard your changes: <code>git reset --hard HEAD~1</code>. To create a new commit that reverses a previous one (safe for shared branches): <code>git revert HEAD</code>.</p>
+
+                        <h3>5. What is a detached HEAD state?</h3>
+                        <p>It means HEAD is pointing to a specific commit rather than a branch. This happens when you check out a commit hash. Fix it with <code>git switch main</code> to return to your main branch.</p>
+
+                        <h3>6. How do I recover a deleted commit?</h3>
+                        <p>Use <code>git reflog</code> to find the commit hash, then <code>git reset --hard &lt;hash&gt;</code> to restore your branch to that point. Git keeps a 90-day log of all HEAD movements.</p>
+
+                        <h3>7. What should I put in .gitignore?</h3>
+                        <p>Always ignore: <code>node_modules/</code>, <code>.env</code>, <code>.env.local</code>, build outputs (<code>dist/</code>, <code>build/</code>), IDE files (<code>.vscode/</code>, <code>.idea/</code>), and OS files (<code>.DS_Store</code>, <code>Thumbs.db</code>).</p>
+
+                        <h3>8. What is the difference between git reset --soft, --mixed, and --hard?</h3>
+                        <p><code>--soft</code>: Undo commit, keep changes staged. <code>--mixed</code> (default): Undo commit, keep changes unstaged. <code>--hard</code>: Undo commit, delete all changes permanently.</p>
+                    </div>
+                </section>
+
+                <!-- ===== CONCLUSION ===== -->
+                <section id="conclusion">
+                    <h2>Conclusion</h2>
+                    <p>Git is not just a tool — it is the foundation of modern software development. Every professional developer uses it daily. Mastering it is one of the highest-leverage skills you can develop.</p>
+                    <p>This guide was built from real development experience at Cyvora Studio. Every scenario in the real-world section happened during actual projects. The best way to learn Git is to use it — make branches, break things, and use <code>git reflog</code> to fix them.</p>
+
+                    <div class="highlight-box">
+                        <h3>🌟 Your Next Steps</h3>
+                        <ul>
+                            <li>Set up Git on your machine and configure your identity</li>
+                            <li>Create a GitHub account and your first repository</li>
+                            <li>Deploy a project using GitHub + Vercel</li>
+                            <li>Practice branching and merging on a side project</li>
+                            <li>Read the dedicated deep-dive articles linked in Related Articles</li>
+                        </ul>
+                    </div>
+                    <p><strong>If you learned something from this guide, share it with someone who is just starting out. The best investment in the developer community is passing knowledge forward.</strong></p>
+                </section>
+
+            </div>
+
+            <!-- ===== Blog Footer / Author ===== -->
+            <footer class="blog-footer">
+                <div class="author-info">
+                    <div class="author-avatar">C</div>
+                    <div class="author-details">
+                        <h3>Cyvora</h3>
+                        <p>Developer, writer, and founder. Passionate about helping others build and launch their projects.</p>
+                    </div>
+                </div>
+                <div class="share-buttons">
+                    <a href="https://twitter.com/intent/tweet?text=Git%20%26%20GitHub%20Complete%20Guide%20%E2%80%94%20Beginner%20to%20Advanced&url=https://www.cyvora.in/blogs/git-github-complete-guide.html" class="share-btn" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 9-2 9-2"/></svg>
+                        Share on Twitter
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.cyvora.in/blogs/git-github-complete-guide.html" class="share-btn" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                        Share on LinkedIn
+                    </a>
+                </div>
+            </footer>
+
+            <!-- ===== Related Posts ===== -->
+            <section class="related-posts">
+                <h2>Related Articles</h2>
+                <div class="related-grid">
+                    <a href="vercel-deployment-guide.html" class="related-card">
+                        <div class="related-image">🚀</div>
+                        <h3>How to Deploy on Vercel with a Custom Domain</h3>
+                        <p>Step-by-step guide to deploying your website on Vercel using GitHub and connecting a custom domain from GoDaddy or Namecheap.</p>
+                        <span class="read-more">Read Article →</span>
+                    </a>
+                    <a href="../blogs.html" class="related-card">
+                        <div class="related-image">🔀</div>
+                        <h3>Git Merge vs Rebase — Deep Dive</h3>
+                        <p>Understand when to merge and when to rebase, with visual diagrams and real branch scenarios.</p>
+                        <span class="read-more">Read Article →</span>
+                    </a>
+                </div>
+            </section>
+
+        </article>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <a href="/index.html" aria-label="Home">
+                        <img src="/favicon.ico" alt="Logo" width="24" height="24">
+                    </a>
+                </div>
+                <div>
+                    <div class="footer-name">CYVORA STUDIO</div>
+                    <div class="footer-text">Learn. Build. Grow.</div>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../about.html">About</a>
+                <a href="../blogs.html">Blogs</a>
+                <a href="../tips.html">Tips</a>
+                <a href="../tools/index.html">Tools</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

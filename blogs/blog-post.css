@@ -644,3 +644,153 @@
     font-size: 0.85rem;
   }
 }
+
+/* ===================================================================
+   ADDITIONS FOR git-github-complete-guide.html
+   Paste these rules at the BOTTOM of your existing blog-post.css
+   They add new components only — nothing existing is changed.
+   =================================================================== */
+
+/* ===== Command Cards ===== */
+.command-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+
+.command-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.command-card h3 code {
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+}
+
+.command-card h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted-foreground);
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.command-card p {
+  margin-bottom: 10px;
+}
+
+/* ===== Scenario Cards ===== */
+.scenario-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 28px 20px;
+  margin: 32px 0;
+  position: relative;
+}
+
+.scenario-number {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-foreground);
+  margin-bottom: 6px;
+}
+
+.scenario-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.scenario-card h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted-foreground);
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+/* ===== Success Box (Green) ===== */
+.success-box {
+  background: rgba(30, 138, 106, 0.08);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin: 16px 0 0;
+}
+
+.success-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--foreground);
+}
+
+/* ===== Warning Box (Amber) ===== */
+.warning-box {
+  background: rgba(251, 191, 36, 0.08);
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin: 16px 0 0;
+}
+
+.warning-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--foreground);
+}
+
+/* ===== Inline code in prose ===== */
+.blog-content p code,
+.blog-content li code,
+.blog-content td code {
+  font-family: "Courier New", monospace;
+  font-size: 0.88em;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: #a1e8d8;
+}
+
+/* ===== What you'll learn box ===== */
+.what-youll-learn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 28px 0;
+}
+
+.what-youll-learn h2 {
+  margin-top: 0 !important;
+  font-size: 1.1rem !important;
+}
+
+/* ===== Nested TOC sub-list ===== */
+.toc-nav ul ul {
+  padding-left: 12px;
+  margin-top: 4px;
+}
+
+.toc-nav ul ul li {
+  margin-bottom: 4px;
+}
+
+.toc-nav ul ul a {
+  font-size: 0.82rem;
+}
