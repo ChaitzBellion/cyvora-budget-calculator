@@ -11,7 +11,7 @@
 
   <!-- Main Pages -->
   <url>
-    <loc>https://cyvora.in/about</loc>
+    <loc>https://cyvora.in/about.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -25,28 +25,28 @@
   </url>
 
   <url>
-    <loc>https://cyvora.in/tips</loc>
+    <loc>https://cyvora.in/tips.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cyvora.in/learn</loc>
+    <loc>https://cyvora.in/learn.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cyvora.in/community</loc>
+    <loc>https://cyvora.in/community.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://cyvora.in/career-tips</loc>
+    <loc>https://cyvora.in/career-tips.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -54,21 +54,21 @@
 
   <!-- Tools Section -->
   <url>
-    <loc>https://cyvora.in/tools/</loc>
+    <loc>https://cyvora.in/tools/index.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://cyvora.in/tools/budget-calculator</loc>
+    <loc>https://cyvora.in/tools/budget-calculator.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://cyvora.in/Learn_pages</loc>
+    <loc>https://cyvora.in/Learn_pages.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -76,28 +76,28 @@
 
   <!-- Blogs posts -->
   <url>
-    <loc>https://cyvora.in/blogs/vercel-deployment-guide</loc>
+    <loc>https://cyvora.in/blogs/vercel-deployment-guide.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://cyvora.in/blogs/what-is-ctc</loc>
+    <loc>https://cyvora.in/blogs/what-is-ctc.html</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://cyvora.in/blogs/salary-guides</loc>
+    <loc>https://cyvora.in/blogs/salary-guides.html</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://cyvora.in/blogs/git-github-complete-guide</loc>
+    <loc>https://cyvora.in/blogs/git-github-complete-guide.html</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
