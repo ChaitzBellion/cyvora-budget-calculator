@@ -62,36 +62,41 @@
     <meta property="og:image:secure_url" content="https://www.cyvora.in/Assets/Site_Images/og-home.png">
     <meta property="og:image:type" content="image/png">
 
-
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Suman Chaitanya",
-        "url": "https://www.cyvora.in",
-        "logo": "https://www.cyvora.in/android-chrome-512x512.png",
-        "description": "Cyvora Studio provides smart budgeting tools, AI resources, technology tutorials, career guidance and practical learning resources.",
-        "sameAs": []
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Suman Chaitanya",
+    "url": "https://www.cyvora.in",
+    "logo": "https://www.cyvora.in/android-chrome-512x512.png",
+    "description": "Cyvora Studio provides smart budgeting tools, AI resources, technology tutorials, career guidance and practical learning resources.",
+    "sameAs": []
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Cyvora Studio",
+    "url": "https://www.cyvora.in/",
+    "description": "Discover AI tools, career guidance, budgeting resources and practical technology tutorials."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://www.cyvora.in",
+    "name": "Cyvora",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://cyvora.in{search_term_string}"
       },
-      {
-        "@context":"https://schema.org",
-        "@type":"WebPage",
-        "name":"Cyvora Studio",
-        "url":"https://www.cyvora.in/",
-        "description":"Discover AI tools, career guidance, budgeting resources and practical technology tutorials."
-      },
-      {
-        "@type":"WebSite",
-        "url":"https://www.cyvora.in",
-        "name":"Cyvora",
-        "potentialAction":
-        {
-          "@type":"SearchAction",
-          "query-input": "required name=query"
-        }
-      }
+      "query-input": "required name=search_term_string"
+    }
+  }
+]
+</script>
 
-    </script>
 
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -107,20 +112,20 @@ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&di
   <body>
     <!-- Floating Navigation -->
     <nav class="floating-nav" aria-label="Main navigation">
-      <a href="/index.html" class="nav-logo" aria-label="Home">
+      <a href="/" class="nav-logo" aria-label="Home">
         <img src="/Assets/Site_Images/cyvora-logo.svg" alt="Logo" width="24" height="24">
       </a>
       <div class="nav-links">
-        <a href="/index.html" class="nav-link active" data-tooltip="Home">
+        <a href="/" class="nav-link active" data-tooltip="Home">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </a>
         <a href="/blogs.html" class="nav-link" data-tooltip="Blogs">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         </a>
-        <a href="/tips.html" class="nav-link" data-tooltip="Tips">
+        <a href="/tips" class="nav-link" data-tooltip="Tips">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
         </a>
-        <a href="/tools/index.html" class="nav-link" data-tooltip="Tools">
+        <a href="/tools/" class="nav-link" data-tooltip="Tools">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </a>
       </div>
@@ -312,7 +317,7 @@ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&di
       <footer class="footer">
         <div class="footer-content">
           <div class="footer-brand">
-            <div class="footer-logo"><a href="/index.html" aria-label="Home">
+            <div class="footer-logo"><a href="/" aria-label="Home">
         <img src="/favicon.ico" alt="Logo" width="24" height="24">
       </a></div>
             <div>
@@ -321,13 +326,13 @@ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&di
             </div>
           </div>
           <div class="footer-links">
-            <a href="/about.html">About</a>
+            <a href="/about">About</a>
             <a href="/blogs.html">Blogs</a>
-            <a href="/learn.html">Learn</a>
-            <a href="/career-tips.html">Career</a>
-            <a href="/community.html">Community</a>
-            <a href="/tips.html">Tips</a>
-            <a href="/tools/index.html">Tools</a>
+            <a href="/learn">Learn</a>
+            <a href="/career-tips">Career</a>
+            <a href="/community">Community</a>
+            <a href="/tips">Tips</a>
+            <a href="/tools/">Tools</a>
           </div>
         </div>
       </footer>
